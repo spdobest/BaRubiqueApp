@@ -2,14 +2,15 @@ package com.bestdealfinance.bdfpartner.fragment;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatSeekBar;
 import android.support.v7.widget.AppCompatSpinner;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -19,16 +20,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -57,12 +58,10 @@ import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
-public class PayoutFragment extends Fragment implements View.OnClickListener {
+public class PayoutFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -103,6 +102,10 @@ public class PayoutFragment extends Fragment implements View.OnClickListener {
     private static final int STATE_DISBURSEMENT = 88;
     private RequestQueue queue;
     public JSONArray products;
+    private JSONObject stepsData;
+    private JSONArray payoutsArray;
+    private SlabWiseAdapter slabWiseAdapter;
+    private AppCompatCheckBox step1,step2,step3,step4;
 
 
     public PayoutFragment() {
@@ -128,15 +131,27 @@ public class PayoutFragment extends Fragment implements View.OnClickListener {
         TextView tvLogistics = (TextView) view.findViewById(R.id.logistics_text);
         TextView tvDisbursement = (TextView) view.findViewById(R.id.disbursement_text);
 
-        tvRefferal.setOnClickListener(this);
+        /*tvRefferal.setOnClickListener(this);
         tvAppFill.setOnClickListener(this);
         tvLogistics.setOnClickListener(this);
-        tvDisbursement.setOnClickListener(this);
+        tvDisbursement.setOnClickListener(this);*/
+
+        step1 = (AppCompatCheckBox) view.findViewById(R.id.step1);
+        step2 = (AppCompatCheckBox) view.findViewById(R.id.step2);
+        step3 = (AppCompatCheckBox) view.findViewById(R.id.step3);
+        step4 = (AppCompatCheckBox) view.findViewById(R.id.step4);
+
+        step1.setOnCheckedChangeListener(this);
+        step2.setOnCheckedChangeListener(this);
+        step3.setOnCheckedChangeListener(this);
+        step4.setOnCheckedChangeListener(this);
 
 
         final AppCompatSpinner productSpinner = (AppCompatSpinner) view.findViewById(R.id.product_spinner);
-        AppCompatSpinner bankSpinner = (AppCompatSpinner) view.findViewById(R.id.bank_spinner);
-
+        //AppCompatSpinner bankSpinner = (AppCompatSpinner) view.findViewById(R.id.bank_spinner);
+        final ListView payoutList = (ListView) view.findViewById(R.id.payout_list);
+        slabWiseAdapter = new SlabWiseAdapter(payoutsArray);
+        payoutList.setAdapter(slabWiseAdapter);
 
         StringRequest stringRequest = new StringRequest(Util.PRODUCT_TYPE, new Response.Listener<String>() {
             @Override
@@ -146,6 +161,7 @@ public class PayoutFragment extends Fragment implements View.OnClickListener {
                     JSONObject res = new JSONObject(response);
                     products = res.getJSONArray("body");
                     List<String> productList = new ArrayList<String>();
+                    productList.add("Select product");
                     for (int i = 0; i < products.length(); i++) {
                         productList.add(products.getJSONObject(i).getString("name"));
                     }
@@ -168,20 +184,36 @@ public class PayoutFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 try {
+
+                    if (i == 0) {
+
+                    }
+
                     JSONObject reqObject = new JSONObject();
                     reqObject.put("utoken", Helper.getStringSharedPreference(Constant.UTOKEN, getActivity()));
-                    reqObject.put("class","5");
-                    reqObject.put("product_type",products.getJSONObject(i).getString("id"));
+                    reqObject.put("class", Helper.getStringSharedPreference(Constant.USER_CLASS, getActivity()));
+                    reqObject.put("product_type", products.getJSONObject(i).getString("id"));
 
                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, Util.PAYOUT_CALCULATOR, reqObject, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
 
+                            try {
+                                stepsData = response.getJSONObject("body").getJSONObject("steps");
+                                payoutsArray = response.getJSONObject("body").getJSONArray("payouts");
+                                slabWiseAdapter.updateData(payoutsArray,step1.isChecked(),step2.isChecked(),step3.isChecked(),step4.isChecked());
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+
                         }
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-
+                            slabWiseAdapter.updateData(null,step1.isChecked(),step2.isChecked(),step3.isChecked(),step4.isChecked());
                         }
                     });
                     queue.add(jsonObjectRequest);
@@ -196,6 +228,7 @@ public class PayoutFragment extends Fragment implements View.OnClickListener {
 
             }
         });
+
 
 
         /*helper = new DBHelper(getActivity());
@@ -296,25 +329,6 @@ public class PayoutFragment extends Fragment implements View.OnClickListener {
                         txtView.setText(arrList[whichButton]);
                     }
                 }).show();
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-
-            case R.id.referral_text:
-                seekBar.setProgress(STATE_REFERRAL);
-                break;
-            case R.id.app_fill_text:
-                seekBar.setProgress(STATE_APP_FILL);
-                break;
-            case R.id.logistics_text:
-                seekBar.setProgress(STATE_LOGISTICS);
-                break;
-            case R.id.disbursement_text:
-                seekBar.setProgress(STATE_DISBURSEMENT);
-                break;
-        }
     }
 
 
@@ -684,6 +698,107 @@ public class PayoutFragment extends Fragment implements View.OnClickListener {
         }
 
     }
+
+
+    private class SlabWiseAdapter extends BaseAdapter {
+
+
+        private final LayoutInflater inflater;
+        private JSONArray jsonArray;
+        private int a = 1;
+        private int b = 1;
+        private int c = 1;
+        private int d = 1;
+
+
+        public SlabWiseAdapter(JSONArray jsonArray) {
+
+            this.jsonArray = jsonArray;
+            inflater = (LayoutInflater) getActivity().
+                    getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        }
+
+        @Override
+        public int getCount() {
+
+            if (jsonArray == null) return 0;
+            else return jsonArray.length() + 1;
+
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            try {
+                View rootView;
+                if (view == null) {
+                    rootView = inflater.inflate(R.layout.list_item_payout_calculator, null);
+                } else rootView = view;
+
+                TextView bank = (TextView) rootView.findViewById(R.id.bank);
+                TextView slab = (TextView) rootView.findViewById(R.id.slab);
+                TextView payout = (TextView) rootView.findViewById(R.id.payout);
+
+                if (i == 0) {
+                    bank.setText("BANK");
+                    bank.setTextColor(getActivity().getResources().getColor(R.color.Grey800));
+                    slab.setText("SLAB(in lakhs)");
+                    slab.setTextColor(getActivity().getResources().getColor(R.color.Grey800));
+                    payout.setText("PAYOUTS");
+                    payout.setTextColor(getActivity().getResources().getColor(R.color.Grey800));
+                } else {
+
+                    bank.setText(jsonArray.getJSONObject(i - 1).getString("name"));
+                    bank.setTextColor(getActivity().getResources().getColor(R.color.Grey600));
+
+                    String more;
+                    if (jsonArray.getJSONObject(i - 1).getString("slab_max").equals("999999999"))
+                        more = "more";
+                    else more = jsonArray.getJSONObject(i - 1).getString("slab_max");
+
+                    slab.setText(jsonArray.getJSONObject(i - 1).getString("slab_min") + " - " + more);
+                    slab.setTextColor(getActivity().getResources().getColor(R.color.Grey600));
+
+                    double payoutValue = Double.parseDouble(jsonArray.getJSONObject(i - 1).getString("payout")) * ((stepsData.getDouble("step1") * a / 100) + (stepsData.getDouble("step2") * b / 100) + (stepsData.getDouble("step3") * c / 100) + (stepsData.getDouble("step4") * d / 100));
+                    payoutValue = Math.round(payoutValue * 100.0) / 100.0;
+                    payout.setText("" + payoutValue + "%");
+                    payout.setTextColor(getActivity().getResources().getColor(R.color.Grey600));
+
+
+                }
+
+
+                return rootView;
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        public void updateData(JSONArray json, boolean i, boolean j, boolean k, boolean l) {
+            jsonArray = json;
+            this.a = i ? 1 : 0;
+            this.b = j ? 1 : 0;
+            this.c = k ? 1 : 0;
+            this.d = l ? 1 : 0;
+            notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        slabWiseAdapter.updateData(payoutsArray,step1.isChecked(),step2.isChecked(),step3.isChecked(),step4.isChecked());
+    }
+
 }
 
 

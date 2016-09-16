@@ -9,6 +9,14 @@ import android.support.v7.widget.Toolbar;
 
 import com.bestdealfinance.bdfpartner.R;
 import com.bestdealfinance.bdfpartner.adapter.DashboardAdapter;
+import com.bestdealfinance.bdfpartner.application.Constant;
+import com.bestdealfinance.bdfpartner.application.Helper;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import io.fabric.sdk.android.Fabric;
 
 public class DashBoard extends AppCompatActivity {
 
@@ -61,6 +69,18 @@ public class DashBoard extends AppCompatActivity {
         else if(val.equalsIgnoreCase(getString(R.string.txt_payouts))){
             viewPager.setCurrentItem(2);
         }
+
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Dashboard Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
+
     }
     @Override
     public void onBackPressed(){

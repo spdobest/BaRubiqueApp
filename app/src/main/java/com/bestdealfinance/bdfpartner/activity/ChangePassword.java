@@ -21,7 +21,13 @@ import android.widget.LinearLayout;
 
 import com.bestdealfinance.bdfpartner.Logs;
 import com.bestdealfinance.bdfpartner.R;
+import com.bestdealfinance.bdfpartner.application.Constant;
+import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.application.Util;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -32,6 +38,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+
+import io.fabric.sdk.android.Fabric;
 
 public class ChangePassword extends AppCompatActivity implements View.OnClickListener {
 
@@ -78,6 +86,17 @@ public class ChangePassword extends AppCompatActivity implements View.OnClickLis
             }
 
         });
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Change Password Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
+
     }
 
     private void initialization() {

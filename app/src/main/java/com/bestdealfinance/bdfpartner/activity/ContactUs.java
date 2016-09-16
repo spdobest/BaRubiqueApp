@@ -13,6 +13,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.bestdealfinance.bdfpartner.R;
+import com.bestdealfinance.bdfpartner.application.Constant;
+import com.bestdealfinance.bdfpartner.application.Helper;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import io.fabric.sdk.android.Fabric;
 
 
 public class ContactUs extends AppCompatActivity implements View.OnClickListener {
@@ -42,6 +50,17 @@ public class ContactUs extends AppCompatActivity implements View.OnClickListener
         layoutCall.setOnClickListener(this);
         layoutSMS.setOnClickListener(this);
         layoutEmail.setOnClickListener(this);
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Contact Us Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
+
     }
 
     @Override

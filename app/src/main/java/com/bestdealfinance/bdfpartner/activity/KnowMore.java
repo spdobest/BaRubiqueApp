@@ -6,8 +6,16 @@ import android.support.v4.view.ViewPager;
 
 import com.bestdealfinance.bdfpartner.R;
 import com.bestdealfinance.bdfpartner.adapter.TestFragmentAdapter;
+import com.bestdealfinance.bdfpartner.application.Constant;
+import com.bestdealfinance.bdfpartner.application.Helper;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.viewpagerindicator.CirclePageIndicator;
 import com.viewpagerindicator.PageIndicator;
+
+import io.fabric.sdk.android.Fabric;
 
 public class KnowMore extends FragmentActivity {
 
@@ -36,6 +44,17 @@ public class KnowMore extends FragmentActivity {
         indicator.setFillColor(getResources().getColor(R.color.blue));
         indicator.setPageColor(getResources().getColor(R.color.white));
         indicator.setStrokeWidth(1 * density);
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Know More Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
+
     }
 
 }

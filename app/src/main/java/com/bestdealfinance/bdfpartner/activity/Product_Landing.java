@@ -6,9 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.bestdealfinance.bdfpartner.Logs;
 import com.bestdealfinance.bdfpartner.R;
+import com.bestdealfinance.bdfpartner.application.Constant;
+import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.fragment.Landing_CC;
 import com.bestdealfinance.bdfpartner.fragment.Landing_Loan;
 import com.bestdealfinance.bdfpartner.fragment.Product_Type;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import io.fabric.sdk.android.Fabric;
 
 public class Product_Landing extends AppCompatActivity {
     private static String product_type;
@@ -50,6 +58,15 @@ public class Product_Landing extends AppCompatActivity {
         }
 
 
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Product Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
     }
 
 }

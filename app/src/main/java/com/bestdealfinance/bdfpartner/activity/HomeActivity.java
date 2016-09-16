@@ -43,6 +43,11 @@ import com.bestdealfinance.bdfpartner.adapter.HomeOfferAdapter;
 import com.bestdealfinance.bdfpartner.application.Constant;
 import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.application.Util;
+
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import org.apache.http.HttpResponse;
@@ -57,6 +62,8 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import io.fabric.sdk.android.Fabric;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
@@ -175,6 +182,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         queue.add(request);
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Home Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
 
 
     }

@@ -13,8 +13,16 @@ import android.widget.TextView;
 
 import com.bestdealfinance.bdfpartner.Logs;
 import com.bestdealfinance.bdfpartner.R;
+import com.bestdealfinance.bdfpartner.application.Constant;
+import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.application.Util;
 import com.bumptech.glide.Glide;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import io.fabric.sdk.android.Fabric;
 
 //Congrats Page in case of referral
 public class FinalCongrats extends AppCompatActivity {
@@ -125,6 +133,16 @@ public class FinalCongrats extends AppCompatActivity {
                 finish();
             }
         });
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Final Congrats Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
 
     }
 

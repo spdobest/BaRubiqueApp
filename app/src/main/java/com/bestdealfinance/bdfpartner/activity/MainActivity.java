@@ -15,10 +15,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bestdealfinance.bdfpartner.R;
+import com.bestdealfinance.bdfpartner.application.Constant;
 import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bumptech.glide.Glide;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import java.util.Locale;
+
+import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -67,8 +74,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 dialogInterface.dismiss();
             }
         });
-        builder.show();
+        //builder.show();
 
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Main Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
 
 
     }

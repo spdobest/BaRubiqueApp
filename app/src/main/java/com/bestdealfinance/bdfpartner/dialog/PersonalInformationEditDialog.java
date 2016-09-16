@@ -97,7 +97,7 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
         professionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerProfession.setAdapter(professionAdapter);
         String profession = profileHelper.getProfession();
-        if (!profession.equals(null)) {
+        if (profession!=null) {
             int spinnerPosition = professionAdapter.getPosition(profession);
             if (spinnerPosition == -1) {
                 spinnerPosition = professionAdapter.getPosition(Constant.OTHERS);

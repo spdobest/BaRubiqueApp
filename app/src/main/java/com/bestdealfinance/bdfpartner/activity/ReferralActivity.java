@@ -33,9 +33,15 @@ import android.widget.TextView;
 import com.bestdealfinance.bdfpartner.Logs;
 import com.bestdealfinance.bdfpartner.R;
 import com.bestdealfinance.bdfpartner.UI.PagerContainer;
+import com.bestdealfinance.bdfpartner.application.Constant;
+import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.application.Util;
 import com.bestdealfinance.bdfpartner.database.DBHelper;
 import com.bumptech.glide.Glide;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -59,6 +65,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import io.fabric.sdk.android.Fabric;
 
 
 public class ReferralActivity extends AppCompatActivity implements View.OnClickListener,APIUtils.OnTaskCompletedProducts, APIUtils.OnTaskCompletedCity {
@@ -155,6 +163,17 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
 //        }
         btnReferLead.setOnClickListener(this);
         backArrow.setOnClickListener(this);
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Refer Only Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
+
     }
     private void initializecities(){
         TextWatcher watcher = new TextWatcher() {

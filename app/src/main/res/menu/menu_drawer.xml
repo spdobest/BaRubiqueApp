@@ -20,11 +20,11 @@
         android:icon="@drawable/ic_payouts"
         android:title="@string/nav_drawer_payouts" />
 
-    <item
+    <!--<item
         android:id="@+id/nav_leader_board"
         android:icon="@drawable/ic_leader_board"
         android:title="@string/nav_drawer_leader_board" />
-
+-->
     <item
         android:id="@+id/nav_products"
         android:icon="@drawable/ic_product"

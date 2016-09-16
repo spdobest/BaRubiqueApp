@@ -304,4 +304,6 @@
     <string name="disbursement">DISBURSEMENT</string>
     <string name="select_product">Select Product</string>
     <string name="select_bank">Select Bank</string>
+    <string name="i_accept_terms_and_conditions">I accept terms and conditions.</string>
+    <string name="click_to_see">Click to see</string>
 </resources>

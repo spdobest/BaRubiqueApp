@@ -32,12 +32,18 @@ import com.bestdealfinance.bdfpartner.R;
 import com.bestdealfinance.bdfpartner.application.Constant;
 import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.application.Util;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import io.fabric.sdk.android.Fabric;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -189,6 +195,17 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
+
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Login Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
 
     }
     /*private class HttpAsyncTask extends AsyncTask<Void, Void, String> {

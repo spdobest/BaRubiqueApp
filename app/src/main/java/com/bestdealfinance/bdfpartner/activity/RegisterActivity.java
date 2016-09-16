@@ -8,11 +8,15 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatCheckBox;
+import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.Toolbar;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,9 +38,15 @@ import com.bestdealfinance.bdfpartner.application.Constant;
 import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.application.Translator;
 import com.bestdealfinance.bdfpartner.application.Util;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import io.fabric.sdk.android.Fabric;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -44,6 +54,8 @@ public class RegisterActivity extends AppCompatActivity {
     private RequestQueue queue;
     private boolean isApplied = false;
     private int leadPartnerId = 0;
+    private ArrayAdapter<String> professionAdapter;
+    private AppCompatSpinner spinnerProfession;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
             }
         });
+
 
 
         final LinearLayout waitingLayout = (LinearLayout) findViewById(R.id.waiting_layout);
@@ -104,7 +117,29 @@ public class RegisterActivity extends AppCompatActivity {
         final Button applyPopButton = (Button) findViewById(R.id.apply_btn_popup);
         final Button registerButton = (Button) findViewById(R.id.btn_regi_submit);
 
-        //Util.intializeCity(this, txt_city_name);
+        Util.intializeCity(this, cityView);
+
+        spinnerProfession = (AppCompatSpinner)findViewById(R.id.spinner_profession);
+        setProfessionAdapter();
+        spinnerProfession.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String profession = adapterView.getItemAtPosition(i).toString();
+                /*if (profession.equalsIgnoreCase(Constant.OTHERS)) {
+                    etOtherProfession.setVisibility(View.VISIBLE);
+                } else {
+                    etOtherProfession.setVisibility(View.GONE);
+                }*/
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        final AppCompatCheckBox tncCheckbox = (AppCompatCheckBox) findViewById(R.id.tncBox);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -261,6 +296,13 @@ public class RegisterActivity extends AppCompatActivity {
 
                     Helper.hideKeyboard(RegisterActivity.this);
 
+                    if(!tncCheckbox.isChecked())
+                    {
+                        Toast.makeText(RegisterActivity.this,"Please accept terms and conditions",Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+
                     if(Helper.validate(fullNameLayout,fullNameView,"text",RegisterActivity.this) && Helper.validate(phoneLayout,phoneView,"phone",RegisterActivity.this) && Helper.validate(emailLayout,emailView,"email",RegisterActivity.this) && Helper.validate(passwordLayout,passwordView,"password",RegisterActivity.this) && Helper.validate(cityLayout,cityView,"text",RegisterActivity.this))
                     {
                         waitingLayout.setVisibility(View.VISIBLE);
@@ -274,6 +316,7 @@ public class RegisterActivity extends AppCompatActivity {
                         reqObject.put("mobile_number", phoneView.getText().toString().trim());
                         reqObject.put("password", passwordView.getText().toString().trim());
                         reqObject.put("city", cityView.getText().toString().trim());
+                        reqObject.put("profession",spinnerProfession.getSelectedItem().toString());
                         reqObject.put("source", "BA_APP");
                         reqObject.put("is_ba","1");
                         if (isApplied)
@@ -426,9 +469,30 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Registration Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
+
     }
 
+    private void setProfessionAdapter() {
+        // TODO delet and fetch from server and delete  Util.occupation
 
+        String[] occupation = {"Chartered Accountant", "Financial Advisor", "Bank Connector", "Stock Broker", "Car Dealer", "Construction Equipment Distributor", "Used Equipment Seller","Real Estate Agent","Builder Executive","Property valuator","Bank RM","Used car dealer","Medical equipment Dealer","Others"};
+
+
+        professionAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,occupation);
+        professionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerProfession.setAdapter(professionAdapter);
+
+    }
 
     /*@Override
     public void onClick(View v) {

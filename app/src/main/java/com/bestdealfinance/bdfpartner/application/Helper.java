@@ -198,8 +198,8 @@ public class Helper {
                 return new Intent(context, TrainingActivity.class);
             case R.id.nav_products:
                 return new Intent(context, Product_Landing.class);
-            case R.id.nav_leader_board:
-                return new Intent(context, LeaderBoardActivity.class);
+           /* case R.id.nav_leader_board:
+                return new Intent(context, LeaderBoardActivity.class);*/
             case R.id.nav_contact_us:
                 return new Intent(context, ContactUs.class);
             case R.id.nav_share: {
@@ -225,6 +225,9 @@ public class Helper {
         }
         return mTracker;
     }
+
+
+
 
 
     static int cacheSize = 4 * 1024 * 1024; // 4MiB

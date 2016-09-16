@@ -23,8 +23,14 @@ import android.widget.TextView;
 import com.bestdealfinance.bdfpartner.Logs;
 import com.bestdealfinance.bdfpartner.R;
 import com.bestdealfinance.bdfpartner.adapter.ReferralDetailAdapter;
+import com.bestdealfinance.bdfpartner.application.Constant;
+import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.application.Util;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
 import com.github.ivbaranov.mli.MaterialLetterIcon;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -37,6 +43,8 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import io.fabric.sdk.android.Fabric;
 
 public class ReferralDetailActivity extends AppCompatActivity {
 
@@ -107,6 +115,17 @@ public class ReferralDetailActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         recyclerview_lead_detail.setHasFixedSize(true);
         recyclerview_lead_detail.setLayoutManager(mLayoutManager);
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Referral Details Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
 
     }
 

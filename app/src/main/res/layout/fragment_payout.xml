@@ -149,7 +149,7 @@
         android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
-        android:weightSum="2">
+        android:weightSum="1">
 
         <TextView
             android:layout_width="wrap_content"
@@ -158,12 +158,12 @@
             android:text="@string/select_product"
             android:textSize="12sp" />
 
-        <TextView
+       <!-- <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/select_bank"
-            android:textSize="12sp" />
+            android:textSize="12sp" />-->
 
 
     </LinearLayout>
@@ -173,7 +173,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:weightSum="2">
+        android:weightSum="1">
 
         <android.support.v7.widget.AppCompatSpinner
             android:id="@+id/product_spinner"
@@ -184,7 +184,7 @@
 
         </android.support.v7.widget.AppCompatSpinner>
 
-        <android.support.v7.widget.AppCompatSpinner
+        <!--<android.support.v7.widget.AppCompatSpinner
             android:id="@+id/bank_spinner"
 
             android:layout_width="match_parent"
@@ -192,7 +192,7 @@
             android:layout_weight="1">
 
         </android.support.v7.widget.AppCompatSpinner>
-
+-->
 
     </LinearLayout>
 

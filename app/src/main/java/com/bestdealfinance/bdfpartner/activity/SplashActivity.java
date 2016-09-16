@@ -275,6 +275,7 @@ public class SplashActivity extends AppCompatActivity {
                                     Logs.LogD("Splash", "userid " + Util.o_id);
                                     Logs.LogD("Splash", "Utoken " + str_utoken);
                                     Util.nav_status = Constant.SPLASH;
+                                    Helper.setStringSharedPreference(Constant.USER_CLASS,data.getString("ba_class"),SplashActivity.this);
                                     startActivity(new Intent(SplashActivity.this, HomeActivity.class));
                                     finish();
                                 } else {

@@ -12,8 +12,14 @@ import android.widget.ImageView;
 
 import com.bestdealfinance.bdfpartner.Logs;
 import com.bestdealfinance.bdfpartner.R;
+import com.bestdealfinance.bdfpartner.application.Constant;
+import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.application.Util;
 import com.bestdealfinance.bdfpartner.fragment.Group_Question_Fragment;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +36,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
+import io.fabric.sdk.android.Fabric;
 
 public class QuotesGroupActivity extends AppCompatActivity implements Group_Question_Fragment.OnGroupInteraction{
     private ImageView progressBar;
@@ -68,6 +76,18 @@ public class QuotesGroupActivity extends AppCompatActivity implements Group_Ques
         animation = (AnimationDrawable) progressBar.getBackground();
         DownloadJSONForm getForm = new DownloadJSONForm();
         getForm.executeOnExecutor(Util.threadPool);
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Application Fill Full");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
+
     }
 
 

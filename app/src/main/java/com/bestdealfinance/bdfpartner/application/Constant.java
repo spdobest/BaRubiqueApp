@@ -20,6 +20,7 @@ public class Constant {
     public static final String TOKEN = "token";
 
     public static final String SENDER_ID = "253805530650";
+    public static final String FLURRY_API_KEY = "PJXFDQNFWPZQHG5HQ2PG";
 
     public static final String STATUS_CODE = "status_code";
     public static final String MSG = "msg";
@@ -41,4 +42,5 @@ public class Constant {
     public static final String SHARE_TEXT = "Refer & Earn in 3 Steps. To download our app, click https://goo.gl/IWjKnE - Team Rubique";
 
 
+    public static final String USER_CLASS = "ba_class";
 }

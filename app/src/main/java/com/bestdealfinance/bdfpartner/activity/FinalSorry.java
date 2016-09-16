@@ -12,8 +12,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bestdealfinance.bdfpartner.R;
+import com.bestdealfinance.bdfpartner.application.Constant;
+import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.application.Util;
 import com.bumptech.glide.Glide;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import io.fabric.sdk.android.Fabric;
 
 public class FinalSorry extends AppCompatActivity {
 
@@ -69,6 +77,16 @@ public class FinalSorry extends AppCompatActivity {
                 .into(view);
 
 
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Sorry Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
 
     }
     @Override

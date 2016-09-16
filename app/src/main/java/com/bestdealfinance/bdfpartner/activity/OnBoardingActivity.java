@@ -25,7 +25,13 @@ import android.widget.TextView;
 import com.bestdealfinance.bdfpartner.Logs;
 import com.bestdealfinance.bdfpartner.R;
 import com.bestdealfinance.bdfpartner.UI.InnerDurationFragment;
+import com.bestdealfinance.bdfpartner.application.Constant;
+import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.application.Util;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -48,6 +54,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import io.fabric.sdk.android.Fabric;
 
 public class OnBoardingActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -82,6 +90,18 @@ public class OnBoardingActivity extends AppCompatActivity implements View.OnClic
         is_salaried.setOnClickListener(this);
         back_arrow.setOnClickListener(this);
         btn_boarding_submit.setOnClickListener(this);
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Application Fill Step 1");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
+
     }
 
     private void initialization() {

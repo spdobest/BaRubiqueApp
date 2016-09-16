@@ -40,7 +40,6 @@
     <string name="tag1_line3">way!</string>
 
 
-
     <string name="title_activity_login">Login</string>
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
@@ -76,13 +75,6 @@
     <string name="search">Search</string>
 
     <string name="msg_email_verification">You\'ve got mail! \nA verification email has been sent to </string>
-
-
-
-
-
-
-
 
 
     <string name="btn_earn_text">Explore</string>
@@ -192,6 +184,7 @@
     <string name="nav_drawer_refer_lead">Refer A Lead</string>
     <string name="nav_drawer_dashboard">Dashboard</string>
     <string name="nav_drawer_referrals">Referrals</string>
+    <string name="nav_drawer_payouts">Payouts</string>
     <string name="nav_drawer_my_profile">My Profile</string>
     <string name="nav_drawer_training">Training</string>
     <string name="nav_drawer_products">Products</string>
@@ -202,12 +195,6 @@
     <string name="save">Save</string>
     <string name="empty_error">Empty</string>
     <string name="account_number_not_matched">Account numbers not matched</string>
-
-
-
-
-
-
 
 
     <!-- New Updated Tags -->
@@ -310,4 +297,13 @@
     <string name="training">TRAINING</string>
     <string name="videos">VIDEOS</string>
     <string name="txt_select_a_product_to_view_details">Select a product to view details</string>
+    <string name="nav_drawer_leader_board">Leader Board</string>
+    <string name="send">Send</string>
+    <string name="app_fill">APP FILL</string>
+    <string name="logistics">LOGISTICS</string>
+    <string name="disbursement">DISBURSEMENT</string>
+    <string name="select_product">Select Product</string>
+    <string name="select_bank">Select Bank</string>
+    <string name="i_accept_terms_and_conditions">I accept terms and conditions.</string>
+    <string name="click_to_see">Click to see</string>
 </resources>

@@ -22,8 +22,14 @@ import android.widget.TextView;
 
 import com.bestdealfinance.bdfpartner.Logs;
 import com.bestdealfinance.bdfpartner.R;
+import com.bestdealfinance.bdfpartner.application.Constant;
+import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.application.Util;
 import com.bumptech.glide.Glide;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -34,6 +40,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+
+import io.fabric.sdk.android.Fabric;
+
 //Its a Confirmation Screen
 public class CongratulationScreen extends AppCompatActivity implements View.OnClickListener{
 
@@ -133,6 +142,17 @@ public class CongratulationScreen extends AppCompatActivity implements View.OnCl
             Util.GetPayout pay12 = new Util.GetPayout(pay_bar2,bundle.getString("type", ""), bundle.getString("amount", ""), "f", getApplicationContext(), earn_more, "Earn additional Rs. ", " on this referral by making an application","payout_amount");
             pay12.executeOnExecutor(Util.threadPool);
         }
+
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Referral Review Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
 
     }
 

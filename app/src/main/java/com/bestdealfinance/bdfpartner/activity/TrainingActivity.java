@@ -18,13 +18,21 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bestdealfinance.bdfpartner.R;
+import com.bestdealfinance.bdfpartner.application.Constant;
+import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.application.Util;
 import com.bestdealfinance.bdfpartner.fragment.TrainingDocumentFragment;
 import com.bestdealfinance.bdfpartner.fragment.TrainingVideoFragment;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import io.fabric.sdk.android.Fabric;
 
 public class TrainingActivity extends AppCompatActivity {
 
@@ -56,10 +64,10 @@ public class TrainingActivity extends AppCompatActivity {
 
         try {
 
-            final Snackbar snackbar = Snackbar.make(findViewById(R.id.training_main_layout),"Loaading from Network , Please Wait",Snackbar.LENGTH_INDEFINITE);
+            final Snackbar snackbar = Snackbar.make(findViewById(R.id.training_main_layout), "Loaading from Network , Please Wait", Snackbar.LENGTH_INDEFINITE);
             snackbar.show();
             JSONObject reqObject = new JSONObject();
-            reqObject.put("key","tra!33$");
+            reqObject.put("key", "tra!33$");
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Util.TRAINING_FETCH, reqObject, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
@@ -70,14 +78,10 @@ public class TrainingActivity extends AppCompatActivity {
                         //Log.e("Data arary",responseArray.toString());
                         videoArray = new JSONArray();
                         documentArray = new JSONArray();
-                        for(int i =0;i<responseArray.length();i++)
-                        {
-                            if(responseArray.getJSONObject(i).getString("type").equals("V"))
-                            {
+                        for (int i = 0; i < responseArray.length(); i++) {
+                            if (responseArray.getJSONObject(i).getString("type").equals("V")) {
                                 videoArray.put(responseArray.getJSONObject(i));
-                            }
-                            else if(responseArray.getJSONObject(i).getString("type").equals("D"))
-                            {
+                            } else if (responseArray.getJSONObject(i).getString("type").equals("D")) {
                                 documentArray.put(responseArray.getJSONObject(i));
                             }
 
@@ -110,11 +114,15 @@ public class TrainingActivity extends AppCompatActivity {
         }
 
 
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Training Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
 
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
 
-
-
-
+        Fabric.with(this, new Crashlytics());
 
     }
 
@@ -127,19 +135,16 @@ public class TrainingActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
 
-            if(position==0)
-            {
+            if (position == 0) {
                 Fragment fragment = new TrainingVideoFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("data",videoArray.toString());
+                bundle.putString("data", videoArray.toString());
                 fragment.setArguments(bundle);
                 return fragment;
-            }
-            else
-            {
+            } else {
                 Fragment fragment = new TrainingDocumentFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("data",documentArray.toString());
+                bundle.putString("data", documentArray.toString());
                 fragment.setArguments(bundle);
                 return fragment;
             }

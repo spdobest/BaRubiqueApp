@@ -15,14 +15,24 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bestdealfinance.bdfpartner.R;
+import com.bestdealfinance.bdfpartner.application.Constant;
+import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.application.Util;
 import com.bumptech.glide.Glide;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import io.fabric.sdk.android.Fabric;
 
 public class ApplicationCongrats extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         Thread.currentThread().setUncaughtExceptionHandler(new DefualtExceptionHandler());
         setContentView(R.layout.activity_app_congrats);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -98,6 +108,18 @@ public class ApplicationCongrats extends AppCompatActivity {
         else {
             appl.setText(Html.fromHtml(abc));
         }
+
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Final Congrats Screen");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
 
     }
 

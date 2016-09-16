@@ -29,12 +29,18 @@ import com.bestdealfinance.bdfpartner.application.ProfileHelper;
 import com.bestdealfinance.bdfpartner.application.Util;
 import com.bestdealfinance.bdfpartner.dialog.BankInformationEditDialog;
 import com.bestdealfinance.bdfpartner.dialog.PersonalInformationEditDialog;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import io.fabric.sdk.android.Fabric;
 
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
@@ -141,6 +147,17 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         };
         serverValues.setRetryPolicy(new DefaultRetryPolicy(15000, 1, 1f));
         queue.add(serverValues);
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Profile Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
+
     }
 
     private void setAllValues(JSONObject customer, JSONObject bankDetails) {

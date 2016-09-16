@@ -12,10 +12,18 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.bestdealfinance.bdfpartner.R;
+import com.bestdealfinance.bdfpartner.application.Constant;
+import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.fragment.CC_Offers;
 import com.bestdealfinance.bdfpartner.fragment.CC_Offers_Alt;
 import com.bestdealfinance.bdfpartner.fragment.LoanOffersAlt;
 import com.bestdealfinance.bdfpartner.fragment.LoanOffers_fragment;
+import com.crashlytics.android.Crashlytics;
+import com.flurry.android.FlurryAgent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import io.fabric.sdk.android.Fabric;
 
 public class AlternateOffersActivity extends AppCompatActivity {
 
@@ -26,6 +34,16 @@ public class AlternateOffersActivity extends AppCompatActivity {
         Thread.currentThread().setUncaughtExceptionHandler(new DefualtExceptionHandler());
         setContentView(R.layout.activity_alternate_offers);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        Tracker mTracker = Helper.getDefaultTracker(this);
+        mTracker.setScreenName("Alternate Offers Activity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(false)
+                .build(this, Constant.FLURRY_API_KEY);
+
+        Fabric.with(this, new Crashlytics());
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle(R.string.txt_refer_for_loan);
