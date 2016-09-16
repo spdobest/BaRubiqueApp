@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:cardView="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal">
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="2.5"
+
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:background="@drawable/refer_banner"
+                    android:layout_height="match_parent" />
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:padding="@dimen/twenty"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:gravity="left"
+                android:orientation="vertical">
+
+                <com.bestdealfinance.bdfpartner.UI.CustomTextViewDomine
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_refer_earn"
+                    android:textSize="18sp"
+                    android:layout_gravity="center"
+                    android:gravity="left"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+                <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Refer someone for a loan or credit card and start earning commission!"
+                    android:textSize="13sp"
+                    android:layout_gravity="center"
+                    android:paddingTop="@dimen/fifteen"
+                    android:paddingBottom="@dimen/fifteen"
+                    android:gravity="left"
+                    android:textColor="@color/white"
+                    android:textStyle="normal"/>
+                <Button
+                    android:id="@+id/btn_get_started"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corner_button"
+                    android:text="GET STARTED"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/orange"
+                >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/home_orange"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <com.bestdealfinance.bdfpartner.UI.CustomTextViewDomine
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_marginBottom="@dimen/ten"
+                    android:layout_height="wrap_content"
+                    android:text="OUR OFFERS"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/fifteen"/>
+
+
+                    <com.bestdealfinance.bdfpartner.UI.PagerContainer
+
+                        android:id="@+id/pager_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        >
+                        <android.support.v4.view.ViewPager
+                            android:layout_width="180dp"
+                            android:layout_height="250dp"
+                            android:layout_gravity="center" />
+
+                    </com.bestdealfinance.bdfpartner.UI.PagerContainer>
+
+                    <com.viewpagerindicator.CirclePageIndicator
+                        android:id="@+id/titles"
+                        android:layout_marginTop="@dimen/ten"
+                        android:padding="5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent" />
+                    </LinearLayout>
+            </RelativeLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/home_multi"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/ten">
+
+            <com.bestdealfinance.bdfpartner.UI.CustomTextViewDomine
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="WHAT YOU GET"
+                android:layout_gravity="center"
+                android:padding="@dimen/ten"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginBottom="@dimen/ten"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/fifteen"/>
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginBottom="@dimen/ten"
+            android:orientation="horizontal">
+            <android.support.v7.widget.CardView
+                android:id="@+id/ll_dashboard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                cardView:cardBackgroundColor="@color/white">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                <ImageView
+                    android:layout_width="@dimen/img_logo"
+                    android:layout_height="@dimen/img_logo"
+                    android:paddingTop="@dimen/twenty_five"
+                    android:layout_gravity="center"
+                    android:paddingBottom="@dimen/twenty_five"
+                    android:src="@drawable/dashboard"/>
+                <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_marginBottom="@dimen/ten"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="DASHBOARD"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/ll_application"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/ten"
+                cardView:cardBackgroundColor="@color/white">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="@dimen/img_logo"
+                        android:layout_height="@dimen/img_logo"
+                        android:paddingTop="@dimen/twenty_five"
+                        android:paddingBottom="@dimen/twenty_five"
+                        android:layout_gravity="center"
+                        android:src="@drawable/dashboard"/>
+                    <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/ten"
+                        android:layout_marginBottom="@dimen/ten"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:text="REFERRAL"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/ll_payout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/ten"
+                    cardView:cardBackgroundColor="@color/white">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="@dimen/img_logo"
+                            android:layout_height="@dimen/img_logo"
+                            android:paddingTop="@dimen/twenty_five"
+                            android:paddingBottom="@dimen/twenty_five"
+                            android:layout_gravity="center"
+                            android:src="@drawable/dashboard"/>
+                        <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_marginTop="@dimen/ten"
+                            android:layout_marginBottom="@dimen/ten"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:text="PAYOUTS"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+        </LinearLayout>
+        </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+</ScrollView>

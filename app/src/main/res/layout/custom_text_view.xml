@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="8dp"
+    android:id="@+id/child"
+    android:theme="@style/AppTheme"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="vertical">
+
+    <android.support.design.widget.TextInputLayout
+        android:name="android.support.design.widget.textInputLayout"
+        android:layout_width="match_parent"
+        android:id="@+id/textinputlayout"
+        android:layout_height="wrap_content"
+       >
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeActionId="@+id/login"
+            android:imeActionLabel="Next"
+            android:imeOptions="actionUnspecified"
+            android:inputType="textEmailAddress|textNoSuggestions"
+            android:maxLines="1"
+            android:maxLength="50"
+            android:singleLine="true" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    </LinearLayout>
+

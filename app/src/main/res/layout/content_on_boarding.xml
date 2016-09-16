@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activity.OnBoarding"
+    android:background="@color/White"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:showIn="@layout/activity_on_boarding">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_height="150dp"
+                        android:elevation="2dp"
+                        app:theme="@style/ToolbarColoredBackArrow"
+                        android:layout_width="match_parent"
+                        android:contentInsetStart="0dp"
+                        android:contentInsetLeft="0dp"
+                        app:contentInsetLeft="0dp"
+                        app:contentInsetStart="0dp"
+                        android:minHeight="?android:attr/actionBarSize"
+                        android:background="?attr/colorPrimary"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorPrimary"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_margin="10dp"
+                                android:id="@+id/back_arrow"
+                                android:layout_height="@dimen/twenty_five"
+                                android:src="@drawable/ic_arrow_left"/>
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/refer_lead"/>
+                            <com.bestdealfinance.bdfpartner.UI.CustomTextViewDomine
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/white"
+                                android:text="APPLICATION"
+                                android:layout_marginTop="10dp"
+                                app:typeface="medium"
+                                android:layout_gravity="bottom"
+                                android:gravity="center"
+                                android:textSize="@dimen/fifteen"/>
+                        </LinearLayout>
+                    </android.support.v7.widget.Toolbar>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/step1"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:orientation="vertical">
+
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:name="android.support.design.widget.textInputLayout"
+                            android:layout_width="match_parent"
+                            android:id="@+id/textinputlayout_salaried"
+                            android:layout_height="wrap_content"
+                            >
+                            <EditText
+                                android:id="@+id/is_salaried"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center_vertical"
+                                android:focusable="false"
+                                android:hint="@string/txt_salaried"
+                                />
+
+                        </android.support.design.widget.TextInputLayout>
+
+
+
+
+
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/AppTheme"
+                            android:orientation="vertical">
+
+                            <android.support.design.widget.TextInputLayout
+                                android:name="android.support.design.widget.textInputLayout"
+                                android:layout_width="match_parent"
+                                android:id="@+id/textinputlayout_occupation"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                >
+                                <EditText
+                                    android:id="@+id/occupation"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:imeActionId="@+id/login"
+                                    android:imeActionLabel="Next"
+                                    android:hint="Employment Type"
+                                    android:imeOptions="actionUnspecified"
+                                    android:inputType="none"
+                                    android:focusable="false"
+                                    android:maxLines="1"
+                                    android:maxLength="50"
+                                    android:singleLine="true" />
+
+                            </android.support.design.widget.TextInputLayout>
+
+
+                        </LinearLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:name="android.support.design.widget.textInputLayout"
+                            android:layout_width="match_parent"
+                            android:id="@+id/textinputlayout_company"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            >
+                            <AutoCompleteTextView
+                                android:id="@+id/company"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center_vertical"
+                                android:hint="Name of your employer?"
+                                android:inputType="textNoSuggestions"
+                                android:textColor="@color/text_color_dark"
+                                android:textColorHint="@color/text_color"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:name="android.support.design.widget.textInputLayout"
+                            android:layout_width="match_parent"
+                            android:id="@+id/textinputlayout_income"
+                            android:layout_height="wrap_content"
+                            >
+                            <EditText
+                                android:id="@+id/et_income"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center_vertical"
+                                android:inputType="number"
+                                android:maxLength="10"
+                                android:hint="Your monthly income?"
+                                android:lines="1"
+                                android:textColor="@color/text_color_dark"
+                                android:textColorHint="@color/text_color"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:name="android.support.design.widget.textInputLayout"
+                            android:layout_width="match_parent"
+                            android:id="@+id/textinputlayout_tenure"
+                            android:layout_height="wrap_content"
+                            >
+                            <EditText
+                                android:id="@+id/et_tenure"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:lines="1"
+                                android:gravity="center_vertical"
+                                android:hint="How long do you need the loan for?"
+                                android:inputType="number"
+                                android:maxLength="3"
+                                android:textColor="@color/text_color_dark"
+                                android:textColorHint="@color/text_color"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:id="@+id/head"-->
+                        <!--android:orientation="vertical">-->
+
+
+                    <!--</LinearLayout>-->
+                    <Button
+                        android:id="@+id/btn_boarding_submit"
+                        android:layout_width="match_parent"
+                        android:paddingLeft="@dimen/fifty"
+                        android:paddingRight="@dimen/fifty"
+                        android:layout_margin="@dimen/twenty"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/twenty"
+                        android:text="Continue"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:typeface="sans"
+                        android:textSize="18sp"
+                        android:textAllCaps="false"
+                        android:background="@color/orange"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:background="@android:color/transparent"
+        android:id="@+id/waiting_layout"        >
+        <ImageView
+            android:id="@+id/waiting"
+            android:layout_width="@dimen/fifty"
+            android:layout_height="@dimen/fifty"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:layout_centerInParent="true"/>
+    </LinearLayout>
+    </LinearLayout>

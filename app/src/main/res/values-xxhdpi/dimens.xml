@@ -1,0 +1,15 @@
+<resources>
+    <dimen name="seven">12dp</dimen>
+    <dimen name="ten">15dp</dimen>
+    <dimen name="twelve">18dp</dimen>
+    <dimen name="fifteen">20dp</dimen>
+    <dimen name="twenty">25dp</dimen>
+    <dimen name="twenty_five">30dp</dimen>
+    <dimen name="thirty">35dp</dimen>
+    <dimen name="fifty">56dp</dimen>
+    <dimen name="sixty">68dp</dimen>
+    <dimen name="eighty">88dp</dimen>
+    <dimen name="img_logo">100dp</dimen>
+    <dimen name="landing_height">220dp</dimen>
+    <dimen name="chart">360dp</dimen>
+</resources>

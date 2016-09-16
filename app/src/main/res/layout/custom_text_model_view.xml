@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="8dp"
+    android:id="@+id/child"
+    android:theme="@style/AppTheme"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="vertical">
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressBar"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:name="android.support.design.widget.textInputLayout"
+        android:layout_width="match_parent"
+        android:id="@+id/textinputlayout"
+        android:layout_height="wrap_content"
+        >
+        <AutoCompleteTextView
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeActionId="@+id/login"
+            android:imeOptions="actionUnspecified"
+            android:maxLines="1"
+            android:inputType="textNoSuggestions|textCapWords"
+            android:singleLine="true" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+</RelativeLayout>
+

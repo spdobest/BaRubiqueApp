@@ -1,0 +1,10 @@
+.gradle/
+app/build/
+local.properties
+build/
+gradlew.bat
+mobileApp.iml
+.idea/
+Partner.iml
+app/app.iml
+*.iml

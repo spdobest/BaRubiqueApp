@@ -1,0 +1,196 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".fragment.RegisterFragment">
+    <android.support.v7.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_height="140dp"
+        android:elevation="5dp"
+        app:theme="@style/ToolbarColoredBackArrow"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:contentInsetStart="0dp"
+        android:contentInsetLeft="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        android:minHeight="?android:attr/actionBarSize"
+
+        >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:id="@+id/toolbar_layout"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="match_parent"
+                android:scaleType="fitEnd"
+                android:layout_height="match_parent"
+                android:src="@drawable/home_multi"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/back_arrow"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_arrow_left"/>
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/head_image"
+                    android:layout_gravity="center"
+                    android:src="@drawable/login_now"/>
+                <com.bestdealfinance.bdfpartner.UI.CustomTextViewDomine
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:text="LOG IN NOW!"
+                    android:id="@+id/landing_loan_type"
+                    android:typeface="sans"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </FrameLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:elevation="5dp"
+            android:visibility="gone"
+            android:background="@android:color/transparent"
+            android:id="@+id/waiting_layout"        >
+            <ImageView
+                android:id="@+id/waiting"
+                android:layout_width="@dimen/fifty"
+                android:layout_height="@dimen/fifty"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:layout_centerInParent="true"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bottom_pattern"
+            />
+
+            <LinearLayout
+                android:id="@+id/email_login_form"
+                android:layout_width="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:padding="30dp"
+                    android:orientation="vertical">
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/ten"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/txt_login_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Your Email"
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                             />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/txt_login_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/txt_password"
+                            android:maxLines="1"
+                            android:singleLine="true" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btn_login_signin"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="30dp"
+                        android:text="LOG IN"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:background="@drawable/custom_button_orange_filled_flat"
+                        android:textStyle="bold" />
+
+                    <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                        android:id="@+id/btn_forgot_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FORGOT PASSWORD?"
+                        android:textAllCaps="false"
+                        android:padding="15dp"
+
+                        android:gravity="end"
+                        android:textColor="@color/OrangeRed"
+                        android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/Black"/>
+                    <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DON'T HAVE AN ACCOUNT?"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/colorPrimary" />
+
+                    <Button
+                        android:id="@+id/btn_login_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:text="REGISTER"
+                        android:textAllCaps="false"
+                        android:textColor="@color/OrangeRed"
+                        android:background="@drawable/custom_button_white_filled_flat"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

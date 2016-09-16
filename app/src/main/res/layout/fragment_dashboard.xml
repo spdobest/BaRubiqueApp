@@ -1,0 +1,334 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/dashboard_login_msg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+            <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/dashboard_not_login_text"
+                android:textSize="14sp"
+                android:textColor="@color/black"/>
+            <ImageView
+                android:layout_width="@dimen/chart"
+                android:layout_height="@dimen/chart"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_gravity="center"
+                android:padding="@dimen/twelve"
+                android:src="@drawable/chart"/>
+            <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/Black"
+                android:padding="15dp"
+                android:text="You need to login to view your dashboard"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/fifteen"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/dashboard_login"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/orange"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:text="@string/tag_login"
+                    android:textAllCaps="false"
+                    />
+                <Button
+                    android:id="@+id/dashboard_register"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/twelve"
+                    android:background="@color/orange"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:text="@string/tag_register"
+                    android:textAllCaps="false"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/email_verifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty_five"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            android:orientation="vertical">
+            <com.bestdealfinance.bdfpartner.UI.CustomTextViewDomine
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/half_black"
+                android:padding="15dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:text="Please verify your account "/>
+            <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                android:id="@+id/no_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="@color/half_black"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="Your account must be verified to access the dashboard.  \n\nWe sent resend verification email to "/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/referral_resend_verification"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/orange"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:text="Resend Verification"                />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/dashboard_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/twelve"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/dashboard_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:background="@drawable/bottom_line"
+                android:layout_margin="@dimen/four"
+                android:textColor="@color/black" />
+        </LinearLayout>
+            <!--<com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:text="@string/dashboard_data_not_available"-->
+                <!--android:visibility="gone"-->
+                <!--android:textSize="15sp"-->
+                <!--android:padding="@dimen/fifteen"-->
+                <!--android:textColor="@color/dark_gray"/>-->
+
+            <LinearLayout
+                android:id="@+id/dashboard_data_not_found"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/white">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/two"
+                        android:orientation="vertical">
+                        <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:text="Referral Statistics"
+                            android:textSize="15sp"
+                            android:textColor="@color/Gray" />
+
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="vertical"
+                                android:layout_marginTop="@dimen/twenty"
+                                android:paddingRight="@dimen/ten">
+
+                                <com.bestdealfinance.bdfpartner.UI.CustomTextViewDomine
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="5dp"
+                                    android:text="0"
+                                    android:textSize="25sp"
+                                    android:textColor="@color/black" />
+                                <com.bestdealfinance.bdfpartner.UI.CustomTextViewDomine
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/four"
+                                    android:text="Leads"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/Gray" />
+
+                                <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="5dp"
+                                    android:layout_marginTop="@dimen/twenty_five"
+                                    android:text="No refferrals available in selected period"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/Gray" />
+                            </LinearLayout>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/dashboard_main1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:orientation="vertical">
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/CardView.Light"
+                    >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/two"
+                    android:orientation="vertical">
+                    <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:text="Referral Statistics"
+                        android:textSize="15sp"
+                        android:textColor="@color/Gray" />
+
+                    <!--<com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/dashboard_chart"
+                        android:layout_width="match_parent"
+                        android:layout_margin="@dimen/seven"
+                        android:layout_height="270dp"
+                        android:visibility="gone"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center">
+
+                    </com.github.mikephil.charting.charts.PieChart>-->
+                    <LinearLayout
+                        android:id="@+id/pie_apps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_height="wrap_content">
+
+
+                            <com.bestdealfinance.bdfpartner.UI.PercentView
+                                android:id="@+id/percentview_apps"
+                                android:layout_width="180dp"
+                                android:layout_gravity="center"
+                                android:layout_height="180dp"
+                                >
+
+                            </com.bestdealfinance.bdfpartner.UI.PercentView>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="vertical">
+
+                                <com.bestdealfinance.bdfpartner.UI.CustomTextViewDomine
+                                    android:id="@+id/totalApps"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/black" />
+                                <com.bestdealfinance.bdfpartner.UI.CustomTextViewDomine
+                                    android:id="@+id/one_13"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="Leads"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/MistyRose" />
+
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="vertical"
+                            android:paddingRight="@dimen/ten">
+                        <android.support.v7.widget.RecyclerView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/status_list">
+
+                        </android.support.v7.widget.RecyclerView>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone"
+            android:background="@android:color/transparent"
+            android:id="@+id/waiting_layout"        >
+
+            <ImageView
+                android:id="@+id/waiting"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:layout_centerInParent="true"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

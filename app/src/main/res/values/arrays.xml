@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="colors">
+        <item>@color/Referred</item>
+        <item>@color/Applied</item>
+        <item>@color/Approved</item>
+        <item>@color/Disbursed</item>
+        <item>@color/Failed</item>
+    </array>
+</resources>

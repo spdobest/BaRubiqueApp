@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/training_main_layout"
+    tools:context="com.bestdealfinance.bdfpartner.activity.TrainingActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:src="@drawable/home_header"
+            android:scaleType="fitStart"
+            />
+
+        <ImageView
+            android:id="@+id/img_login_header"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/login_now"
+            android:layout_centerInParent="true"
+
+            />
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/transparent"
+            android:layout_alignParentTop="true"
+            android:navigationIcon="@drawable/ic_arrow_left" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_login_header"
+            android:text="@string/training"
+            android:textColor="@color/Grey50"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            />
+
+    </RelativeLayout>
+
+    <android.support.design.widget.TabLayout
+
+        android:id="@+id/training_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:tabTextColor="@color/white"
+        app:tabIndicatorColor="@color/Amber500"
+        app:tabSelectedTextColor="@color/Amber500"
+        >
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/training_tab_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VIDEOS"
+            />
+        <android.support.design.widget.TabItem
+            android:id="@+id/training_tab_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PRODUCT INFORMATION"
+            />
+
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/training_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>

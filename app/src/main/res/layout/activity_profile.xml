@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Grey200"
+    android:orientation="vertical"
+    tools:context="com.bestdealfinance.bdfpartner.activity.ProfileActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/personal_information"
+                android:textAllCaps="true"
+                android:textSize="10sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_button_grey_border"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/profile_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:textAllCaps="true"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/profile_profession"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/profile_name"
+                        android:text="Profession"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/profile_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/custom_button_border_green"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="5dp"
+                        android:text="Edit"
+                        android:textAllCaps="true"
+                        android:textColor="@color/Green600" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/profile_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Mobile : "
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/profile_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email : "
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/profile_PAN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="PAN : -------"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/profile_aadhar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aadhar : -------"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/profile_passport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Passport : -------"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/profile_address1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="-------"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/profile_address2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-------"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/profile_city_and_pin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-------"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/profile_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-------"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/bank_information"
+                android:textAllCaps="true"
+                android:textSize="10sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_button_grey_border"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/bank_holder_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:textAllCaps="true"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/bank_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/bank_holder_name"
+                        android:text="Bank"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/bank_branch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/bank_name"
+                        android:text="Branch"
+                        android:textSize="12sp" />
+
+
+                    <TextView
+                        android:id="@+id/bank_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/custom_button_border_green"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="5dp"
+                        android:text="Edit"
+                        android:textAllCaps="true"
+                        android:textColor="@color/Green600" />
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/bank_account_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Account Number : -------"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/bank_PAN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PAN : -------"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/profile_change_password"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_button_border_green"
+                    android:gravity="center"
+                    android:text="Change Password"
+                    android:textAllCaps="true"
+                    android:textColor="@color/Green500"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/profile_logout"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_button_border_red"
+                    android:gravity="center"
+                    android:text="Logout"
+                    android:textAllCaps="true"
+                    android:textColor="@color/Red400"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

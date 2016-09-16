@@ -1,0 +1,307 @@
+<resources>
+
+    <dimen name="item_width">150dp</dimen>
+
+    <dimen name="product_width">200dp</dimen>
+    <dimen name="padding_item_width">300dp</dimen>
+
+    <string name="app_name">Rubique</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="additional_info">We <b>need additional information</b> to process</string>
+
+    <string name="rupee_symbol">\u20B9</string>
+    <string name="landing_tag1">Help your <b>friend</b> buy a <b>dream car</b></string>
+    <string name="landing_tag2">Earn upto Rs. 10,000*</string>
+    <string name="btn_landing_text">Find out more</string>
+    <string name="landing_tag3">*On loan of 5 lacs and above. T&amp;C applied</string>
+    <string name="proxima">proxima.ttf</string>
+    <string name="domine">domine.ttf</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="eligible_amount">Eligible Loan Amount</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="login">LOGIN</string>
+
+    <string name="tag_login"><u>LOG IN</u></string>
+    <string name="tag_register"><u>REGISTER</u></string>
+    <string name="login_signup">Login Or Register</string>
+    <string name="sign_in">Sign In</string>
+    <string name="first_name">First Name</string>
+    <string name="middle_name">Middle Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="gender">Gender</string>
+    <string name="marital_status">Marital Status</string>
+    <string name="nationality">Nationality</string>
+    <string name="qualification">Qualification</string>
+    <string name="aadhar_card">Aadhar Card Number</string>
+
+    <string name="tag1_line2">the <b>Rubique</b></string>
+    <string name="tag1_line3">way!</string>
+
+
+    <string name="title_activity_login">Login</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="name">Name</string>
+
+
+    <string name="email_id">Email ID</string>
+    <string name="promo_code">Promo Code</string>
+    <string name="product_type">Product type</string>
+    <string name="product">Product</string>
+    <string name="submitter_email">Submitter Email-ID</string>
+    <string name="otp">OTP</string>
+    <string name="note">Note</string>
+    <string name="mobile">Mobile</string>
+    <string name="mobile_num">Mobile Number</string>
+    <string name="our_offer">Our offers</string>
+    <string name="what_you_get">What you get</string>
+
+    <string name="company_org">Company / Organization</string>
+    <string name="loan_tenure">Loan Tenure (Months)</string>
+    <string name="loan_amount">Loan Amount(Rs.)</string>
+    <string name="take_offline">Our in-house experts will analyze your application and call back with suitable recommendations. Please <b>expect a call back from us</b> in the next half an hour. Alternately, you can call us at</string>
+    <string name="for_enquiry">For Enquiry</string>
+    <string name="sorry_eligiblity">Sorry! You <b>did not meet the eligibility criteria</b> for</string>
+    <string name="final_sorry">We <b>need additional information</b> to process your application for </string>
+    <string name="enquiry_number">1800-266-0299</string>
+    <string name="enquiry_text">(Product Codes: Personal Loan - <b>PL</b>, Credit Card - <b> CC </b>, Business Loan - <b>BL</b>, Home Loan - <b>HL</b>, Loan against property - <b>LAP</b>)</string>
+    <string name="enquiry_sms">RBQ &lt;product code&gt; to 56070</string>
+    <string name="enquiry_email">hello@rubique.com</string>
+    <string name="get_in_touch">Get In Touch</string>
+    <string name="message">Message</string>
+    <string name="search">Search</string>
+
+    <string name="msg_email_verification">You\'ve got mail! \nA verification email has been sent to </string>
+
+
+    <string name="btn_earn_text">Explore</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Enter your email</string>
+    <string name="forget_pswd_msg">Enter your registered Email Id</string>
+
+    <string name="forgot_password">FORGOT PASSWORD?</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="retype_new_password">Re-Type New Password</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="reg_under"><u>REGISTER</u>.</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_change_password">ChangePassword</string>
+    <string name="title_activity_about_us">AboutUs</string>
+    <string name="title_activity_know_more">KnowMore</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dashboard_not_login_text">Increase efficiency and improve performance by accessing real time snapshot of your account. \n\n<b>Dashboard tracks</b> the metrics that matter to the  health of your enterprise, and help you accelerate your performance</string>
+    <string name="referral_not_login_text">Uncertainty is the biggest hindrance to success. We recognize your need to know the status of your referrals at all points. \n\nNow get real time status update on your referral through our <b>Status Tracker</b>.</string>
+    <string name="title_activity_congratulation_screen">CongratulationScreen</string>
+    <string name="congrates_with_login_text">On successful disbursement, your payout will be processed immediately. \nTrack you referral and payout status, by going to your <b>referrals</b></string>
+    <string name="congrates_without_login_text">On successful disbursement, your payout will be processed immediately. \nTo track you referrals and receive your payment, create your Business Associate Account now.</string>
+    <string name="congrates_term">*  Terms &amp; Conditions Apply.</string>
+    <string name="self_referral_text">Now reward yourself! Make a Self-Referral and start earning.</string>
+    <string name="dashboard_data_not_available">Looks like you haven’t made your first referral yet. It’s never too late, refer now and get real time update on your Dashboard.</string>
+    <string name="referral_data_not_available">Looks like you haven’t made your first referral. It’s never too late, refer now and track live status of the Referrals as well as the payout status.</string>
+    <string name="title_activity_time_line_demo">TimeLineDemo</string>
+    <string name="title_activity_offer">OfferActivity</string>
+    <string name="title_activity_quote">QuoteActivity</string>
+
+    <string name="step1_text">Please help us with a little more information to <b>process</b> a <b>faster approval</b></string>
+    <string name="step1_text1">Your selection:</string>
+    <string name="personal_info">Personal Information</string>
+    <string name="contact_info">Contact Information</string>
+    <string name="employment_info">Employment Information</string>
+    <string name="financial_info">Financial Information</string>
+
+    <string name="staying_since">Staying since (years)</string>
+    <string name="address1">Address 1</string>
+    <string name="address2">Address 2</string>
+    <string name="state">State</string>
+    <string name="city">City</string>
+    <string name="pincode">Pin Code</string>
+    <string name="company_name">Company Name</string>
+    <string name="monthly_income">Monthly Income (Rs.)</string>
+    <string name="pan_card">Pan Card</string>
+    <string name="apply">Apply</string>
+    <string name="accomodation">Type of Accomodation</string>
+    <string name="employment_type">Employment Type</string>
+    <string name="joining_date">Joining date with current employer(YY/MM)</string>
+    <string name="total_exp">Total Experience (Years)</string>
+    <string name="existing_loan">Do you have an existing loan?</string>
+    <string name="existing_relation_with_bank">Do you have an existing relationship with the bank?</string>
+    <string name="total_emi_for_loan">Total EMI for existing loan (Rs.)</string>
+    <string name="paid_emi">Number of EMIs paid (Months)</string>
+    <string name="cheque_bounced">Cheque bounced in last 3 months</string>
+    <string name="account_number">Account Number</string>
+    <string name="earnings">Your <b>Earnings</b></string>
+
+    <string name="occupation">Occupation</string>
+    <string name="profession">Profession</string>
+    <string name="total_amount_referred">Total Amount Referred</string>
+    <string name="current_earning">Current Earning</string>
+    <string name="curr_acc_bal">Current Account Balance</string>
+    <string name="credit_cards_referred">Credit Cards Referred</string>
+    <string name="title_activity_leader_board">LeaderBoardActivity</string>
+    <string name="title_activity_referral_detail">ReferralDetailActivity</string>
+    <string name="title_activity_demo">demo</string>
+    <string name="quote_text">Please help us with a little more information to <b>process</b> a <b>faster approval</b></string>
+    <string name="app_ID">46b4e721-18bd-4fd6-8209-a805aea2da5b</string>
+    <string name="google_app_id">46b4e721-18bd-4fd6-8209-a805aea2da5b</string>
+
+    <string name="title_activity_final_congrats">FinalCongrats</string>
+    <string name="title_activity_congrats__app">Congrats_App</string>
+    <string name="title_activity_login_reg_single_page">LoginRegSinglePage</string>
+    <string name="title_activity_quotes_group">QuotesGroupActivity</string>
+    <string name="title_activity_offers_activity_last">OffersActivityLast</string>
+    <string name="title_activity_on_boarding">OnBoarding</string>
+    <string name="title_activity_boarding_offer">BoardingOfferActivity</string>
+    <string name="referral_type">Type of Referral</string>
+    <string name="about_us_content">Rubique, previously known as bestdealfinance, was formed in October 2014, with the vision to become the largest online marketplace for financial products. \n\nWe demystify complex financial processes, making consumption and distribution of loans and credit cards simple for consumers and business associates.\n\nOur unique matchmaking algorithm searches the lending systems of 50+ financial institutions to provide our consumers with the best deals in the quickest possible time.\n\nWith our direct integrations with financial institutions, we go beyond mere lead generation and focus on disbursement. Our breakthrough features include online in-principle approvals and real-time status updates.\n\nIn September 2015, we raised Series A funding, led by Kalaari Capital, from YourNest Angel Fund, Globevestor and Dexter Angel Circle.</string>
+    <string name="title_activity_alternate_offers">AlternateOffersActivity</string>
+    <string name="title_activity_final_sorry">FinalSorry</string>
+    <string name="title_activity_app_congrats">AppCongrats</string>
+    <string name="title_activity_deep_link">DeepLinkActivity</string>
+
+
+    <string name="failed_to_logout">Failed to Logout, Please try again later.</string>
+    <string name="no_connection">No internet connection!</string>
+    <string name="login_expired">Your login has expired, please login again</string>
+    <string name="retry">RETRY</string>
+    <string name="failed_to_retrieve">Failed to retrieve data</string>
+    <string name="pan">PAN</string>
+    <string name="aadhar_number">Aadhar Number</string>
+    <string name="passport_number">Passport Number</string>
+
+    <string name="nav_drawer_refer_lead">Refer A Lead</string>
+    <string name="nav_drawer_dashboard">Dashboard</string>
+    <string name="nav_drawer_referrals">Referrals</string>
+    <string name="nav_drawer_payouts">Payouts</string>
+    <string name="nav_drawer_my_profile">My Profile</string>
+    <string name="nav_drawer_training">Training</string>
+    <string name="nav_drawer_products">Products</string>
+    <string name="nav_drawer_contact_us">Contact Us</string>
+    <string name="nav_drawer_share_with_friends">Share with Friends</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="bank_information">Bank Information</string>
+    <string name="save">Save</string>
+    <string name="empty_error">Empty</string>
+    <string name="account_number_not_matched">Account numbers not matched</string>
+
+
+    <!-- New Updated Tags -->
+
+    <string name="main_tag">"Being a Business Associate \nwith <b>Rubique</b> helped me double \nmy earnings"</string>
+    <string name="txt_know_how">Know how</string>
+    <string name="txt_already_member">Already a member?</string>
+    <string name="txt_login">Login</string>
+    <string name="txt_or">OR</string>
+    <string name="txt_register">REGISTER</string>
+
+    <string name="know_more_register_text">It takes a minute to register \nyourself as a Business \nAssociate</string>
+    <string name="txt_continue">Continue</string>
+    <string name="txt_refer">Refer</string>
+    <string name="refer_helper_text">Refer a friend, relative or \n anyone you know, who needs \na loan or a credit card</string>
+    <string name="txt_earn">Earn</string>
+    <string name="earn_helper_text">The more you refer, the more \nyou EARN!</string>
+    <string name="txt_get_started">Get started</string>
+    <string name="txt_login_now">LOGIN NOW</string>
+    <string name="txt_email">Email</string>
+    <string name="txt_password">Password</string>
+    <string name="txt_missing_password">Missing Password ?</string>
+    <string name="txt_forgot_password">FORGOT PASSWORD</string>
+    <string name="txt_not_a_member_yet">Not a member yet ?</string>
+    <string name="txt_register_now">REGISTER NOW</string>
+    <string name="txt_full_name">Full Name</string>
+    <string name="txt_phone_number">Phone Number</string>
+    <string name="txt_email_address">Email Address</string>
+    <string name="txt_city_name">City Name</string>
+    <string name="promocode_helper_text">Do you have Promo Code ?</string>
+    <string name="txt_apply_code">APPLY CODE</string>
+    <string name="txt_remove">REMOVE</string>
+    <string name="txt_ok">OK</string>
+    <string name="register_success_helper">Registration Success, Trying to Login..</string>
+    <string name="txt_promo_code_applied">Promo Code Applied</string>
+    <string name="txt_partner_name">"Partner Name : "</string>
+    <string name="txt_error_authenticate_password">Please enter authenticate password.</string>
+    <string name="txt_login_failed">Login Failed</string>
+    <string name="txt_invalid_credentials">Invalid Credentials , Either register or use forgot password.</string>
+    <string name="txt_error_phone">Phone should be of 10 digits</string>
+    <string name="txt_error_email">Please enter a valid email</string>
+    <string name="txt_refer_earn">REFER &amp; EARN</string>
+    <string name="home_helper_text">Refer someone for a loan or credit card and start earning commission!</string>
+    <string name="txt_refer_now">REFER NOW</string>
+    <string name="txt_our_offers">OUR OFFERS</string>
+    <string name="txt_what_you_get">WHAT YOU GET</string>
+    <string name="txt_dashboard">DASHBOARD</string>
+    <string name="txt_referral">REFERRAL</string>
+    <string name="txt_payouts">PAYOUTS</string>
+    <string name="txt_rubique">Rubique</string>
+    <string name="txt_enter_your_lead_details">ENTER YOUR LEAD DETAILS</string>
+    <string name="txt_swipe_and_select_a_product_to_refer">Swipe and Select a product to refer</string>
+    <string name="txt_applicant_details">Applicant Details</string>
+    <string name="txt_name_of_the_applicant">Name of the Applicant</string>
+    <string name="txt_email_id_of_applicant">Email ID of Applicant</string>
+    <string name="txt_phone_no_of_applicant">Phone No. of Applicant</string>
+    <string name="txt_loan_amount">Loan Amount</string>
+    <string name="txt_city">City</string>
+    <string name="txt_your_details_referrer">Your Details(Referrer)</string>
+    <string name="txt_name">Name</string>
+    <string name="txt_email_id">Email ID</string>
+    <string name="txt_next">NEXT</string>
+    <string name="txt_review_and_confirm">REVIEW and CONFIRM</string>
+    <string name="congratulation_helper_text">On successful loan disbursment you will earn</string>
+    <string name="congratulation_helper_text2">Review details of your referral</string>
+    <string name="congratulation_helper_credit_card">On successful credit card approval you will earn</string>
+    <string name="congratulation_helper_loan">On successful loan disbursment you will earn</string>
+    <string name="txt_name_of_your_lead">Name of your lead</string>
+    <string name="txt_amount">Amount</string>
+    <string name="congratulation_helper_card">On successful issuance of card you will earn</string>
+    <string name="congratulation_helper_application">Earn More on this referral by making <b>application</b></string>
+    <string name="txt_proceed_to_application">PROCEED TO APPLICATION</string>
+    <string name="txt_confirm_referral">CONFIRM REFERRAL</string>
+    <string name="txt_congratulations">CONGRATULATIONS!</string>
+    <string name="txt_we_are_processing_your_application">We are processing your application</string>
+    <string name="txt_on_successful_disbursment_you_will_earn">On successful disbursment you will earn</string>
+    <string name="txt_terms_and_conditions_apply"><![CDATA[* Terms & Conditions Apply.]]></string>
+    <string name="txt_you_referred">You referred a</string>
+    <string name="txt_make_another_referral">MAKE ANOTHER REFERRAL</string>
+    <string name="txt_your_tracking_id">"Your Tracking ID"</string>
+    <string name="txt_applicant_name">Applicant Name</string>
+    <string name="txt_application">APPLICATION</string>
+    <string name="txt_salaried">Is the applicant salaried?</string>
+    <string name="txt_applicant_occupation">Applicant\'s Occupation</string>
+    <string name="txt_applicant_employer">Applicant\'s Employer?</string>
+    <string name="txt_applicant_monthly_income">Applicant\'s monthly income?</string>
+    <string name="txt_applicant_yearly_income">Applicant\'s Yearly income?</string>
+    <string name="txt_duration_of_loan_months">Duration of Loan(Months)?</string>
+    <string name="txt_loading">Loading</string>
+    <string name="txt_refer_for_loan">Refer For Loan</string>
+    <string name="txt_apply_credit_card">Apply Credit Card</string>
+    <string name="txt_call">Call</string>
+    <string name="txt_sms">SMS</string>
+    <string name="txt_for_enquiry">For Enquiry</string>
+    <string name="txt_contact_us">CONTACT US</string>
+    <string name="txt_apply_for_loan">Apply For Loan</string>
+    <string name="txt_car_loan">Car Loan</string>
+    <string name="txt_application_no">Application No :</string>
+    <string name="txt_updated_on">Updated on:</string>
+    <string name="training">TRAINING</string>
+    <string name="videos">VIDEOS</string>
+    <string name="txt_select_a_product_to_view_details">Select a product to view details</string>
+    <string name="nav_drawer_leader_board">Leader Board</string>
+    <string name="send">Send</string>
+    <string name="app_fill">APP FILL</string>
+    <string name="logistics">LOGISTICS</string>
+    <string name="disbursement">DISBURSEMENT</string>
+    <string name="select_product">Select Product</string>
+    <string name="select_bank">Select Bank</string>
+</resources>

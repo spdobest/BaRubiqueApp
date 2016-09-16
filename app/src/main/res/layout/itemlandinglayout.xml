@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="3dp"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/rowIcon"
+        android:paddingLeft="5dp"
+        android:layout_gravity="top"
+        android:src="@drawable/tick"/>
+
+    <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="2dp"
+        android:textSize="12sp"
+        android:text="NA"
+        android:textColor="@color/Grey600"
+        android:id="@+id/rowText" />
+
+</LinearLayout>
+

@@ -1,0 +1,24 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item
+        android:drawable="@drawable/img11"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/img12"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/img13"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/img14"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/img15"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/img16"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/img17"
+        android:duration="300" />
+</animation-list>

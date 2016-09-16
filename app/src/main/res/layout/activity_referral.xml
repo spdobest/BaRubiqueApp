@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.bestdealfinance.bdfpartner.activity.ReferralActivity">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/ll_referral"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.bestdealfinance.bdfpartner.activity.ReferralActivity"
+        tools:showIn="@layout/activity_referral">
+
+
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+
+                <android.support.v7.widget.Toolbar
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/toolbar"
+                    android:layout_height="150dp"
+                    android:elevation="2dp"
+                    app:theme="@style/ToolbarColoredBackArrow"
+                    android:layout_width="match_parent"
+                    android:contentInsetStart="0dp"
+                    android:contentInsetLeft="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetStart="0dp"
+                    android:minHeight="?android:attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/congrates"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_margin="10dp"
+                            android:id="@+id/back_arrow"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_arrow_left"/>
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/refer_lead"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="@string/txt_enter_your_lead_details"
+
+                            android:layout_gravity="bottom"
+                            android:gravity="center"
+                            android:textSize="18sp"/>
+                    </LinearLayout>
+                </android.support.v7.widget.Toolbar>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+                    <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                        android:layout_width="match_parent"
+                        android:id="@+id/refer_header"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:layout_margin="@dimen/ten"
+                        android:text="@string/txt_swipe_and_select_a_product_to_refer"/>
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:elevation="@dimen/seven"
+                        android:layout_gravity="center">
+
+                        <ProgressBar
+                            android:id="@+id/progress_bar_viewpager"
+                            android:layout_width="@dimen/fifty"
+                            android:layout_height="@dimen/fifty"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:visibility="gone" />
+                        <ImageView
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:elevation="15dp"
+                            android:id="@+id/selected_dot"
+                            android:background="@drawable/circle_image_orange"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="55dp"
+                            android:layout_marginRight="65dp"/>
+
+
+                        <com.bestdealfinance.bdfpartner.UI.PagerContainer
+                            android:id="@+id/pager_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center" >
+                            <android.support.v4.view.ViewPager
+                                android:layout_width="170dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center" />
+                        </com.bestdealfinance.bdfpartner.UI.PagerContainer>
+
+                    </FrameLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:background="@color/White"
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp"
+                        android:padding="10dp"
+                        android:layout_height="wrap_content">
+                        <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                            android:layout_width="match_parent"
+                            android:textSize="19sp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/Black"
+                            android:text="@string/txt_applicant_details"/>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/txt_refer_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/txt_name_of_the_applicant"
+                                android:maxLength="20"
+                                android:inputType="textCapWords"
+                                android:maxLines="1"
+                                android:singleLine="true" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/txt_refer_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/txt_email_id_of_applicant"
+                                android:imeActionLabel="Next"
+                                android:imeOptions="actionUnspecified"
+                                android:inputType="textEmailAddress"
+                                android:maxLines="1"
+                                android:maxLength="50"
+                                android:singleLine="true" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/txt_refer_phone_num"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/txt_phone_no_of_applicant"
+                                android:imeActionLabel="Next"
+                                android:imeOptions="actionUnspecified"
+                                android:inputType="phone"
+                                android:maxLength="10"
+                                android:maxLines="1"
+                                android:singleLine="true" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/txt_refer_amount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/txt_loan_amount"
+                                android:imeActionLabel="Next"
+                                android:maxLength="12"
+                                android:imeOptions="actionUnspecified"
+                                android:inputType="number"
+                                android:maxLines="1"
+                                android:singleLine="true" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/txt_refer_city"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/txt_city"
+                                android:imeActionLabel="Next"
+                                android:imeOptions="actionUnspecified"
+                                android:inputType="textCapSentences"
+                                android:maxLines="1"
+                                android:singleLine="true" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:visibility="gone"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/txt_refer_notes"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/note"
+                                android:gravity="top"
+                                android:lines="3"
+                                android:imeActionLabel="Done"
+                                android:imeOptions="actionUnspecified"
+                                android:inputType="textEmailAddress"
+                                android:maxLines="1"
+                                android:singleLine="false" />
+
+                        </android.support.design.widget.TextInputLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:id="@+id/ba_details_layout"
+                            android:layout_height="wrap_content">
+                            <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                                android:layout_width="match_parent"
+                                android:textSize="19sp"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/Black"
+                                android:text="@string/txt_your_details_referrer"/>
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <EditText
+                                    android:id="@+id/txt_sname"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/txt_name"
+                                    android:gravity="top"
+                                    android:imeActionLabel="Done"
+                                    android:inputType="textPersonName"
+                                    android:maxLines="1"
+                                    android:singleLine="false" />
+
+                            </android.support.design.widget.TextInputLayout>
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <EditText
+                                    android:id="@+id/txt_semail"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/txt_email_id"
+                                    android:gravity="top"
+                                    android:imeActionLabel="Done"
+                                    android:inputType="textEmailAddress"
+                                    android:maxLines="1"
+                                    android:singleLine="false" />
+
+                            </android.support.design.widget.TextInputLayout>
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <EditText
+                                    android:id="@+id/txt_sphone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/txt_phone_number"
+                                    android:gravity="top"
+                                    android:maxLength="10"
+                                    android:imeActionLabel="Done"
+                                    android:inputType="phone"
+                                    android:maxLines="1"
+                                    android:singleLine="false" />
+
+                            </android.support.design.widget.TextInputLayout>
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/txt_scity"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/txt_city"
+                                    android:imeActionLabel="Next"
+                                    android:imeOptions="actionUnspecified"
+                                    android:inputType="textPersonName"
+                                    android:maxLines="1"
+                                    android:singleLine="true" />
+
+                            </android.support.design.widget.TextInputLayout>
+                        </LinearLayout>
+
+
+                        <Button
+                            android:id="@+id/btn_refer_lead"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/twenty"
+                            android:text="@string/txt_next"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:textSize="14sp"
+                            android:background="@drawable/custom_button_orange_filled_flat"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:id="@+id/waiting_layout"  >
+
+        <ImageView
+            android:id="@+id/waiting"
+            android:layout_width="@dimen/fifty"
+            android:layout_height="@dimen/fifty"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true" />
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

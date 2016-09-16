@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.bestdealfinance.bdfpartner.fragment.CC_Offers">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/offer_layout"
+        android:visibility="gone"
+        >
+
+        <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:id="@+id/text1"
+            android:padding="10dp"
+            android:textColor="@color/Black"
+            app:typeface="medium"
+            android:text="We Have Found Following Credit Card Offers For You"
+            android:gravity="left"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_below="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_margin="3dp"
+            android:layout_height="match_parent" />
+
+
+    </RelativeLayout>
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/progressBar2" />
+
+</RelativeLayout>

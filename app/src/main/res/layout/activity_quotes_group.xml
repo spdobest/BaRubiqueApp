@@ -1,0 +1,30 @@
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <ImageView
+        android:layout_width="@dimen/fifty"
+        android:layout_height="@dimen/fifty"
+        android:layout_margin="50dp"
+        android:id="@+id/waiting"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:layout_gravity="bottom"
+        android:src="@drawable/bottom_pattern"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:id="@+id/group_fragment"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+</FrameLayout>

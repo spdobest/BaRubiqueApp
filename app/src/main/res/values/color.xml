@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+        <item name="Grey50" type="color">#FAFAFA</item>
+        <item name="Grey100" type="color">#F5F5F5</item>
+        <item name="Grey200" type="color">#EEEEEE</item>
+        <item name="Grey300" type="color">#E0E0E0</item>
+        <item name="Grey400" type="color">#BDBDBD</item>
+        <item name="Grey500" type="color">#9E9E9E</item>
+        <item name="Grey600" type="color">#757575</item>
+        <item name="Grey700" type="color">#616161</item>
+        <item name="Grey800" type="color">#424242</item>
+        <item name="Grey900" type="color">#212121</item>
+
+
+        <item name="Red50" type="color">#FFEBEE</item>
+        <item name="Red100" type="color">#FFCDD2</item>
+        <item name="Red200" type="color">#EF9A9A</item>
+        <item name="Red300" type="color">#E57373</item>
+        <item name="Red400" type="color">#EF5350</item>
+        <item name="Red500" type="color">#F44336</item>
+        <item name="Red600" type="color">#E53935</item>
+        <item name="Red700" type="color">#D32F2F</item>
+        <item name="Red800" type="color">#C62828</item>
+        <item name="Red900" type="color">#B71C1C</item>
+
+        <item name="Green50" type="color">#E8F5E9</item>
+        <item name="Green100" type="color">#C8E6C9</item>
+        <item name="Green200" type="color">#A5D6A7</item>
+        <item name="Green300" type="color">#81C784</item>
+        <item name="Green400" type="color">#66BB6A</item>
+        <item name="Green500" type="color">#4CAF50</item>
+        <item name="Green600" type="color">#43A047</item>
+        <item name="Green700" type="color">#388E3C</item>
+        <item name="Green800" type="color">#2E7D32</item>
+        <item name="Green900" type="color">#1B5E20</item>
+
+        <item name="Amber50" type="color">#FFF8E1</item>
+        <item name="Amber100" type="color">#FFECB3</item>
+        <item name="Amber200" type="color">#FFE082</item>
+        <item name="Amber300" type="color">#FFD54F</item>
+        <item name="Amber400" type="color">#FFCA28</item>
+        <item name="Amber500" type="color">#FFC107</item>
+        <item name="Amber600" type="color">#FFB300</item>
+        <item name="Amber700" type="color">#FFA000</item>
+        <item name="Amber800" type="color">#FF8F00</item>
+        <item name="Amber900" type="color">#FF6F00</item>
+
+        <item name="Orange50" type="color">#FFF3E0</item>
+        <item name="Orange100" type="color">#FFE0B2</item>
+        <item name="Orange200" type="color">#FFCC80</item>
+        <item name="Orange300" type="color">#FFB74D</item>
+        <item name="Orange400" type="color">#FFA726</item>
+        <item name="Orange500" type="color">#FF9800</item>
+        <item name="Orange600" type="color">#FB8C00</item>
+        <item name="Orange700" type="color">#F57C00</item>
+        <item name="Orange800" type="color">#EF6C00</item>
+        <item name="Orange900" type="color">#E65100</item>
+
+        <item name="Blue50" type="color">#E3F2FD</item>
+        <item name="Blue100" type="color">#BBDEFB</item>
+        <item name="Blue200" type="color">#90CAF9</item>
+        <item name="Blue300" type="color">#64B5F6</item>
+        <item name="Blue400" type="color">#42A5F5</item>
+        <item name="Blue500" type="color">#2196F3</item>
+        <item name="Blue600" type="color">#1E88E5</item>
+        <item name="Blue700" type="color">#1976D2</item>
+        <item name="Blue800" type="color">#1565C0</item>
+        <item name="Blue900" type="color">#0D47A1</item>
+
+        <item name="Pink50" type="color">#FCE4EC</item>
+        <item name="Pink100" type="color">#F8BBD0</item>
+        <item name="Pink200" type="color">#F48FB1</item>
+        <item name="Pink300" type="color">#F06292</item>
+        <item name="Pink400" type="color">#EC407A</item>
+        <item name="Pink500" type="color">#E91E63</item>
+        <item name="Pink600" type="color">#D81B60</item>
+        <item name="Pink700" type="color">#C2185B</item>
+        <item name="Pink800" type="color">#AD1457</item>
+        <item name="Pink900" type="color">#880E4F</item>
+
+
+
+</resources>

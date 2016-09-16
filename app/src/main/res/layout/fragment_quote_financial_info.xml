@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/twenty"
+        android:layout_marginTop="@dimen/seven"
+        android:layout_marginBottom="@dimen/seven"
+        android:text="@string/financial_info"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/seven">.
+
+        <EditText
+            android:id="@+id/txt_app_pan_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/pan_card"
+            android:inputType="text"
+            android:layout_marginTop="@dimen/ten"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/fifteen"
+            android:background="@drawable/spinner_background"
+            android:maxLength="12"
+            android:singleLine="true" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/seven">
+        <EditText
+            android:id="@+id/txt_app_existing_loan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/existing_loan"
+            android:layout_marginTop="@dimen/ten"
+            android:clickable="true"
+            android:inputType="text"
+            android:maxLines="1"
+            android:editable="false"
+            android:focusable="false"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:singleLine="true"
+            android:textSize="@dimen/fifteen"
+            android:background="@drawable/spinner_background"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_existing_loan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/seven">.
+
+            <EditText
+                android:id="@+id/txt_app_total_emi_for_loan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/total_emi_for_loan"
+                android:inputType="text"
+                android:layout_marginTop="@dimen/ten"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/fifteen"
+                android:background="@drawable/spinner_background"
+                android:maxLength="12"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/seven">.
+
+            <EditText
+                android:id="@+id/txt_app_paid_emi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/paid_emi"
+                android:inputType="text"
+                android:layout_marginTop="@dimen/ten"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/fifteen"
+                android:background="@drawable/spinner_background"
+                android:maxLength="10"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/seven">
+            <EditText
+                android:id="@+id/txt_app_cheque_bounced"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/cheque_bounced"
+                android:layout_marginTop="@dimen/ten"
+                android:clickable="true"
+                android:inputType="text"
+                android:maxLines="1"
+                android:editable="false"
+                android:focusable="false"
+                android:textColor="@color/black"
+                android:textColorHint="@color/white"
+                android:singleLine="false"
+                android:textSize="@dimen/fifteen"
+                android:background="@drawable/spinner_background"/>
+
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/seven">
+        <EditText
+            android:id="@+id/txt_app_existing_relation_with_bank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/existing_relation_with_bank"
+            android:layout_marginTop="@dimen/ten"
+            android:clickable="true"
+            android:inputType="text"
+            android:maxLines="1"
+            android:editable="false"
+            android:focusable="false"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:singleLine="false"
+            android:textSize="@dimen/fifteen"
+            android:background="@drawable/spinner_background"/>
+
+    </android.support.design.widget.TextInputLayout>
+    <LinearLayout
+        android:id="@+id/ll_existing_relation_with_banak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/seven">.
+
+            <EditText
+                android:id="@+id/txt_app_account_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/account_number"
+                android:inputType="text"
+                android:layout_marginTop="@dimen/ten"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/fifteen"
+                android:background="@drawable/spinner_background"
+                android:maxLength="50"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_financial_info_continue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twenty"
+        android:text="@string/apply"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:typeface="sans"
+        android:textStyle="bold"
+        android:textSize="@dimen/fifteen"
+        android:textAllCaps="false"
+        android:background="@color/orange"
+        android:textColor="@color/white"/>
+</LinearLayout>

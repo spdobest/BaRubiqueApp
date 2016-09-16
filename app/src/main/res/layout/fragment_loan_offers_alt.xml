@@ -1,0 +1,203 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/waiting_layout"
+        >
+        <ImageView
+            android:id="@+id/waiting"
+            android:layout_width="@dimen/fifty"
+            android:layout_height="@dimen/fifty"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:id="@+id/failed_layout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fail"
+            android:scaleType="centerCrop"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/imageView6" />
+
+        <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:id="@+id/failed_text"
+            android:padding="10dp"
+            android:text="Sorry, but we didn't find any loan offers based on the criteria supplied, Please try again."
+            android:gravity="center"
+            android:textColor="@color/text_color_dark"
+            android:layout_margin="20dp"
+            android:layout_above="@+id/imageView6"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/background"
+        android:visibility="invisible"
+        android:id="@+id/offer_layout"
+        >
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            card_view:cardBackgroundColor="#fff"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content">
+            <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:id="@+id/sorry_text"
+                android:textColor="@color/Black"
+                android:padding="10sp"
+                android:text="@string/sorry_eligiblity"/>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            card_view:cardBackgroundColor="#fff"
+            android:id="@+id/loan_head"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:src="@drawable/cc"
+                   android:id="@+id/lost_offer"
+                    android:scaleType="centerInside"
+                    android:layout_weight="0.3"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:layout_gravity="left"
+                            android:text="EMI"
+                            android:textColor="@color/Gray"/>
+                        <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/lost_emi"
+                            android:gravity="left"
+                            android:layout_gravity="left"
+                            android:textColor="@color/Black"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:layout_weight="1">
+                        <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tenure"
+                            android:gravity="left"
+                            android:layout_gravity="left"
+                            android:textColor="@color/Gray"/>
+                        <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/lost_tenure"
+                            android:gravity="left"
+                            android:layout_gravity="left"
+                            android:textColor="@color/Black"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:layout_weight="1">
+                        <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:layout_gravity="left"
+                            android:text="Amount"
+                            android:textColor="@color/Gray"/>
+                        <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:layout_gravity="left"
+                            android:id="@+id/lost_fees"
+                            android:textColor="@color/Black"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="@color/Black"
+            android:id="@+id/header_text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Other Recommendations for you"
+            android:gravity="left"/>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_below="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="match_parent" />
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

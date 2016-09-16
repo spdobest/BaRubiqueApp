@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        tools:context="com.bestdealfinance.bdfpartner.activity.LoginActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:scaleType="fitStart"
+                android:src="@drawable/home_header" />
+
+            <ImageView
+                android:id="@+id/img_login_header"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/login_now"
+
+                />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_alignParentTop="true"
+                android:background="@color/transparent"
+                android:navigationIcon="@drawable/ic_arrow_left" />
+
+            <TextView
+                android:id="@+id/txt_login_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_login_header"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/txt_login_now"
+                android:textColor="@color/Grey50"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/twenty">
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/txt_login_email_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/txt_login_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/txt_email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/txt_login_password_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/txt_login_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/txt_password"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/btn_login_signin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button_orange_filled_flat"
+                android:text="@string/txt_login"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/twenty"
+            android:paddingRight="@dimen/twenty">
+
+            <TextView
+                android:id="@+id/forgot_password_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_missing_password"
+                android:textSize="10sp"
+                android:layout_alignParentLeft="true"
+                 />
+
+            <Button
+                android:id="@+id/btn_login_forgot_password"
+                style="?attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/forgot_password_heading"
+                android:layout_height="wrap_content"
+                android:paddingLeft="0dp"
+                android:text="@string/txt_forgot_password"
+                android:textAllCaps="true"
+                android:textColor="@color/Orange500"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/register_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_not_a_member_yet"
+                android:textSize="10sp"
+                android:layout_alignParentRight="true"
+                 />
+
+            <Button
+                android:id="@+id/btn_login_register"
+                style="?attr/borderlessButtonStyle"
+                android:layout_below="@id/register_heading"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="0dp"
+                android:text="@string/txt_register"
+                android:textAllCaps="true"
+                android:textColor="@color/Green500"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/waiting_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/waiting"
+                android:layout_width="@dimen/fifty"
+                android:layout_height="@dimen/fifty"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

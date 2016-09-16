@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.bestdealfinance.bdfpartner.activity.QuoteActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.bestdealfinance.bdfpartner.activity.QuoteActivity">
+
+
+        <!--<ImageView-->
+            <!--android:id="@+id/img_bottom"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/bottom_pattern"-->
+            <!--android:layout_alignParentBottom="true"/>-->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_height="150dp"
+                    android:elevation="2dp"
+                    app:theme="@style/ToolbarColoredBackArrow"
+                    android:layout_width="match_parent"
+                    android:contentInsetStart="0dp"
+                    android:contentInsetLeft="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetStart="0dp"
+                    android:minHeight="?android:attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorPrimary"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="@dimen/twenty_five"
+                            android:layout_margin="@dimen/ten"
+                            android:id="@+id/back_arrow"
+                            android:layout_height="@dimen/twenty_five"
+                            android:src="@drawable/arrow_left"/>
+                        <ImageView
+                            android:layout_width="@dimen/sixty"
+                            android:layout_height="@dimen/sixty"
+                            android:layout_gravity="center"
+                            android:src="@drawable/refer_lead"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="APPLICATION"
+                            android:typeface="sans"
+                            android:layout_gravity="bottom"
+                            android:gravity="center"
+                            android:textSize="@dimen/fifteen"/>
+                    </LinearLayout>
+                </android.support.v7.widget.Toolbar>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:background="@color/White"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/ten"
+                        android:padding="@dimen/ten"
+                        android:layout_height="wrap_content">
+
+                        <com.bestdealfinance.bdfpartner.UI.CustomTextViewDomine
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/step1_text"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/dark_gray"
+                            android:layout_marginTop="@dimen/seven"
+                            android:layout_marginBottom="@dimen/seven"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <com.bestdealfinance.bdfpartner.UI.CustomTextViewDomine
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/step1_text1"/>
+                            <com.bestdealfinance.bdfpartner.UI.CustomTextViewDomine
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/blue_text"
+                                android:layout_marginLeft="@dimen/seven"
+                                android:text="HDFC bank personal loan | Rs. 1,00,000 | 5 years"/>
+                        </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/dark_gray"
+                            android:layout_marginTop="@dimen/seven"
+                            android:layout_marginBottom="@dimen/seven"/>
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:id="@+id/fragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

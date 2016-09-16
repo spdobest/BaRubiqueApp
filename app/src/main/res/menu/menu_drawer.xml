@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_refer_lead"
+        android:icon="@drawable/ic_refer_lead"
+        android:title="@string/nav_drawer_refer_lead" />
+
+    <item
+        android:id="@+id/nav_dashboard"
+        android:icon="@drawable/ic_dashboard"
+        android:title="@string/nav_drawer_dashboard" />
+
+    <item
+        android:id="@+id/nav_referral"
+        android:icon="@drawable/ic_referral"
+        android:title="@string/nav_drawer_referrals" />
+    <item
+        android:id="@+id/nav_payouts"
+        android:icon="@drawable/ic_payouts"
+        android:title="@string/nav_drawer_payouts" />
+
+    <item
+        android:id="@+id/nav_leader_board"
+        android:icon="@drawable/ic_leader_board"
+        android:title="@string/nav_drawer_leader_board" />
+
+    <item
+        android:id="@+id/nav_products"
+        android:icon="@drawable/ic_product"
+        android:title="@string/nav_drawer_products" />
+
+    <item
+        android:id="@+id/nav_my_profile"
+        android:icon="@drawable/ic_user"
+        android:title="@string/nav_drawer_my_profile" />
+
+    <item
+        android:id="@+id/nav_training"
+        android:icon="@drawable/ic_training"
+        android:title="@string/nav_drawer_training" />
+
+    <item
+        android:id="@+id/nav_contact_us"
+        android:icon="@drawable/ic_phone"
+        android:title="@string/nav_drawer_contact_us" />
+
+    <item
+        android:id="@+id/nav_share"
+        android:icon="@drawable/ic_share"
+        android:title="@string/nav_drawer_share_with_friends" />
+
+</menu>

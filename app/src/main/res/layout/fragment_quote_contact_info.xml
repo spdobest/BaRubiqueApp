@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/twenty"
+        android:layout_marginTop="@dimen/seven"
+        android:layout_marginBottom="@dimen/seven"
+        android:text="@string/contact_info"/>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/seven">
+
+        <EditText
+            android:id="@+id/txt_app_email_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="@dimen/ten"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/fifteen"
+            android:background="@drawable/spinner_background"
+            android:maxLength="50"
+            android:singleLine="true" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/seven">
+
+        <EditText
+            android:id="@+id/txt_app_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mobile"
+            android:inputType="number"
+            android:layout_marginTop="@dimen/ten"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/fifteen"
+            android:background="@drawable/spinner_background"
+            android:maxLength="10"
+            android:singleLine="true" />
+
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/seven">
+        <EditText
+            android:id="@+id/txt_app_accommodation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/accomodation"
+            android:layout_marginTop="@dimen/ten"
+            android:clickable="true"
+            android:inputType="text"
+            android:maxLines="1"
+            android:editable="false"
+            android:focusable="false"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:singleLine="true"
+            android:textSize="@dimen/fifteen"
+            android:background="@drawable/spinner_background"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/seven">.
+
+    <EditText
+        android:id="@+id/txt_app_staying_since"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/staying_since"
+        android:inputType="text"
+        android:layout_marginTop="@dimen/ten"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textColorHint="@color/white"
+        android:textSize="@dimen/fifteen"
+        android:background="@drawable/spinner_background"
+        android:maxLength="50"
+        android:singleLine="true" />
+
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/seven">.
+
+    <EditText
+        android:id="@+id/txt_app_address1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/address1"
+        android:inputType="text"
+        android:layout_marginTop="@dimen/ten"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textColorHint="@color/white"
+        android:textSize="@dimen/fifteen"
+        android:background="@drawable/spinner_background"
+        android:maxLength="50"
+        android:singleLine="false" />
+
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/seven">>.
+
+        <EditText
+            android:id="@+id/txt_app_address2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/address2"
+            android:inputType="text"
+            android:layout_marginTop="@dimen/ten"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/fifteen"
+            android:background="@drawable/spinner_background"
+            android:maxLength="50"
+            android:singleLine="false" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/seven">
+        <EditText
+            android:id="@+id/txt_app_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/state"
+            android:layout_marginTop="@dimen/ten"
+            android:clickable="true"
+            android:inputType="text"
+            android:maxLines="1"
+            android:editable="false"
+            android:focusable="false"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:singleLine="true"
+            android:textSize="@dimen/fifteen"
+            android:background="@drawable/spinner_background"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/seven">
+        <EditText
+            android:id="@+id/txt_app_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/city"
+            android:layout_marginTop="@dimen/ten"
+            android:clickable="true"
+            android:inputType="text"
+            android:maxLines="1"
+            android:editable="false"
+            android:focusable="false"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:singleLine="true"
+            android:textSize="@dimen/fifteen"
+            android:background="@drawable/spinner_background"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/seven">.
+
+    <EditText
+        android:id="@+id/txt_app_pincode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/pincode"
+        android:inputType="number"
+        android:layout_marginTop="@dimen/ten"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textColorHint="@color/white"
+        android:textSize="@dimen/fifteen"
+        android:background="@drawable/spinner_background"
+        android:maxLength="6"
+        android:singleLine="true" />
+
+    </android.support.design.widget.TextInputLayout>
+    <Button
+        android:id="@+id/btn_contact_info_continue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twenty"
+        android:text="@string/txt_continue"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:typeface="sans"
+        android:textStyle="bold"
+        android:textSize="@dimen/fifteen"
+        android:textAllCaps="true"
+        android:background="@color/orange"
+        android:textColor="@color/white"/>
+</LinearLayout>
