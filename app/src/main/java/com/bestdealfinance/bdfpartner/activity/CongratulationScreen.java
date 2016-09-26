@@ -20,6 +20,13 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.bestdealfinance.bdfpartner.Logs;
 import com.bestdealfinance.bdfpartner.R;
 import com.bestdealfinance.bdfpartner.application.Constant;
@@ -44,7 +51,7 @@ import java.io.InputStream;
 import io.fabric.sdk.android.Fabric;
 
 //Its a Confirmation Screen
-public class CongratulationScreen extends AppCompatActivity implements View.OnClickListener{
+public class CongratulationScreen extends AppCompatActivity implements View.OnClickListener {
 
     Button apply, confirm;
     Bundle bundle;
@@ -60,23 +67,23 @@ public class CongratulationScreen extends AppCompatActivity implements View.OnCl
     TextView msgForCongratulation;
     ProgressBar pay_bar, pay_bar2;
     LinearLayout hide_unregistered;
+    private RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_congratulation_screen);
-        bundle=getIntent().getExtras();
+        bundle = getIntent().getExtras();
 
 
-        bundle.putString("source","BA_APP");
-
+        bundle.putString("source", "BA_APP");
+        queue = Volley.newRequestQueue(this);
 
         initialization();
 
 
-
-        if(bundle.getString("type").equals("11")){
+        if (bundle.getString("type").equals("11")) {
             msgForCongratulation.setText(R.string.congratulation_helper_credit_card);
         } else {
             msgForCongratulation.setText(R.string.congratulation_helper_loan);
@@ -84,15 +91,14 @@ public class CongratulationScreen extends AppCompatActivity implements View.OnCl
         //pref = getSharedPreferences(Util.MY_PREFERENCES, Context.MODE_PRIVATE);
 
 
-        if (bundle.getString("bank_logo")!=null){
+        if (bundle.getString("bank_logo") != null) {
             imgLoanType.setScaleType(ImageView.ScaleType.FIT_XY);
             Glide.with(this).load(bundle.getString("bank_logo"))
                     .error(R.drawable.ic_arrow_left)
                     .placeholder(R.drawable.ic_arrow_left)
                     .fitCenter()
                     .into(imgLoanType);
-        }
-        else {
+        } else {
             Glide.with(this).load(Util.getImagebyLoanType(bundle.getString("type")))
                     .error(R.drawable.ic_arrow_left)
                     .placeholder(R.drawable.ic_arrow_left)
@@ -100,46 +106,44 @@ public class CongratulationScreen extends AppCompatActivity implements View.OnCl
         }
 //        imgLoanType.setImageResource(Util.getImagebyLoanType(bundle.getString("type")));
 
-        congoName.setText(Html.fromHtml(getString(R.string.txt_name_of_your_lead)+" : <b>" + bundle.getString("name") + "</b>"));
-        if (bundle.getString("product_name")!=null){
+        congoName.setText(Html.fromHtml(getString(R.string.txt_name_of_your_lead) + " : <b>" + bundle.getString("name") + "</b>"));
+        if (bundle.getString("product_name") != null) {
             congoType.setText(bundle.getString("product_name"));
-        }
-        else {
+        } else {
             congoType.setText(Html.fromHtml("<b>" + bundle.getString("tname") + "</b>"));
         }
 
-        congoEmail.setText(Html.fromHtml(getString(R.string.txt_email_id) +"<b>" + bundle.getString("email") + "</b>"));
+        congoEmail.setText(Html.fromHtml(getString(R.string.txt_email_id) + " : <b>" + bundle.getString("email") + "</b>"));
 
-        congoPhone.setText(Html.fromHtml(getString(R.string.txt_phone_number)+"<b>" + bundle.getString("phone") + "</b>"));
-        if(bundle.getString("type").equals("11")){
+        congoPhone.setText(Html.fromHtml(getString(R.string.txt_phone_number) + " : <b>" + bundle.getString("phone") + "</b>"));
+        if (bundle.getString("type").equals("11")) {
             congo_amount.setVisibility(View.GONE);
         } else {
-            congo_amount.setText(Html.fromHtml(getString(R.string.txt_amount)+":<b>" + Util.parseRs(bundle.getString("amount", "")) + "</b>"));
+            congo_amount.setText(Html.fromHtml(getString(R.string.txt_amount) + " : <b>" + Util.parseRs(bundle.getString("amount", "")) + "</b>"));
         }
 
         //sharedpreferences = getSharedPreferences(Util.MY_PREFERENCES, Context.MODE_PRIVATE);
 
-        if (Util.getProductTypeURL(bundle.getString("type")).equals("0")){
+        if (Util.getProductTypeURL(bundle.getString("type")).equals("0")) {
             hide_unregistered.setVisibility(View.GONE);
         }
 
         img_back.setOnClickListener(this);
-        if ((bundle.getString("type","")).equals("11")){
+        if ((bundle.getString("type", "")).equals("11")) {
             congo_amount.setVisibility(View.GONE);
             pay_info.setVisibility(View.GONE);
             msgForCongratulation.setText(getString(R.string.congratulation_helper_card));
 
-            Util.GetPayout pay = new Util.GetPayout(pay_bar,bundle.getString("type", ""), bundle.getString("amount", ""), "r", getApplicationContext(), payout_text, "Upto Rs. ", "","payout_amount");
+            Util.GetPayout pay = new Util.GetPayout(pay_bar, bundle.getString("type", ""), bundle.getString("amount", ""), "r", getApplicationContext(), payout_text, "Upto Rs. ", "", "payout_amount");
             pay.executeOnExecutor(Util.threadPool);
             //TODO For Application , unhide this
-            Util.GetPayout pay12 = new Util.GetPayout(pay_bar2,bundle.getString("type", ""), bundle.getString("amount", ""), "f", getApplicationContext(), earn_more, "Earn additional Rs. ", " on this referral by making an application","payout_amount");
+            Util.GetPayout pay12 = new Util.GetPayout(pay_bar2, bundle.getString("type", ""), bundle.getString("amount", ""), "f", getApplicationContext(), earn_more, "Earn additional Rs. ", " on this referral by making an application", "payout_amount");
             pay12.executeOnExecutor(Util.threadPool);
-        }
-        else {
-            Util.GetPayout pay = new Util.GetPayout(pay_bar,bundle.getString("type", ""), bundle.getString("amount", ""), "r", getApplicationContext(), payout_text, "Upto Rs. ", "","payout_amount");
+        } else {
+            Util.GetPayout pay = new Util.GetPayout(pay_bar, bundle.getString("type", ""), bundle.getString("amount", ""), "r", getApplicationContext(), payout_text, "Upto Rs. ", "", "payout_amount");
             pay.executeOnExecutor(Util.threadPool);
             //TODO For Application , unhide this
-            Util.GetPayout pay12 = new Util.GetPayout(pay_bar2,bundle.getString("type", ""), bundle.getString("amount", ""), "f", getApplicationContext(), earn_more, "Earn additional Rs. ", " on this referral by making an application","payout_amount");
+            Util.GetPayout pay12 = new Util.GetPayout(pay_bar2, bundle.getString("type", ""), bundle.getString("amount", ""), "f", getApplicationContext(), earn_more, "Earn additional Rs. ", " on this referral by making an application", "payout_amount");
             pay12.executeOnExecutor(Util.threadPool);
         }
 
@@ -157,30 +161,30 @@ public class CongratulationScreen extends AppCompatActivity implements View.OnCl
     }
 
     private void initialization() {
-        payout_layout= (RelativeLayout) findViewById(R.id.payout_layout);
-        pay_bar= (ProgressBar) findViewById(R.id.payout_wait);
-        pay_bar2= (ProgressBar) findViewById(R.id.paybarwait2);
-        msgForCongratulation = (TextView)findViewById(R.id.msg_for_congratulation);
-        pay_info= (TextView) findViewById(R.id.payout_loan);
+        payout_layout = (RelativeLayout) findViewById(R.id.payout_layout);
+        pay_bar = (ProgressBar) findViewById(R.id.payout_wait);
+        pay_bar2 = (ProgressBar) findViewById(R.id.paybarwait2);
+        msgForCongratulation = (TextView) findViewById(R.id.msg_for_congratulation);
+        pay_info = (TextView) findViewById(R.id.payout_loan);
 
-        waiting_layout = (FrameLayout)findViewById(R.id.waiting_layout);
-        progressBar = (ImageView)findViewById(R.id.waiting);
+        waiting_layout = (FrameLayout) findViewById(R.id.waiting_layout);
+        progressBar = (ImageView) findViewById(R.id.waiting);
         progressBar.setBackgroundResource(R.drawable.waiting);
         animation = (AnimationDrawable) progressBar.getBackground();
-        hide_unregistered= (LinearLayout) findViewById(R.id.hide_unregistered);
-        img_back= (ImageView) findViewById(R.id.img_back);
+        hide_unregistered = (LinearLayout) findViewById(R.id.hide_unregistered);
+        img_back = (ImageView) findViewById(R.id.img_back);
         imgLoanType = (ImageView) findViewById(R.id.loan_congo_img);
-        payout_text= (TextView) findViewById(R.id.congo_payout);
+        payout_text = (TextView) findViewById(R.id.congo_payout);
         congoName = (TextView) findViewById(R.id.loan_congo_name);
         congoEmail = (TextView) findViewById(R.id.loan_congo_email);
         congoPhone = (TextView) findViewById(R.id.loan_congo_number);
-        congo_amount= (TextView) findViewById(R.id.loan_congo_amount);
+        congo_amount = (TextView) findViewById(R.id.loan_congo_amount);
         congoType = (TextView) findViewById(R.id.loan_congo_txt);
 
         //TODO For Application , unhide this
-        earn_more= (TextView) findViewById(R.id.earn_more_txt);
-        apply= (Button) findViewById(R.id.make_app);
-        confirm= (Button) findViewById(R.id.just_refer);
+        earn_more = (TextView) findViewById(R.id.earn_more_txt);
+        apply = (Button) findViewById(R.id.make_app);
+        confirm = (Button) findViewById(R.id.just_refer);
         apply.setOnClickListener(this);
 
         confirm.setOnClickListener(this);
@@ -190,10 +194,10 @@ public class CongratulationScreen extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             //TODO For Application , unhide this
             case R.id.make_app:
-                Intent intent=new Intent(CongratulationScreen.this, OnBoardingActivity.class);
+                Intent intent = new Intent(CongratulationScreen.this, OnBoardingActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -203,17 +207,79 @@ public class CongratulationScreen extends AppCompatActivity implements View.OnCl
                 finish();
                 break;
             case R.id.just_refer:
-                if (Util.isRegistered(this).equals("")){
-                    Intent myIntent =  new Intent(CongratulationScreen.this,LoginRegSinglePage.class);
+                if (Util.isRegistered(this).equals("")) {
+                    Intent myIntent = new Intent(CongratulationScreen.this, LoginRegSinglePage.class);
                     myIntent.putExtras(bundle);
                     startActivityForResult(myIntent, 2025);
-                }
-                else {
-                    HttpAsyncTask task=new HttpAsyncTask();
-                    task.executeOnExecutor(Util.threadPool);
+                } else {
+                    sendReferToServer();
                 }
                 break;
 
+        }
+    }
+
+    private void sendReferToServer() {
+        try {
+
+            JSONObject jsonObject = new JSONObject();
+//                jsonObject.accumulate("salutation", "Mr");
+
+            jsonObject.put(Constant.UTOKEN, Helper.getStringSharedPreference(Constant.UTOKEN, this));
+            jsonObject.put("name", bundle.getString("name"));
+
+            jsonObject.put("email", bundle.getString("email"));
+            jsonObject.put("phone", bundle.getString("phone"));
+            jsonObject.put("city", bundle.getString("city"));
+            if (!bundle.getString("type", "").equals("11")) {
+                jsonObject.accumulate("amount", bundle.getString("amount"));
+            }
+            jsonObject.put("product_type_sought", bundle.getString("type", ""));
+            jsonObject.put("product_id", bundle.getString("product_id", ""));
+            jsonObject.put("note", bundle.getString("product_id", ""));
+//                jsonObject.accumulate("submitter_phone", bundle.getString("semail",""));
+            jsonObject.put("self_refferal", bundle.getString("self", ""));
+            jsonObject.put("source", bundle.getString("source", ""));
+
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, Util.REFER_A_LEAD, jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+
+                    JSONObject body = response.optJSONObject("body");
+                    JSONObject info = body.optJSONObject("lead_info");
+                    String id = info.optString("id");
+
+
+                    Intent intent = new Intent(CongratulationScreen.this, FinalCongrats.class);
+                    bundle.putString("id", id);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    finish();
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CongratulationScreen.this);
+                    builder.setTitle("Message");
+                    builder.setCancelable(false);
+                    builder.setMessage(error.getMessage());
+                    builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    builder.show();
+                }
+            });
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, 1, 1f));
+            queue.add(jsonObjectRequest);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
@@ -223,11 +289,12 @@ public class CongratulationScreen extends AppCompatActivity implements View.OnCl
         if (requestCode == 2025) {
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
-                HttpAsyncTask task=new HttpAsyncTask();
+                HttpAsyncTask task = new HttpAsyncTask();
                 task.executeOnExecutor(Util.threadPool);
             }
         }
     }
+
     private class HttpAsyncTask extends AsyncTask<Void, Void, String> {
 
         @Override
@@ -254,17 +321,17 @@ public class CongratulationScreen extends AppCompatActivity implements View.OnCl
                 jsonObject.accumulate("email", bundle.getString("email"));
                 jsonObject.accumulate("phone", bundle.getString("phone"));
                 jsonObject.accumulate("city", bundle.getString("city"));
-                if (!bundle.getString("type","").equals("11")){
+                if (!bundle.getString("type", "").equals("11")) {
                     jsonObject.accumulate("amount", bundle.getString("amount"));
                 }
-                jsonObject.accumulate("product_type_sought", bundle.getString("type",""));
-                jsonObject.accumulate("product_id", bundle.getString("product_id",""));
-                jsonObject.accumulate("note", bundle.getString("product_id",""));
+                jsonObject.accumulate("product_type_sought", bundle.getString("type", ""));
+                jsonObject.accumulate("product_id", bundle.getString("product_id", ""));
+                jsonObject.accumulate("note", bundle.getString("product_id", ""));
 //                jsonObject.accumulate("submitter_phone", bundle.getString("semail",""));
-                jsonObject.accumulate("self_refferal", bundle.getString("self",""));
-                jsonObject.accumulate("source", bundle.getString("source",""));
+                jsonObject.accumulate("self_refferal", bundle.getString("self", ""));
+                jsonObject.accumulate("source", bundle.getString("source", ""));
 //                jsonObject.accumulate("note", bundle.getString("note",""));
-                Logs.LogD("REquest",jsonObject.toString());
+                Logs.LogD("REquest", jsonObject.toString());
                 json = new String(jsonObject.toString().getBytes("ISO-8859-1"), "UTF-8");
 
                 StringEntity se = new StringEntity(json);
@@ -298,7 +365,7 @@ public class CongratulationScreen extends AppCompatActivity implements View.OnCl
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Logs.LogD("Result",result);
+            Logs.LogD("Result", result);
             waiting_layout.setVisibility(View.GONE);
             animation.stop();
             String status, msg, utoken;
@@ -308,26 +375,25 @@ public class CongratulationScreen extends AppCompatActivity implements View.OnCl
                     status = output1.getString("status_code");
                     msg = output1.getString("msg");
                     if (msg.equalsIgnoreCase("Success")) {
-                        JSONObject body=output1.optJSONObject("body");
-                        JSONObject info=body.optJSONObject("lead_info");
-                        String id=info.optString("id");
+                        JSONObject body = output1.optJSONObject("body");
+                        JSONObject info = body.optJSONObject("lead_info");
+                        String id = info.optString("id");
                         try {
 //                            APIUtils.SendSMS sms= new APIUtils.SendSMS("2",id,bundle.getString("name"),CongratulationScreen.this, bundle.getString("phone"),bundle.getString("tname"));
 //                            sms.executeOnExecutor(Util.threadPool);
-                        }
-                        catch (Exception e){
+                        } catch (Exception e) {
                             //DO Nothing Failed to Send the SMS
                         }
 
 
-                        Intent intent= new Intent(CongratulationScreen.this, FinalCongrats.class);
-                        bundle.putString("id",id);
+                        Intent intent = new Intent(CongratulationScreen.this, FinalCongrats.class);
+                        bundle.putString("id", id);
                         intent.putExtras(bundle);
                         startActivity(intent);
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         finish();
                     } else {
-                        if(msg.equals("Failed")){
+                        if (msg.equals("Failed")) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(CongratulationScreen.this);
                             builder.setTitle("Message");
                             builder.setCancelable(false);

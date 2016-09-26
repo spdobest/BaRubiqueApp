@@ -484,7 +484,7 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
         sphone= (EditText) findViewById(R.id.txt_sphone);
         scity= (AutoCompleteTextView) findViewById(R.id.txt_scity);
         noregisterLayout= (LinearLayout) findViewById(R.id.ba_details_layout);
-        if (Util.isRegistered(ReferralActivity.this).equals("")){
+        if (Helper.getStringSharedPreference(Constant.UTOKEN,this).equals("")){
             noregisterLayout.setVisibility(View.VISIBLE);
         }
         else {
@@ -875,13 +875,16 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
                 }
             } catch (JSONException e) {
 
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!JSONException " + e);
+                System.out.println("JSONException " + e);
             }
 
         }
     }
 
     final class GetCity extends AsyncTask<Void, Void, String> {
+
+        String city = txt_refer_city.getText().toString();
+
         protected String doInBackground(Void... params) {
             String response = "";
             StringBuilder sb = new StringBuilder();
@@ -897,7 +900,7 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
                 conn.setDoOutput(true);
                 JSONObject post=new JSONObject();
                 post.put("list_id","10063");
-                post.put("keyword",txt_refer_city.getText().toString());
+                post.put("keyword",city);
                 Logs.LogD("Request",post.toString());
                 Logs.LogD("Refer", "Sent the Request");
                 OutputStream os = conn.getOutputStream();

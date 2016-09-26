@@ -187,11 +187,16 @@
 
                 </android.support.v7.widget.AppCompatSpinner>
 
-                <AutoCompleteTextView
-                    android:id="@+id/autocomplete_city"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="City" />
+                    android:layout_height="wrap_content">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autocomplete_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="City" />
+                </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/et_pincode_layout"
@@ -202,8 +207,9 @@
                         android:id="@+id/et_pincode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Pincode"
-                        android:inputType="text" />
+                        android:hint="@string/pincode"
+                        android:inputType="number"
+                        android:maxLength="6" />
 
                 </android.support.design.widget.TextInputLayout>
 

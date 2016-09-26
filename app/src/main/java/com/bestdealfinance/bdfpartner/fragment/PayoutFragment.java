@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatCheckBox;
@@ -39,6 +41,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bestdealfinance.bdfpartner.Logs;
 import com.bestdealfinance.bdfpartner.R;
+import com.bestdealfinance.bdfpartner.activity.LoginActivity;
+import com.bestdealfinance.bdfpartner.activity.ProfileActivity;
 import com.bestdealfinance.bdfpartner.adapter.PayoutCCAdapter;
 import com.bestdealfinance.bdfpartner.adapter.PayoutLoansAdapter;
 import com.bestdealfinance.bdfpartner.application.Constant;
@@ -105,7 +109,7 @@ public class PayoutFragment extends Fragment implements CompoundButton.OnChecked
     private JSONObject stepsData;
     private JSONArray payoutsArray;
     private SlabWiseAdapter slabWiseAdapter;
-    private AppCompatCheckBox step1,step2,step3,step4;
+    private AppCompatCheckBox step1, step2, step3, step4;
 
 
     public PayoutFragment() {
@@ -130,6 +134,7 @@ public class PayoutFragment extends Fragment implements CompoundButton.OnChecked
         TextView tvAppFill = (TextView) view.findViewById(R.id.app_fill_text);
         TextView tvLogistics = (TextView) view.findViewById(R.id.logistics_text);
         TextView tvDisbursement = (TextView) view.findViewById(R.id.disbursement_text);
+        final LinearLayout mainLayout = (LinearLayout) view.findViewById(R.id.mainLayout);
 
         /*tvRefferal.setOnClickListener(this);
         tvAppFill.setOnClickListener(this);
@@ -163,7 +168,9 @@ public class PayoutFragment extends Fragment implements CompoundButton.OnChecked
                     List<String> productList = new ArrayList<String>();
                     productList.add("Select product");
                     for (int i = 0; i < products.length(); i++) {
-                        productList.add(products.getJSONObject(i).getString("name"));
+
+                        if (products.getJSONObject(i).getInt("id") != 11)
+                            productList.add(products.getJSONObject(i).getString("name"));
                     }
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_product_item, productList);
                     productSpinner.setAdapter(dataAdapter);
@@ -185,8 +192,16 @@ public class PayoutFragment extends Fragment implements CompoundButton.OnChecked
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 try {
 
-                    if (i == 0) {
+                    if (Helper.getStringSharedPreference(Constant.UTOKEN, getActivity()).equals("")) {
 
+                        Snackbar.make(mainLayout, "Please login to see data.", Snackbar.LENGTH_INDEFINITE).setAction("LOGIN", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(getActivity(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                                getActivity().finish();
+                            }
+                        }).show();
+                        return;
                     }
 
                     JSONObject reqObject = new JSONObject();
@@ -199,9 +214,10 @@ public class PayoutFragment extends Fragment implements CompoundButton.OnChecked
                         public void onResponse(JSONObject response) {
 
                             try {
+
                                 stepsData = response.getJSONObject("body").getJSONObject("steps");
                                 payoutsArray = response.getJSONObject("body").getJSONArray("payouts");
-                                slabWiseAdapter.updateData(payoutsArray,step1.isChecked(),step2.isChecked(),step3.isChecked(),step4.isChecked());
+                                slabWiseAdapter.updateData(payoutsArray, step1.isChecked(), step2.isChecked(), step3.isChecked(), step4.isChecked());
 
 
                             } catch (JSONException e) {
@@ -213,7 +229,10 @@ public class PayoutFragment extends Fragment implements CompoundButton.OnChecked
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            slabWiseAdapter.updateData(null,step1.isChecked(),step2.isChecked(),step3.isChecked(),step4.isChecked());
+                            slabWiseAdapter.updateData(null, step1.isChecked(), step2.isChecked(), step3.isChecked(), step4.isChecked());
+
+
+
                         }
                     });
                     queue.add(jsonObjectRequest);
@@ -796,7 +815,7 @@ public class PayoutFragment extends Fragment implements CompoundButton.OnChecked
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-        slabWiseAdapter.updateData(payoutsArray,step1.isChecked(),step2.isChecked(),step3.isChecked(),step4.isChecked());
+        slabWiseAdapter.updateData(payoutsArray, step1.isChecked(), step2.isChecked(), step3.isChecked(), step4.isChecked());
     }
 
 }

@@ -129,7 +129,18 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Snackbar.make(mainView, R.string.failed_to_retrieve, Snackbar.LENGTH_LONG).show();
+
+                        if (progressDialog.isShowing()) {
+                            progressDialog.dismiss();
+                        }
+
+                        Snackbar.make(mainView,"Please login to see data.", Snackbar.LENGTH_INDEFINITE).setAction("LOGIN", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(ProfileActivity.this,LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                                finish();
+                            }
+                        }).show();
                     }
                 }
         ) {

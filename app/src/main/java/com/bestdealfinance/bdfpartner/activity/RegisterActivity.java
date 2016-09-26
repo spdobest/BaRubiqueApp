@@ -320,7 +320,11 @@ public class RegisterActivity extends AppCompatActivity {
                         reqObject.put("source", "BA_APP");
                         reqObject.put("is_ba","1");
                         if (isApplied)
+                        {
                             reqObject.put("lead_partner_id", leadPartnerId);
+                            reqObject.put("promo_code",promocodeView.getText().toString());
+                        }
+
 
 
                         JsonObjectRequest registerRequest = new JsonObjectRequest(Request.Method.POST, Util.REGISTER_NEW, reqObject, new Response.Listener<JSONObject>() {
@@ -354,6 +358,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                     Helper.setStringSharedPreference(Constant.USERID, body.getString("id"), RegisterActivity.this);
                                                     Helper.setStringSharedPreference(Constant.USERNAME, body.getString("email"), RegisterActivity.this);
                                                     Helper.setStringSharedPreference(Constant.NAME, body.getString("name"), RegisterActivity.this);
+                                                    Helper.setStringSharedPreference(Constant.USER_CLASS, body.getString("ba_class"), RegisterActivity.this);
                                                     Helper.setStringSharedPreference(Constant.USER_PHONE, body.getString("mobile_number"), RegisterActivity.this);
                                                     startActivity(new Intent(RegisterActivity.this, HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
                                                     finish();

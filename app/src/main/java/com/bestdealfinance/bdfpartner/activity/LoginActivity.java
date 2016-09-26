@@ -123,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                         requestObject.put("username", emailView.getText().toString());
                         requestObject.put("password", passwordView.getText().toString());
                         requestObject.put("remember", 1);
-                        requestObject.put("is_ba","1");
+                        requestObject.put("is_ba", "1");
 
                         final JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Util.LOGIN, requestObject, new Response.Listener<JSONObject>() {
                             @Override
@@ -140,6 +140,8 @@ public class LoginActivity extends AppCompatActivity {
                                         Helper.setStringSharedPreference(Constant.USERID, body.getString("id"), LoginActivity.this);
                                         Helper.setStringSharedPreference(Constant.USERNAME, body.getString("email"), LoginActivity.this);
                                         Helper.setStringSharedPreference(Constant.NAME, body.getString("name"), LoginActivity.this);
+                                        Helper.setStringSharedPreference(Constant.USER_CLASS, body.getString("ba_class"), LoginActivity.this);
+
                                         Helper.setStringSharedPreference(Constant.USER_PHONE, body.getString("mobile_number"), LoginActivity.this);
                                         startActivity(new Intent(LoginActivity.this, HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
                                         finish();

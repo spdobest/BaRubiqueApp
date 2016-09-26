@@ -31,6 +31,7 @@
                         android:id="@+id/et_holder_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM "
                         android:hint="Account Holder Name"
                         android:inputType="text" />
 
@@ -45,6 +46,7 @@
                         android:id="@+id/et_bank_account"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:digits="1234567890"
                         android:hint="Bank Account Number"
                         android:inputType="number" />
 
@@ -59,6 +61,7 @@
                         android:id="@+id/et_bank_re_account"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:digits="1234567890"
                         android:hint="Re enter Account Number"
                         android:inputType="number" />
 
@@ -87,6 +90,7 @@
                         android:id="@+id/et_bank_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM "
                         android:hint="Bank Name"
                         android:inputType="text" />
 
@@ -101,7 +105,9 @@
                         android:id="@+id/et_branch_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM "
                         android:hint="Branch Name"
+
                         android:inputType="text" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -116,7 +122,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Pan Card Number"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:maxLength="10" />
 
                 </android.support.design.widget.TextInputLayout>
 
