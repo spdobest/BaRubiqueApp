@@ -43,6 +43,7 @@ import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.acl.LastOwnerException;
 import java.util.Locale;
 
 
@@ -185,7 +186,8 @@ public class Helper {
 
         switch (id) {
             case R.id.nav_my_profile:
-                return new Intent(context, ProfileActivity.class);
+                if (isLogin) return new Intent(context, ProfileActivity.class);
+                else { Toast.makeText(context,"Please Login to see profile",Toast.LENGTH_LONG).show(); return null;}
             case R.id.nav_refer_lead:
                 return new Intent(context, ReferralActivity.class).putExtra("data", "unavailable");
             case R.id.nav_dashboard:
@@ -225,9 +227,6 @@ public class Helper {
         }
         return mTracker;
     }
-
-
-
 
 
     static int cacheSize = 4 * 1024 * 1024; // 4MiB
