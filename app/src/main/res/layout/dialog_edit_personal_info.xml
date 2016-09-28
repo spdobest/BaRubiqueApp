@@ -79,6 +79,19 @@
 
                 </android.support.v7.widget.AppCompatSpinner>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/occupation" />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/spinner_occupation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.AppCompatSpinner>
+
                 <EditText
                     android:id="@+id/et_other_occupation"
                     android:layout_width="match_parent"

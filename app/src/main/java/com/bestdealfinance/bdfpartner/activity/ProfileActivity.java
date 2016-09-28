@@ -52,6 +52,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private View mainView;
     private ProfileHelper profileHelper;
     private ProgressDialog progressDialog;
+    private TextView profileOccupation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,6 +184,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             profileHelper.setMobile(customer.getString("mobile_number"));
 
             profileHelper.setProfession(checkForNullAndSet(customer, "profession", null, profileProfession));
+            profileHelper.setOccupation(checkForNullAndSet(customer, "occupation", null, profileOccupation));
             profileHelper.setPan(checkForNullAndSet(customer, "pan", Constant.PAN, profilePAN));
             profileHelper.setAadhar_number(checkForNullAndSet(customer, "aadhar_number", Constant.AADHAR, profileAadhar));
             profileHelper.setPassport_number(checkForNullAndSet(customer, "passport_number", Constant.PASSPORT, profilePassport));
@@ -260,6 +262,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         profileName = (TextView) findViewById(R.id.profile_name);
         profileEmail = (TextView) findViewById(R.id.profile_email);
         profileProfession = (TextView) findViewById(R.id.profile_profession);
+        profileOccupation = (TextView) findViewById(R.id.profile_occupation);
         profileAddress1 = (TextView) findViewById(R.id.profile_address1);
         profileAddress2 = (TextView) findViewById(R.id.profile_address2);
         profileCityAndPin = (TextView) findViewById(R.id.profile_city_and_pin);

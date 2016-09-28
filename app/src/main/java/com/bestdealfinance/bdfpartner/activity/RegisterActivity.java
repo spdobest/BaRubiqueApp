@@ -32,6 +32,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bestdealfinance.bdfpartner.R;
 import com.bestdealfinance.bdfpartner.application.Constant;
@@ -43,8 +44,12 @@ import com.flurry.android.FlurryAgent;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -56,6 +61,8 @@ public class RegisterActivity extends AppCompatActivity {
     private int leadPartnerId = 0;
     private ArrayAdapter<String> professionAdapter;
     private AppCompatSpinner spinnerProfession;
+    private AutoCompleteTextView cityView;
+    private List<String> cityList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +81,6 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
             }
         });
-
 
 
         final LinearLayout waitingLayout = (LinearLayout) findViewById(R.id.waiting_layout);
@@ -97,7 +103,10 @@ public class RegisterActivity extends AppCompatActivity {
         passwordView.setTransformationMethod(new PasswordTransformationMethod());
 
         final TextInputLayout cityLayout = (TextInputLayout) findViewById(R.id.txt_city_name_layout);
-        final AutoCompleteTextView cityView = (AutoCompleteTextView) findViewById(R.id.txt_city_name);
+        cityView = (AutoCompleteTextView) findViewById(R.id.txt_city_name);
+        setCityAdapter();
+
+
         /*final String[] COUNTRIES = new String[] {
                 "Belgium", "France", "Italy", "Germany", "Spain"
         };
@@ -117,9 +126,9 @@ public class RegisterActivity extends AppCompatActivity {
         final Button applyPopButton = (Button) findViewById(R.id.apply_btn_popup);
         final Button registerButton = (Button) findViewById(R.id.btn_regi_submit);
 
-        Util.intializeCity(this, cityView);
+        //Util.intializeCity(this, cityView);
 
-        spinnerProfession = (AppCompatSpinner)findViewById(R.id.spinner_profession);
+        spinnerProfession = (AppCompatSpinner) findViewById(R.id.spinner_profession);
         setProfessionAdapter();
         spinnerProfession.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -168,8 +177,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 Helper.hideKeyboard(RegisterActivity.this);
 
-                if(Helper.validate(promocodeLayout,promocodeView,"text",RegisterActivity.this))
-                 {
+                if (Helper.validate(promocodeLayout, promocodeView, "text", RegisterActivity.this)) {
                     alertDialog.dismiss();
                     try {
                         JSONObject reqObject = new JSONObject();
@@ -183,12 +191,9 @@ public class RegisterActivity extends AppCompatActivity {
 
                                     JSONObject body = response.getJSONObject("body");
 
-
-
-
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                     builder.setTitle(R.string.txt_promo_code_applied);
-                                    builder.setMessage(getString(R.string.txt_partner_name)+body.getString("name"));
+                                    builder.setMessage(getString(R.string.txt_partner_name) + body.getString("name"));
                                     builder.setNeutralButton(R.string.txt_ok, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
                                             dialog.dismiss();
@@ -226,26 +231,29 @@ public class RegisterActivity extends AppCompatActivity {
 
                                     final String msg = errorObject.getString("msg");
                                     final String body = errorObject.getString("body");
-                                    Helper.translate(msg, RegisterActivity.this, new Translator() {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                                    builder.setTitle(msg);
+                                    builder.setMessage(body);
+                                    builder.setNeutralButton(R.string.txt_ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    });
+                                    builder.show();
+
+
+                                    /*Helper.translate(msg, RegisterActivity.this, new Translator() {
                                         @Override
                                         public void onTranslate(final String value1) {
                                             Helper.translate(body, RegisterActivity.this, new Translator() {
                                                 @Override
                                                 public void onTranslate(String value2) {
 
-                                                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                                    builder.setTitle(value1);
-                                                    builder.setMessage(value2);
-                                                    builder.setNeutralButton(R.string.txt_ok, new DialogInterface.OnClickListener() {
-                                                        public void onClick(DialogInterface dialog, int which) {
-                                                            dialog.dismiss();
-                                                        }
-                                                    });
-                                                    builder.show();
+
                                                 }
                                             });
                                         }
-                                    });
+                                    });*/
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -296,35 +304,47 @@ public class RegisterActivity extends AppCompatActivity {
 
                     Helper.hideKeyboard(RegisterActivity.this);
 
-                    if(!tncCheckbox.isChecked())
-                    {
-                        Toast.makeText(RegisterActivity.this,"Please accept terms and conditions",Toast.LENGTH_LONG).show();
+                    if (!tncCheckbox.isChecked()) {
+                        Toast.makeText(RegisterActivity.this, "Please accept terms and conditions", Toast.LENGTH_LONG).show();
                         return;
                     }
 
 
-                    if(Helper.validate(fullNameLayout,fullNameView,"text",RegisterActivity.this) && Helper.validate(phoneLayout,phoneView,"phone",RegisterActivity.this) && Helper.validate(emailLayout,emailView,"email",RegisterActivity.this) && Helper.validate(passwordLayout,passwordView,"password",RegisterActivity.this) && Helper.validate(cityLayout,cityView,"text",RegisterActivity.this))
-                    {
+                    if (Helper.validate(fullNameLayout, fullNameView, "text", RegisterActivity.this) && Helper.validate(phoneLayout, phoneView, "phone", RegisterActivity.this) && Helper.validate(emailLayout, emailView, "email", RegisterActivity.this) && Helper.validate(passwordLayout, passwordView, "password", RegisterActivity.this) && Helper.validate(cityLayout, cityView, "text", RegisterActivity.this)) {
+
+                        boolean flag = false;
+                        for(int i=0;i<cityList.size();i++)
+                        {
+                            if(cityView.getText().toString().trim().toUpperCase().equals(cityList.get(i).toString().toUpperCase()))
+                            {
+                                flag=true;
+                            }
+                        }
+
+                        if(!flag)
+                        {
+                            Toast.makeText(RegisterActivity.this, "Please select city from dropdown only", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+
                         waitingLayout.setVisibility(View.VISIBLE);
                         animation.start();
                         registerButton.setVisibility(View.GONE);
 
-                                Toast.makeText(RegisterActivity.this, "Registration Success, Trying to Login..", Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegisterActivity.this, "Registration Success, Trying to Login..", Toast.LENGTH_LONG).show();
                         JSONObject reqObject = new JSONObject();
                         reqObject.put("name", fullNameView.getText().toString().trim());
                         reqObject.put("email", emailView.getText().toString().trim());
                         reqObject.put("mobile_number", phoneView.getText().toString().trim());
                         reqObject.put("password", passwordView.getText().toString().trim());
                         reqObject.put("city", cityView.getText().toString().trim());
-                        reqObject.put("profession",spinnerProfession.getSelectedItem().toString());
+                        reqObject.put("profession", spinnerProfession.getSelectedItem().toString());
                         reqObject.put("source", "BA_APP");
-                        reqObject.put("is_ba","1");
-                        if (isApplied)
-                        {
+                        reqObject.put("is_ba", "1");
+                        if (isApplied) {
                             reqObject.put("lead_partner_id", leadPartnerId);
-                            reqObject.put("promo_code",promocodeView.getText().toString());
+                            reqObject.put("promo_code", promocodeView.getText().toString());
                         }
-
 
 
                         JsonObjectRequest registerRequest = new JsonObjectRequest(Request.Method.POST, Util.REGISTER_NEW, reqObject, new Response.Listener<JSONObject>() {
@@ -335,7 +355,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 animation.stop();
                                 registerButton.setVisibility(View.VISIBLE);
 
-                                Toast.makeText(RegisterActivity.this, R.string.register_success_helper,Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegisterActivity.this, R.string.register_success_helper, Toast.LENGTH_LONG).show();
 
                                 try {
 
@@ -343,7 +363,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     loginObject.put("username", emailView.getText().toString().trim());
                                     loginObject.put("password", passwordView.getText().toString().trim());
                                     loginObject.put("remember", 1);
-                                    loginObject.put("is_ba","1");
+                                    loginObject.put("is_ba", "1");
 
                                     JsonObjectRequest loginRequest = new JsonObjectRequest(Request.Method.POST, Util.LOGIN, loginObject, new Response.Listener<JSONObject>() {
                                         @Override
@@ -378,26 +398,18 @@ public class RegisterActivity extends AppCompatActivity {
 
                                                 final String msg = errorObject.getString("msg");
                                                 final String body = errorObject.getString("body");
-                                                Helper.translate(msg, RegisterActivity.this, new Translator() {
-                                                    @Override
-                                                    public void onTranslate(final String value1) {
-                                                        Helper.translate(body, RegisterActivity.this, new Translator() {
-                                                            @Override
-                                                            public void onTranslate(String value2) {
 
-                                                                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                                                builder.setTitle(value1);
-                                                                builder.setMessage(value2);
-                                                                builder.setNeutralButton(R.string.txt_ok, new DialogInterface.OnClickListener() {
-                                                                    public void onClick(DialogInterface dialog, int which) {
-                                                                        dialog.dismiss();
-                                                                    }
-                                                                });
-                                                                builder.show();
-                                                            }
-                                                        });
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                                                builder.setTitle(msg);
+                                                builder.setMessage(body);
+                                                builder.setNeutralButton(R.string.txt_ok, new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        dialog.dismiss();
                                                     }
                                                 });
+                                                builder.show();
+
+
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
                                             }
@@ -453,7 +465,6 @@ public class RegisterActivity extends AppCompatActivity {
                                     });
 
 
-
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -487,15 +498,74 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    private void setCityAdapter() {
+        StringRequest request = new StringRequest(Util.FETCH_ALL_CITY, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                cityList = new ArrayList<>();
+
+                try {
+                    JSONObject res = new JSONObject(response);
+                    JSONArray data = res.getJSONObject("body").getJSONArray("data");
+                    for (int i = 0; i < data.length(); i++) {
+                        if (!data.getJSONObject(i).getString("item_value").equals("Others"))
+                            cityList.add(data.getJSONObject(i).getString("item_value").toUpperCase());
+                    }
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(RegisterActivity.this,android.R.layout.simple_dropdown_item_1line,cityList);
+                    cityView.setAdapter(adapter);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        queue.add(request);
+    }
+
     private void setProfessionAdapter() {
         // TODO delet and fetch from server and delete  Util.occupation
 
-        String[] occupation = {"Chartered Accountant", "Financial Advisor", "Bank Connector", "Stock Broker", "Car Dealer", "Construction Equipment Distributor", "Used Equipment Seller","Real Estate Agent","Builder Executive","Property valuator","Bank RM","Used car dealer","Medical equipment Dealer","Others"};
+        StringRequest request = new StringRequest(Util.FETCH_PROFESSION, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                List<String> occupation = new ArrayList<>();
+
+                try {
+                    JSONObject res = new JSONObject(response);
+                    JSONArray data = res.getJSONObject("body").getJSONArray("data");
+                    for (int i = 0; i < data.length(); i++) {
+                        if (!data.getJSONObject(i).getString("item_value").equals("Others"))
+                            occupation.add(data.getJSONObject(i).getString("item_value"));
+                    }
+                    occupation.add("Others");
 
 
-        professionAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,occupation);
-        professionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerProfession.setAdapter(professionAdapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                professionAdapter = new ArrayAdapter<>(RegisterActivity.this, android.R.layout.simple_spinner_item, occupation);
+                professionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerProfession.setAdapter(professionAdapter);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        queue.add(request);
 
     }
 

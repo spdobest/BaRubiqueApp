@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 public class ProfileHelper implements Serializable {
 
+    private String occupation;
     private String name;
     private String profession;
     private String email;
@@ -33,6 +34,7 @@ public class ProfileHelper implements Serializable {
     public ProfileHelper() {
         name = null;
         profession = null;
+        occupation = null;
         email = null;
         mobile = null;
 
@@ -213,5 +215,13 @@ public class ProfileHelper implements Serializable {
 
     public void setResponse(JSONObject response) {
         this.response = response;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
     }
 }

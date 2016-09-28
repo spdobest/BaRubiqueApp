@@ -22,9 +22,11 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bestdealfinance.bdfpartner.R;
 import com.bestdealfinance.bdfpartner.activity.ProfileActivity;
+import com.bestdealfinance.bdfpartner.activity.RegisterActivity;
 import com.bestdealfinance.bdfpartner.application.Constant;
 import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.application.ProfileHelper;
@@ -55,6 +57,8 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
     private List<String> stateList = new ArrayList<String>();
     private List<String> cityList = new ArrayList<String>();
     private List<String> professionList = new ArrayList<String>();
+    private AppCompatSpinner spinnerOccupation;
+    private ArrayAdapter<String> occupationAdapter;
 
 
     @Override
@@ -76,7 +80,7 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
         profileHelper = (ProfileHelper) getArguments().getSerializable("ProfileHelper");
 
         setProfessionAdapter();
-
+        setOccupationAdapter();
         getStateValuesFromServerAndSetStateAdapter();
 
         setValuesForUI(profileHelper);
@@ -91,22 +95,107 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
         getDialog().getWindow().setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT);
     }
 
+
     private void setProfessionAdapter() {
         // TODO delet and fetch from server and delete  Util.occupation
-        professionAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, Util.occupation);
-        professionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerProfession.setAdapter(professionAdapter);
-        String profession = profileHelper.getProfession();
-        if (profession!=null) {
-            int spinnerPosition = professionAdapter.getPosition(profession);
-            if (spinnerPosition == -1) {
-                spinnerPosition = professionAdapter.getPosition(Constant.OTHERS);
-                etOtherProfession.setVisibility(View.VISIBLE);
-                etOtherProfession.setText(profession);
+
+        StringRequest request = new StringRequest(Util.FETCH_PROFESSION, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                List<String> occupation = new ArrayList<>();
+
+                try {
+                    JSONObject res = new JSONObject(response);
+                    JSONArray data = res.getJSONObject("body").getJSONArray("data");
+                    for (int i = 0; i < data.length(); i++) {
+                        if (!data.getJSONObject(i).getString("item_value").equals("Others"))
+                            occupation.add(data.getJSONObject(i).getString("item_value"));
+                    }
+                    occupation.add("Others");
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+                professionAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, occupation);
+                professionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerProfession.setAdapter(professionAdapter);
+
+
+                String previousProfession = profileHelper.getProfession();
+                if (previousProfession != null) {
+                    for (int i = 0; i < occupation.size(); i++) {
+                        if (previousProfession.equalsIgnoreCase(occupation.get(i))) {
+                            spinnerProfession.setSelection(i);
+                            break;
+                        }
+                    }
+                }
+
             }
-            spinnerProfession.setSelection(spinnerPosition);
-        }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        queue.add(request);
+
     }
+
+    private void setOccupationAdapter() {
+        // TODO delet and fetch from server and delete  Util.occupation
+
+        StringRequest request = new StringRequest(Util.FETCH_OCCUPATION, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                List<String> occupation = new ArrayList<>();
+
+                try {
+                    JSONObject res = new JSONObject(response);
+                    JSONArray data = res.getJSONObject("body").getJSONArray("data");
+                    for (int i = 0; i < data.length(); i++) {
+                        if (!data.getJSONObject(i).getString("item_value").equals("Others"))
+                            occupation.add(data.getJSONObject(i).getString("item_value"));
+                    }
+                    occupation.add("Others");
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                occupationAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, occupation);
+                occupationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerOccupation.setAdapter(occupationAdapter);
+
+                String previousOccupation = profileHelper.getOccupation();
+                if (previousOccupation != null) {
+                    for (int i = 0; i < occupation.size(); i++) {
+                        if (previousOccupation.equalsIgnoreCase(occupation.get(i))) {
+                            spinnerOccupation.setSelection(i);
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        queue.add(request);
+
+    }
+
 
     private void getStateValuesFromServerAndSetStateAdapter() {
         autoCompleteCity.setText(profileHelper.getCity());
@@ -205,6 +294,7 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
         }
 
 
+
     }
 
     private void setUpUiComponents(View inflaterView) {
@@ -242,6 +332,9 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
 
             }
         });
+
+        spinnerOccupation = (AppCompatSpinner) inflaterView.findViewById(R.id.spinner_occupation);
+
 
         spinnerState = (AppCompatSpinner) inflaterView.findViewById(R.id.spinner_state);
         spinnerState.setOnItemSelectedListener(this);
@@ -303,6 +396,9 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
                     }
                     profileHelper.setProfession(profession);
                 }
+
+                String occupation = spinnerOccupation.getSelectedItem().toString();
+                profileHelper.setOccupation(occupation);
 
                 setValuesToJson();
 
@@ -434,6 +530,7 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
 
             customer.put("name", profileHelper.getName());
             customer.put("profession", profileHelper.getProfession());
+            customer.put("occupation", profileHelper.getOccupation());
 
             customer.put("pan", profileHelper.getPan());
             customer.put("aadhar_number", profileHelper.getAadhar_number());

@@ -425,7 +425,8 @@ public class Group_Question_Fragment extends Fragment {
             String filledID=null;
             String baseID=temp.optString("baseId");
             Boolean mandatory = temp.optBoolean("mandatory");
-            JSONObject innerfield=temp.getJSONObject("metaBase");
+            JSONObject innerfield=null;
+            innerfield=temp.getJSONObject("metaBase");
             String fielddata=innerfield.optString("fieldType");
 
 //            if (!temp.isNull("fieldValue")){
@@ -437,11 +438,11 @@ public class Group_Question_Fragment extends Fragment {
             if (itemid!=null){
                  filledID=itemid;
             }
-            String uiName = innerfield.optString("fieldName");
-            String fieldSize=innerfield.optString("fieldSize");
-            String usemap = innerfield.optString("useMap","");
-            String fieldType = innerfield.optString("fieldUi");
-            String uiOptionList=innerfield.optString("uiOptionList","");
+            String uiName = innerfield.getString("fieldName");
+            String fieldSize=innerfield.getString("fieldSize");
+            String usemap = innerfield.getString("useMap");
+            String fieldType = innerfield.getString("fieldUi");
+            String uiOptionList=innerfield.getString("uiOptionList");
 
             if (fieldType.equals("alpha")){
                 fieldType="textbox";
@@ -459,12 +460,12 @@ public class Group_Question_Fragment extends Fragment {
                 fieldType="durationym";
             }
 
-            if (baseID.equals("25")){
+            /*if (baseID.equals("25")){
                 fieldType="associative-autosuggest";
             }
             if (baseID.equals("35")){
                 fieldType="associative-autosuggest";
-            }
+            }*/
             if (baseID.equals("138")){
                 fieldType="associative-autosuggest";
             }

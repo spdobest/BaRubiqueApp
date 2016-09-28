@@ -155,6 +155,10 @@ public class Util {
     public static final String SOME_ACTION = "com.bestdealfinance.partner.refresh";
     public static final String[] product = {"Credit Card", "Car Loan", "Two Wheeler Loan", "Personal Loan", "Home Loan", "Loan Against Property", "Business Loan"};
     public static final String[] card = {"Credit Card"};
+    public static final String FETCH_PROFESSION = ROOT_URL_V2 + "Profile/profession";
+    public static final String  FETCH_ALL_CITY = ROOT_URL_V2 + "Profile/city";
+    public static final String  FETCH_APP_CITY = ROOT_URL_V2 + "Profile/applicationcity";
+    public static final String FETCH_OCCUPATION = ROOT_URL_V2 + "Profile/occupation";
     public static String o_id = "";
     public static String mobile = "";
     public static String ltoken = "";

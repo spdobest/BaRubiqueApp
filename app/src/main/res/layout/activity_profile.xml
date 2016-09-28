@@ -61,6 +61,13 @@
                         android:layout_below="@id/profile_name"
                         android:text="Profession"
                         android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/profile_occupation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/profile_profession"
+                        android:text="Occupation"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/profile_edit"
@@ -120,10 +127,16 @@
 
 
                 <TextView
-                    android:id="@+id/profile_address1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:text="Address"
+                    android:textStyle="bold"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/profile_address1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="-------"
                     android:textSize="12sp" />
 

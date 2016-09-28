@@ -11,6 +11,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -29,7 +30,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bestdealfinance.bdfpartner.Logs;
 import com.bestdealfinance.bdfpartner.R;
 import com.bestdealfinance.bdfpartner.UI.PagerContainer;
@@ -69,23 +76,24 @@ import java.util.regex.Pattern;
 import io.fabric.sdk.android.Fabric;
 
 
-public class ReferralActivity extends AppCompatActivity implements View.OnClickListener,APIUtils.OnTaskCompletedProducts, APIUtils.OnTaskCompletedCity {
+public class ReferralActivity extends AppCompatActivity implements View.OnClickListener {
 
     Spinner spr_salutation;
     TextView refer_header;
-    EditText txt_refer_name, txt_refer_email, txt_refer_phone_num, txt_refer_product_type, txt_refer_product, txt_refer_submitter_email, txt_refer_notes,  txt_refer_amount;
+    EditText txt_refer_name, txt_refer_email, txt_refer_phone_num, txt_refer_product_type, txt_refer_product, txt_refer_submitter_email, txt_refer_notes, txt_refer_amount;
     Button btnReferLead;
-    AutoCompleteTextView txt_refer_city,scity;
-    EditText sname,semail,sphone;
+    AppCompatSpinner txt_refer_city;
+    AutoCompleteTextView scity;
+    EditText sname, semail, sphone;
     CheckBox chb_self_referral;
     ImageView img_regi_back;
-    String str_salutation, str_name, str_email, str_phone, str_product_type, str_product, str_submitter_email, str_notes, str_sname,str_semail,str_sphone,str_scity;
+    String str_salutation, str_name, str_email, str_phone, str_product_type, str_product, str_submitter_email, str_notes, str_sname, str_semail, str_sphone, str_scity;
     int chb_val = 0, selected_product_type_id, selected_product_id;
     LinearLayout waiting_layout;
-    List<String> dataList=new ArrayList<>();
+    List<String> dataList = new ArrayList<>();
     ImageView progressBar;
     String[] product_type_name, product_type_id, product_name, product_id;
-    String[] salutation = {"Mr","Ms","Dr","Prof"};
+    String[] salutation = {"Mr", "Ms", "Dr", "Prof"};
     DBHelper controller;
     LinearLayout noregisterLayout;
     ImageView selected_dot;
@@ -103,7 +111,7 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
     ArrayAdapter adapter2;
     private int currItem;
     private String selected_loan_code = "0";
-    private String selected_loan_name ;
+    private String selected_loan_name;
     ViewPager pager;
     Bundle b;
     ImageView backArrow;
@@ -116,44 +124,47 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
     Toolbar mToolbar;
     SharedPreferences pref;
     private Bundle bundle;
-    String selectProductTypeBundle = "", selectedProductCode ="";
+    String selectProductTypeBundle = "", selectedProductCode = "";
     private String str_city, str_amount;
+    private RequestQueue queue;
+    private List<String> cityList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-
         setContentView(R.layout.activity_referral);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
-        bundle=getIntent().getExtras();
+        queue = Volley.newRequestQueue(this);
 
-        if (bundle!=null) {
-            Logs.LogD("BundleReceiver",bundle.toString());
-            Logs.LogD("BundleReceiver type",bundle.getString("product_type", ""));
+
+        bundle = getIntent().getExtras();
+
+        if (bundle != null) {
+            Logs.LogD("BundleReceiver", bundle.toString());
+            Logs.LogD("BundleReceiver type", bundle.getString("product_type", ""));
             selectProductTypeBundle = bundle.getString("product_type", "");
             selectedProductCode = bundle.getString("product_id", "");
-        }
-        else {
-            Logs.LogD("BundleReciev","Not Value Recieved");
+        } else {
+            Logs.LogD("BundleReciev", "Not Value Recieved");
         }
 
         //pref = getSharedPreferences(Util.MY_PREFERENCES, Context.MODE_PRIVATE);
         //controller = new DBHelper(this);
         mContainer = (PagerContainer) findViewById(R.id.pager_container);
         initialization();
-        if (defaultItem==0){
+        if (defaultItem == 0) {
             txt_refer_amount.setVisibility(View.GONE);
         }
 
         initialize_products();
 
         //initializecities();
-        Util.intializeCity(this, txt_refer_city);
-        Util.intializeCity(this,scity);
+        //Util.intializeCity(this, txt_refer_city);
+        //Util.intializeCity(this,scity);
 //        if(i.getStringExtra("data").equals("available")){
 //            b = i.getBundleExtra("val");
 //            txt_refer_product_type.setText(b.getString("product_type_name"));
@@ -175,59 +186,12 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
         Fabric.with(this, new Crashlytics());
 
     }
-    private void initializecities(){
-        TextWatcher watcher = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                Logs.LogD("City", s.toString());
-                if (s.length()==3) {
-                   GetCity data = new GetCity();
-                    data.executeOnExecutor(Util.threadPool);
-                }
-
-            }
-        };
-        txt_refer_city.addTextChangedListener(watcher);
-        txt_refer_city.setThreshold(2);
-
-//        if(Util.city_names == null) {
-//            APIUtils.GetCity city=new APIUtils.GetCity(new APIUtils.OnTaskCompletedCity() {
-//                @Override
-//                public void OnTaskCompletedCity() {
-//                    cityAdapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.text_list_item, Util.city_names);
-//                    scityAdapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.text_list_item, Util.city_names);
-//                    txt_refer_city.setAdapter(cityAdapter);
-//                    scity.setAdapter(scityAdapter);
-//                }
-//            });
-//            city.executeOnExecutor(Util.threadPool);
-//
-//        }
 
 
 
-    }
 
-    @Override
-    public void OnTaskCompletedProducts() {
 
-    }
-
-    @Override
-    public void OnTaskCompletedCity() {
-
-    }
-    private void initialize_products(){
+    private void initialize_products() {
 //        ArrayList<HashMap<String, String>> product_type_data=new ArrayList<>();
 //        HashMap<String,String> temp=new HashMap<>();
 //        temp.put("11", "Credit Card");
@@ -252,9 +216,9 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
 //        product_type_data.add(temp6);
 //
 //        initialize_viewpager(product_type_data);
-        if(Util.product_type_data == null) {
+        if (Util.product_type_data == null) {
             if (Util.isNetworkAvailable(getApplicationContext())) {
-                APIUtils.ProductTypeAsyncTask task1=new APIUtils.ProductTypeAsyncTask(new APIUtils.OnTaskCompletedProducts() {
+                APIUtils.ProductTypeAsyncTask task1 = new APIUtils.ProductTypeAsyncTask(new APIUtils.OnTaskCompletedProducts() {
                     @Override
                     public void OnTaskCompletedProducts() {
                         initialize_viewpager(Util.product_type_data);
@@ -268,7 +232,7 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void initialize_viewpager(final ArrayList<HashMap<String, String>>productList) {
+    private void initialize_viewpager(final ArrayList<HashMap<String, String>> productList) {
         mContainer.setHorizontalScrollBarEnabled(true);
         pager = mContainer.getViewPager();
         pager.setClipToPadding(false);
@@ -281,7 +245,7 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
         pager.setCurrentItem(defaultItem, true);
         currItem = defaultItem;
         selected_loan_code = productList.get(defaultItem).get("id");
-        selected_loan_name=productList.get(defaultItem).get("name");
+        selected_loan_name = productList.get(defaultItem).get("name");
 
         pager.setClipChildren(false);
 
@@ -326,16 +290,16 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
             mcount = mproductsList.size();
 
 
-            Logs.LogD("Size","Size "+mcount);
+            Logs.LogD("Size", "Size " + mcount);
         }
 
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
             LayoutInflater inflater = (LayoutInflater) container.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View mPage = inflater.inflate(R.layout.product_card_view, null);
-            ImageView view= (ImageView) mPage.findViewById(R.id.p_image);
-            TextView t_view= (TextView) mPage.findViewById(R.id.p_name);
-            ImageView cover= (ImageView) mPage.findViewById(R.id.covering);
+            ImageView view = (ImageView) mPage.findViewById(R.id.p_image);
+            TextView t_view = (TextView) mPage.findViewById(R.id.p_name);
+            ImageView cover = (ImageView) mPage.findViewById(R.id.covering);
             cover.bringToFront();
 
 
@@ -444,94 +408,60 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initialization() {
-        if (bundle!=null) {
+        if (bundle != null) {
             getProductType(selectProductTypeBundle);
         }
-        txt_refer_submitter_email= (EditText) findViewById(R.id.txt_semail);
-        txt_refer_city = (AutoCompleteTextView) findViewById(R.id.txt_refer_city);
-        waiting_layout = (LinearLayout)findViewById(R.id.waiting_layout);
-        refer_header= (TextView) findViewById(R.id.refer_header);
-        String sourceString = "<b>" + "Swipe" + "</b> " + " to "+"<b>" + "Select" + "</b> "+ "a product to refer";
+        txt_refer_submitter_email = (EditText) findViewById(R.id.txt_semail);
+        txt_refer_city = (AppCompatSpinner) findViewById(R.id.txt_refer_city);
+        waiting_layout = (LinearLayout) findViewById(R.id.waiting_layout);
+        refer_header = (TextView) findViewById(R.id.refer_header);
+        String sourceString = "<b>" + "Swipe" + "</b> " + " to " + "<b>" + "Select" + "</b> " + "a product to refer";
         refer_header.setText(Html.fromHtml(sourceString));
-        selected_dot= (ImageView) findViewById(R.id.selected_dot);
-        progressBar = (ImageView)findViewById(R.id.waiting);
+        selected_dot = (ImageView) findViewById(R.id.selected_dot);
+        progressBar = (ImageView) findViewById(R.id.waiting);
         progressBar.setBackgroundResource(R.drawable.waiting);
         animation = (AnimationDrawable) progressBar.getBackground();
-        if (Util.product_type_data==null){
+        if (Util.product_type_data == null) {
             finish();
             return;
         }
         product_type_id = new String[Util.product_type_data.size()];
         product_type_name = new String[Util.product_type_data.size()];
 
-        for (int i = 0; i< Util.product_type_data.size(); i++){
+        for (int i = 0; i < Util.product_type_data.size(); i++) {
             product_type_id[i] = Util.product_type_data.get(i).get("id");
             product_type_name[i] = Util.product_type_data.get(i).get("name");
         }
 
-        txt_refer_name = (EditText)findViewById(R.id.txt_refer_name);
-        txt_refer_email = (EditText)findViewById(R.id.txt_refer_email);
-        txt_refer_phone_num = (EditText)findViewById(R.id.txt_refer_phone_num);
+        txt_refer_name = (EditText) findViewById(R.id.txt_refer_name);
+        txt_refer_email = (EditText) findViewById(R.id.txt_refer_email);
+        txt_refer_phone_num = (EditText) findViewById(R.id.txt_refer_phone_num);
         String code = "+91";
 //        txt_refer_phone_num.setCompoundDrawablesWithIntrinsicBounds(new TextDrawable(code), null, null, null);
 //        txt_refer_phone_num.setCompoundDrawablePadding(code.length() * 10);
-        txt_refer_notes = (EditText)findViewById(R.id.txt_refer_notes);
-        btnReferLead = (Button)findViewById(R.id.btn_refer_lead);
-        txt_refer_amount= (EditText) findViewById(R.id.txt_refer_amount);
+        txt_refer_notes = (EditText) findViewById(R.id.txt_refer_notes);
+        btnReferLead = (Button) findViewById(R.id.btn_refer_lead);
+        txt_refer_amount = (EditText) findViewById(R.id.txt_refer_amount);
         backArrow = (ImageView) findViewById(R.id.back_arrow);
-        sname= (EditText) findViewById(R.id.txt_sname);
-        semail= (EditText) findViewById(R.id.txt_semail);
-        sphone= (EditText) findViewById(R.id.txt_sphone);
-        scity= (AutoCompleteTextView) findViewById(R.id.txt_scity);
-        noregisterLayout= (LinearLayout) findViewById(R.id.ba_details_layout);
-        if (Helper.getStringSharedPreference(Constant.UTOKEN,this).equals("")){
+        sname = (EditText) findViewById(R.id.txt_sname);
+        semail = (EditText) findViewById(R.id.txt_semail);
+        sphone = (EditText) findViewById(R.id.txt_sphone);
+        scity = (AutoCompleteTextView) findViewById(R.id.txt_scity);
+        noregisterLayout = (LinearLayout) findViewById(R.id.ba_details_layout);
+        if (Helper.getStringSharedPreference(Constant.UTOKEN, this).equals("")) {
             noregisterLayout.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             noregisterLayout.setVisibility(View.GONE);
         }
-        TextWatcher watcher = new TextWatcher() {
-            String old="";
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                txt_refer_amount.removeTextChangedListener(this);
-                Logs.LogD("Watcher", "Text CHnged");
-                String amount = s.toString();
-
-
-                if (amount == null || amount.equals("null") || amount.equals("")) {
-
-                }
-                else {
-                    try {
-                        amount=amount.replaceAll(",","");
-                        txt_refer_amount.setText(Util.formatRs(amount));
-                        txt_refer_amount.setSelection(txt_refer_amount.getText().length());
-                        old=amount;
-                    } catch (NumberFormatException n) {
-                        Logs.LogD("Exception", n.getLocalizedMessage());
-                    }
-                }
-                txt_refer_amount.addTextChangedListener(this);
-            }
-        };
-        txt_refer_amount.addTextChangedListener(watcher);
+        setAllCityAdapter();
+        setCityAdapter();
 
 
     }
 
     private void getProductType(String select_product_bundle) {
-        switch (select_product_bundle){
+        switch (select_product_bundle) {
             case "11":
                 defaultItem = 0;
                 break;
@@ -558,35 +488,52 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.back_arrow:
                 finish();
                 break;
             case R.id.btn_refer_lead:
                 if (validateRefer()) {
+
+
+                    boolean flag = false;
+                    for(int i=0;i<cityList.size();i++)
+                    {
+                        if(scity.getText().toString().trim().toUpperCase().equals(cityList.get(i).toString().toUpperCase()))
+                        {
+                            flag=true;
+                        }
+                    }
+
+                    if(!flag)
+                    {
+                        Toast.makeText(ReferralActivity.this, "Please select city from dropdown only", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+
                     Bundle bundle1 = new Bundle();
                     bundle1.putString("type", selected_loan_code);
-                    if(selected_loan_code.equals(selectProductTypeBundle)){
+                    if (selected_loan_code.equals(selectProductTypeBundle)) {
                         bundle1.putString("product_id", selectedProductCode);
-                        bundle1.putString("product_type",selected_loan_code);
-                        bundle1.putString("product_name",bundle.getString("product_name",null));
-                        bundle1.putString("bank_logo",bundle.getString("bank_logo",null));
+                        bundle1.putString("product_type", selected_loan_code);
+                        bundle1.putString("product_name", bundle.getString("product_name", null));
+                        bundle1.putString("bank_logo", bundle.getString("bank_logo", null));
                     } else {
-                        bundle1.putString("product_id","");
+                        bundle1.putString("product_id", "");
                     }
-                    bundle1.putString("amount", str_amount.replaceAll(",",""));
-                    bundle1.putString("name",str_name);
-                    bundle1.putString("email",str_email);
-                    bundle1.putString("phone",str_phone);
-                    bundle1.putString("city",str_city);
-                    bundle1.putString("tname",selected_loan_name);
-                    bundle1.putString("sname",str_sname);
-                    bundle1.putString("sphone",str_sphone);
-                    bundle1.putString("scity",str_scity);
-                    bundle1.putString("type",selected_loan_code);
-                    bundle1.putString("semail",str_submitter_email);
-                    Logs.LogD("Bundle",bundle1.toString());
-                    Intent intent=new Intent(ReferralActivity.this, CongratulationScreen.class);
+                    bundle1.putString("amount", str_amount.replaceAll(",", ""));
+                    bundle1.putString("name", str_name);
+                    bundle1.putString("email", str_email);
+                    bundle1.putString("phone", str_phone);
+                    bundle1.putString("city", str_city);
+                    bundle1.putString("tname", selected_loan_name);
+                    bundle1.putString("sname", str_sname);
+                    bundle1.putString("sphone", str_sphone);
+                    bundle1.putString("scity", str_scity);
+                    bundle1.putString("type", selected_loan_code);
+                    bundle1.putString("semail", str_submitter_email);
+                    Intent intent = new Intent(ReferralActivity.this, CongratulationScreen.class);
                     intent.putExtras(bundle1);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -594,21 +541,22 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
                 break;
         }
     }
-    private boolean validateRefer(){
+
+    private boolean validateRefer() {
         str_name = txt_refer_name.getText().toString().trim();
         str_email = txt_refer_email.getText().toString().trim();
         str_phone = txt_refer_phone_num.getText().toString().trim();
-        str_city = txt_refer_city.getText().toString();
+        str_city = txt_refer_city.getSelectedItem().toString();
         str_amount = txt_refer_amount.getText().toString().trim();
 
 
-        if (!isTextValid(str_name)){
+        if (!isTextValid(str_name)) {
             txt_refer_name.setError("Please enter Referral name");
             txt_refer_name.requestFocus();
             return false;
         }
 
-        if(!isEmailValid(str_email)) {
+        if (!isEmailValid(str_email)) {
             txt_refer_email.setError("Please enter valid Email ID");
             txt_refer_email.requestFocus();
             return false;
@@ -619,21 +567,17 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
             return false;
         }
 
-        if (!isTextValid(str_city)) {
-            txt_refer_city.setError("Enter city");
-            txt_refer_city.requestFocus();
-            return false;
-        }
+
         if (str_amount.length() < 5 && txt_refer_amount.getVisibility() == View.VISIBLE) {
             txt_refer_amount.setError("Please Enter Valid Loan Amount");
             txt_refer_amount.requestFocus();
             return false;
         }
         if (Util.isRegistered(getApplicationContext()).equals("")) {
-            str_sname=sname.getText().toString().trim();
-            str_sphone=sphone.getText().toString().trim();
-            str_scity=scity.getText().toString().trim();
-            str_submitter_email=txt_refer_submitter_email.getText().toString().trim();
+            str_sname = sname.getText().toString().trim();
+            str_sphone = sphone.getText().toString().trim();
+            str_scity = scity.getText().toString().trim();
+            str_submitter_email = txt_refer_submitter_email.getText().toString().trim();
             if (!isTextValid(str_sname)) {
                 sname.setError("Please Enter Your Name");
                 sname.requestFocus();
@@ -644,12 +588,12 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
                 txt_refer_submitter_email.requestFocus();
                 return false;
             }
-            if (!isPhoneValid(str_phone)){
+            if (!isPhoneValid(str_phone)) {
                 semail.setError("Please Enter Your 10 Digit mobile number");
                 semail.requestFocus();
                 return false;
             }
-            if (!isTextValid(str_city)){
+            if (!isTextValid(str_city)) {
                 scity.setError("Please Enter Your City");
                 scity.requestFocus();
                 return false;
@@ -661,10 +605,11 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
     }
 
 
-    private boolean isPhoneValid(String phone){
-        return android.util.Patterns.PHONE.matcher(phone.trim()).matches() && phone.trim().length()==10;
+    private boolean isPhoneValid(String phone) {
+        return android.util.Patterns.PHONE.matcher(phone.trim()).matches() && phone.trim().length() == 10;
 
     }
+
     private boolean isTextValid(String password) {
         //TODO: Replace this with your own logic
         return password.length() > 2;
@@ -681,6 +626,7 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
             return false;
         }
     }
+
     private class ProductAsyncTask extends AsyncTask<Void, Void, String> {
 
         @Override
@@ -694,7 +640,7 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
                 HttpPost httpPost = new HttpPost(Util.PRODUCT);
                 String json = "";
                 JSONObject jsonObject = new JSONObject();
-                jsonObject.accumulate("product_type_id", selected_product_type_id+"");
+                jsonObject.accumulate("product_type_id", selected_product_type_id + "");
 
                 json = jsonObject.toString();
 
@@ -753,12 +699,12 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void checkForNote() {
-        if(txt_refer_notes.getText().toString().trim().isEmpty()){
+        if (txt_refer_notes.getText().toString().trim().isEmpty()) {
             str_notes = "";
         } else {
             str_notes = txt_refer_notes.getText().toString().trim();
         }
-        if(chb_self_referral.isChecked()) {
+        if (chb_self_referral.isChecked()) {
             chb_val = 1;
         } else {
             chb_val = 0;
@@ -859,7 +805,7 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
                         startActivity(new Intent(ReferralActivity.this, CongratulationScreen.class));
                         finish();
                     } else {
-                        if(msg.equals("Failed")){
+                        if (msg.equals("Failed")) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(ReferralActivity.this);
                             builder.setTitle("Message");
                             builder.setCancelable(false);
@@ -881,82 +827,76 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    final class GetCity extends AsyncTask<Void, Void, String> {
 
-        String city = txt_refer_city.getText().toString();
 
-        protected String doInBackground(Void... params) {
-            String response = "";
-            StringBuilder sb = new StringBuilder();
-            HttpURLConnection conn = null;
-            try {
-                /* forming th java.net.URL object */
-                URL url = new URL(Util.ALLLISTS);
-                conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("POST");
-                conn.setReadTimeout(50000);
-                conn.setConnectTimeout(50000);
-                conn.setDoInput(true);
-                conn.setDoOutput(true);
-                JSONObject post=new JSONObject();
-                post.put("list_id","10063");
-                post.put("keyword",city);
-                Logs.LogD("Request",post.toString());
-                Logs.LogD("Refer", "Sent the Request");
-                OutputStream os = conn.getOutputStream();
-                BufferedWriter writer = new BufferedWriter(
-                        new OutputStreamWriter(os, "UTF-8"));
-                writer.write(post.toString());
-                writer.flush();
-                writer.close();
-                os.close();
-                int HttpResult = conn.getResponseCode();
-                if (HttpResult == HttpURLConnection.HTTP_OK) {
-                    BufferedReader br = new BufferedReader(new InputStreamReader(
-                            conn.getInputStream(), "utf-8"));
-                    String line = null;
-                    while ((line = br.readLine()) != null) {
-                        sb.append(line + "\n");
+    private void setAllCityAdapter() {
+        StringRequest request = new StringRequest(Util.FETCH_ALL_CITY, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                cityList = new ArrayList<>();
+
+                try {
+                    JSONObject res = new JSONObject(response);
+                    JSONArray data = res.getJSONObject("body").getJSONArray("data");
+                    for (int i = 0; i < data.length(); i++) {
+                        if (!data.getJSONObject(i).getString("item_value").equals("Others"))
+                            cityList.add(data.getJSONObject(i).getString("item_value").toUpperCase());
                     }
-                    br.close();
-                    response = sb.toString();
-                } else {
-                    Logs.LogD("Exception", conn.getResponseMessage());
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(ReferralActivity.this, android.R.layout.simple_dropdown_item_1line, cityList);
+                    scity.setAdapter(adapter);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                Logs.LogD("Task Exception" +
-                        "on", e.getLocalizedMessage());
-                e.printStackTrace();
-                response = e.getLocalizedMessage();
-            } finally {
-                if (conn != null)
-                    conn.disconnect();
+
+
             }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
-            return response;
-        }
-
-        protected void onPostExecute(String result) {
-            Logs.LogD("Cities",result);
-            try {
-                JSONObject data=new JSONObject(result);
-                if (data.optString("status_code").equals("2000")) {
-                    JSONArray body=data.optJSONArray("body");
-
-                    dataList = new ArrayList<>();
-                    for (int i = 0; i < body.length(); i++) {
-                        JSONObject temp= body.getJSONObject(i);
-                        dataList.add(temp.getString("itemValue"));
-                    }
-                    adapter2=new ArrayAdapter(getApplicationContext(),R.layout.simpledropdown, dataList.toArray());
-                    txt_refer_city.setAdapter(adapter2);
-                    adapter.notifyDataSetChanged();
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
+        });
 
-        }
+        queue.add(request);
     }
+
+    private void setCityAdapter() {
+        StringRequest request = new StringRequest(Util.FETCH_APP_CITY, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                cityList = new ArrayList<>();
+
+                try {
+                    JSONObject res = new JSONObject(response);
+                    JSONArray data = res.getJSONObject("body").getJSONArray("data");
+                    for (int i = 0; i < data.length(); i++) {
+                        if (!data.getJSONObject(i).getString("item_value").equals("Others"))
+                            cityList.add(data.getJSONObject(i).getString("item_value").toUpperCase());
+                    }
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(ReferralActivity.this, android.R.layout.simple_dropdown_item_1line, cityList);
+                    txt_refer_city.setAdapter(adapter);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        queue.add(request);
+    }
+
+
 }
 
