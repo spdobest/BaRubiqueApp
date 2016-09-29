@@ -256,12 +256,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             if (constantKey == null) {
                 textView.setText(value);
             } else {
-                if(constantKey.equals(Constant.ANNUAL_INCOME) && !value.isEmpty() && value != " " && value != "lacs") {
-                    value = value + " lacs";
-                }else if(constantKey.equals(Constant.TOTAL_EXPERIENCE)&& !value.isEmpty() && value != " " && value != "years") {
-                    value = value + " years";
-                }
-
                 setSomeStringBold(textView, constantKey, value);
             }
         }
