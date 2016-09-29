@@ -42,23 +42,20 @@ import java.util.List;
 import java.util.Map;
 
 public class PersonalInformationEditDialog extends DialogFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
-    private EditText etName, etEmail, etPhone, etAddress1, etAddress2, etAddress3, etPincode, etPAN, etAadhar, etPassprot, etOtherProfession;
-    private AppCompatSpinner spinnerProfession, spinnerState;
-    private AutoCompleteTextView autoCompleteCity;
+    private EditText etName, etEmail, etPhone, etAddress1, etAddress2, etAddress3, etPincode, etPAN, etAadhar, etPassprot;
+    private EditText etAnnualIncome, etTotalExperience;
+    private AppCompatSpinner spinnerProfession, spinnerState, spinnerOccupation;
+    private AutoCompleteTextView autoCompleteCity, autoCompleteCompanyName;
     private Button btnSave, btnCancel;
     private ProfileHelper profileHelper;
     private RequestQueue queue;
     private String mapId, state, stateId;
     private JSONArray stateJsonArray;
-    private ArrayAdapter<String> stateAdapter;
-    private ArrayAdapter<String> cityAdapter;
-    private ArrayAdapter<String> professionAdapter;
+    private ArrayAdapter<String> stateAdapter, cityAdapter, professionAdapter, occupationAdapter, companyListAdapter;
 
     private List<String> stateList = new ArrayList<String>();
     private List<String> cityList = new ArrayList<String>();
-    private List<String> professionList = new ArrayList<String>();
-    private AppCompatSpinner spinnerOccupation;
-    private ArrayAdapter<String> occupationAdapter;
+    private List<String> companyList = new ArrayList<String>();
 
 
     @Override
@@ -73,6 +70,7 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View inflaterView = inflater.inflate(R.layout.dialog_edit_personal_info, null);
         getDialog().setTitle(getString(R.string.personal_information));
+
         setUpUiComponents(inflaterView);
         setCancelable(true);
         queue = Volley.newRequestQueue(getActivity());
@@ -82,6 +80,9 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
         setProfessionAdapter();
         setOccupationAdapter();
         getStateValuesFromServerAndSetStateAdapter();
+
+        // TODO
+        // getCompanyList();
 
         setValuesForUI(profileHelper);
 
@@ -117,9 +118,6 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
-
 
                 professionAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, occupation);
                 professionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -283,6 +281,10 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
         etAddress3.setText(profileHelper.getAddress3());
         etPincode.setText(profileHelper.getPincode());
 
+        autoCompleteCompanyName.setText(profileHelper.getCompanyName());
+        etAnnualIncome.setText(profileHelper.getAnnualIncome());
+        etTotalExperience.setText(profileHelper.getTotalExperience());
+
         String previousState = profileHelper.getState();
         if (previousState != null) {
             for (int i = 0; i < stateList.size(); i++) {
@@ -292,17 +294,12 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
                 }
             }
         }
-
-
-
     }
 
     private void setUpUiComponents(View inflaterView) {
         etName = (EditText) inflaterView.findViewById(R.id.et_name);
         etEmail = (EditText) inflaterView.findViewById(R.id.et_email);
         etPhone = (EditText) inflaterView.findViewById(R.id.et_phone);
-
-        etOtherProfession = (EditText) inflaterView.findViewById(R.id.et_other_occupation);
 
         etAddress1 = (EditText) inflaterView.findViewById(R.id.et_address1);
         etAddress2 = (EditText) inflaterView.findViewById(R.id.et_address2);
@@ -315,15 +312,19 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
         etAadhar = (EditText) inflaterView.findViewById(R.id.et_aadhar);
         etPassprot = (EditText) inflaterView.findViewById(R.id.et_passport);
 
+        etAnnualIncome = (EditText) inflaterView.findViewById(R.id.et_annual_income);
+        etTotalExperience = (EditText) inflaterView.findViewById(R.id.et_total_experience);
+
+        autoCompleteCompanyName = (AutoCompleteTextView) inflaterView.findViewById(R.id.auto_complete_company_name);
+        autoCompleteCompanyName.setThreshold(2);
+
         spinnerProfession = (AppCompatSpinner) inflaterView.findViewById(R.id.spinner_profession);
         spinnerProfession.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String profession = adapterView.getItemAtPosition(i).toString();
                 if (profession.equalsIgnoreCase(Constant.OTHERS)) {
-                    etOtherProfession.setVisibility(View.VISIBLE);
-                } else {
-                    etOtherProfession.setVisibility(View.GONE);
+                    //TODO
                 }
             }
 
@@ -341,6 +342,7 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
 
         autoCompleteCity = (AutoCompleteTextView) inflaterView.findViewById(R.id.autocomplete_city);
         autoCompleteCity.setThreshold(1);
+
 
         btnCancel = (Button) inflaterView.findViewById(R.id.btn_cancel);
         btnSave = (Button) inflaterView.findViewById(R.id.btn_save);
@@ -391,14 +393,23 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
 
                 String profession = spinnerProfession.getSelectedItem().toString();
                 if (profession != null) {
-                    if (profession.equals(Constant.OTHERS)) {
-                        profession = etOtherProfession.getText().toString();
-                    }
                     profileHelper.setProfession(profession);
                 }
 
                 String occupation = spinnerOccupation.getSelectedItem().toString();
                 profileHelper.setOccupation(occupation);
+
+                if (autoCompleteCompanyName.getText() != null) {
+                    profileHelper.setCompanyName(autoCompleteCompanyName.getText().toString());
+                }
+
+                if (etAnnualIncome.getText() != null) {
+                    profileHelper.setAnnualIncome(etAnnualIncome.getText().toString());
+                }
+
+                if (etTotalExperience.getText() != null) {
+                    profileHelper.setTotalExperience(etTotalExperience.getText().toString());
+                }
 
                 setValuesToJson();
 
@@ -453,6 +464,73 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
         queue.add(serverValues);
     }
 
+    private void getCompanyList() {
+        JSONObject jsonCityRequest = new JSONObject();
+        try {
+            jsonCityRequest.put(Util.utoken, Helper.getStringSharedPreference(Util.utoken, getActivity()));
+            //TODO
+            jsonCityRequest.put("source_id", stateId);
+            jsonCityRequest.put("map_id", mapId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest serverValues = new JsonObjectRequest(Request.Method.POST, Util.GET_CITY_LIST, jsonCityRequest,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if (response.opt(Constant.STATUS_CODE) != null && response.opt(Constant.MSG) != null) {
+                            try {
+
+                                String status, msg;
+                                status = response.getString(Constant.STATUS_CODE);
+                                msg = response.getString(Constant.MSG);
+                                if (status.equals(Constant.STATUS_2000) && msg.equals(Constant.SUCCESS)) {
+                                    JSONObject company;
+                                    JSONObject body = response.getJSONObject(Constant.BODY);
+
+                                    // TODO
+                                    JSONArray companyJsonArray = body.getJSONArray("company");
+
+                                    companyList.clear();
+
+                                    for (int i = 0; i < companyJsonArray.length(); i++) {
+                                        company = companyJsonArray.getJSONObject(i);
+                                        //TODO
+                                        companyList.add(company.getString("item_value"));
+                                    }
+                                    companyListAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, companyList);
+                                    autoCompleteCity.setAdapter(cityAdapter);
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                }
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("Accept", "application/json");
+                params.put("Content-type", "application/json");
+                params.put("Cookie", "utoken=" + Helper.getStringSharedPreference(Util.utoken, getActivity()));
+
+                return params;
+            }
+        };
+        serverValues.setRetryPolicy(new DefaultRetryPolicy(15000, 1, 1f));
+        queue.add(serverValues);
+
+    }
 
     private void getCityList() {
 
@@ -529,8 +607,6 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
             customer = body.getJSONObject("customer");
 
             customer.put("name", profileHelper.getName());
-            customer.put("profession", profileHelper.getProfession());
-            customer.put("occupation", profileHelper.getOccupation());
 
             customer.put("pan", profileHelper.getPan());
             customer.put("aadhar_number", profileHelper.getAadhar_number());
@@ -542,6 +618,12 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
             customer.put("city", profileHelper.getCity());
             customer.put("state", profileHelper.getState());
             customer.put("pincode", profileHelper.getPincode());
+
+            customer.put("profession", profileHelper.getProfession());
+            customer.put("occupation", profileHelper.getOccupation());
+            customer.put("annual_income", profileHelper.getAnnualIncome());
+            customer.put("company_name", profileHelper.getCompanyName());
+            customer.put("total_experience", profileHelper.getTotalExperience());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -564,11 +646,6 @@ public class PersonalInformationEditDialog extends DialogFragment implements Vie
         } else if (autoCompleteCity.getText().toString().isEmpty()) {
             if (focusView == null) {
                 focusView = autoCompleteCity;
-            }
-        } else if (etOtherProfession.getVisibility() == View.VISIBLE && etOtherProfession.getText().toString().isEmpty()) {
-            etOtherProfession.setError(getString(R.string.empty_error));
-            if (focusView == null) {
-                focusView = etOtherProfession;
             }
         }
 

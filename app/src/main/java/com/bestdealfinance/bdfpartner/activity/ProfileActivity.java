@@ -46,6 +46,7 @@ import io.fabric.sdk.android.Fabric;
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView profileName, profileEmail, profileProfession, profileAddress1, profileAddress2, profileCityAndPin, profileState, profileMobile, profileEdit, profilePAN, profileAadhar, profilePassport;
+    private TextView professionCompany, professionAnnualIncome, professionTotalExperience;
     private TextView bankHolderName, bankName, bankBranch, bankAccountNumber, bankPAN, bankEdit;
     private Button btnChangePassword, btnLogout;
     private RequestQueue queue;
@@ -185,6 +186,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
             profileHelper.setProfession(checkForNullAndSet(customer, "profession", null, profileProfession));
             profileHelper.setOccupation(checkForNullAndSet(customer, "occupation", null, profileOccupation));
+            profileHelper.setCompanyName(checkForNullAndSet(customer, "company_name", Constant.COMPANY_NAME, professionCompany));
+            profileHelper.setAnnualIncome(checkForNullAndSet(customer, "annual_income", Constant.ANNUAL_INCOME, professionAnnualIncome));
+            profileHelper.setTotalExperience(checkForNullAndSet(customer, "total_experience", Constant.TOTAL_EXPERIENCE, professionTotalExperience));
+
+
             profileHelper.setPan(checkForNullAndSet(customer, "pan", Constant.PAN, profilePAN));
             profileHelper.setAadhar_number(checkForNullAndSet(customer, "aadhar_number", Constant.AADHAR, profileAadhar));
             profileHelper.setPassport_number(checkForNullAndSet(customer, "passport_number", Constant.PASSPORT, profilePassport));
@@ -239,7 +245,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     private String checkForNullAndSet(JSONObject jsonObject, String jsonKey, String constantKey, TextView textView) throws JSONException {
         String value = null;
-        String sourceString;
         if (jsonObject.isNull(jsonKey)) {
             if (constantKey == null) {
                 textView.setText(Constant.DASHED_LINE);
@@ -251,6 +256,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             if (constantKey == null) {
                 textView.setText(value);
             } else {
+                if(constantKey.equals(Constant.ANNUAL_INCOME) && !value.isEmpty() && value != " " && value != "lacs") {
+                    value = value + " lacs";
+                }else if(constantKey.equals(Constant.TOTAL_EXPERIENCE)&& !value.isEmpty() && value != " " && value != "years") {
+                    value = value + " years";
+                }
+
                 setSomeStringBold(textView, constantKey, value);
             }
         }
@@ -272,6 +283,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         profilePAN = (TextView) findViewById(R.id.profile_PAN);
         profileAadhar = (TextView) findViewById(R.id.profile_aadhar);
         profilePassport = (TextView) findViewById(R.id.profile_passport);
+
+        professionCompany = (TextView) findViewById(R.id.professional_company);
+        professionAnnualIncome = (TextView) findViewById(R.id.professional_annual_income);
+        professionTotalExperience = (TextView) findViewById(R.id.professional_total_experience);
 
         bankHolderName = (TextView) findViewById(R.id.bank_holder_name);
         bankName = (TextView) findViewById(R.id.bank_name);

@@ -43,4 +43,7 @@ public class Constant {
 
 
     public static final String USER_CLASS = "ba_class";
+    public static final String COMPANY_NAME = "Company Name";
+    public static final String ANNUAL_INCOME = "Annual Income";
+    public static final String TOTAL_EXPERIENCE = "Total Experience";
 }

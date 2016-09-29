@@ -55,21 +55,6 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/profile_profession"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/profile_name"
-                        android:text="Profession"
-                        android:textSize="12sp" />
-                    <TextView
-                        android:id="@+id/profile_occupation"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/profile_profession"
-                        android:text="Occupation"
-                        android:textSize="12sp" />
-
-                    <TextView
                         android:id="@+id/profile_edit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -131,8 +116,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:text="Address"
-                    android:textStyle="bold"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/profile_address1"
                     android:layout_width="match_parent"
@@ -162,6 +148,53 @@
                     android:layout_height="wrap_content"
                     android:text="-------"
                     android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Professional Details"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/profile_profession"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Profession"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/profile_occupation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Occupation"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/professional_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textSize="12sp"
+                    android:text="Company Name - Rubique"/>
+
+
+                <TextView
+                    android:id="@+id/professional_annual_income"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="Annual Income - 10Lac"/>
+
+
+                <TextView
+                    android:id="@+id/professional_total_experience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="Total Experience - 5 years"/>
 
             </LinearLayout>
 

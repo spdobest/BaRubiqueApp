@@ -190,7 +190,7 @@
     <string name="nav_drawer_products">Products</string>
     <string name="nav_drawer_contact_us">Contact Us</string>
     <string name="nav_drawer_share_with_friends">Share with Friends</string>
-    <string name="personal_information">Personal Information</string>
+    <string name="personal_information">Personal and Professional Information</string>
     <string name="bank_information">Bank Information</string>
     <string name="save">Save</string>
     <string name="empty_error">Empty</string>
