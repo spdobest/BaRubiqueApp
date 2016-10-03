@@ -15,8 +15,8 @@ android {
         applicationId "com.bestdealfinance.bdfpartner"
         minSdkVersion 15
         targetSdkVersion 24
-        versionCode 83
-        versionName "2.0.13"
+        versionCode 84
+        versionName "2.0.14"
         multiDexEnabled true
     }
     buildTypes {

@@ -37,7 +37,7 @@ public class DashBoard extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.txt_dashboard)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.txt_referral)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.txt_payouts)));
+        //tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.txt_payouts)));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
