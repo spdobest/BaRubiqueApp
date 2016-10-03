@@ -128,6 +128,7 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
     private String str_city, str_amount;
     private RequestQueue queue;
     private List<String> cityList;
+    private boolean isLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -450,8 +451,12 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
         noregisterLayout = (LinearLayout) findViewById(R.id.ba_details_layout);
         if (Helper.getStringSharedPreference(Constant.UTOKEN, this).equals("")) {
             noregisterLayout.setVisibility(View.VISIBLE);
+            isLogin = false;
+
         } else {
             noregisterLayout.setVisibility(View.GONE);
+            isLogin = true;
+
         }
 
         setAllCityAdapter();
@@ -505,11 +510,18 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
                         }
                     }
 
-                    if(!flag)
+                    if(!flag && !isLogin)
                     {
-                        Toast.makeText(ReferralActivity.this, "Please select city from dropdown only", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ReferralActivity.this, "Please select city from suggestion only", Toast.LENGTH_LONG).show();
                         return;
                     }
+
+                    if(str_city.equals("Select City"))
+                    {
+                        Toast.makeText(ReferralActivity.this, "Please select city", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
 
 
                     Bundle bundle1 = new Bundle();
@@ -574,6 +586,9 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
             return false;
         }
         if (Util.isRegistered(getApplicationContext()).equals("")) {
+
+
+            isLogin = false;
             str_sname = sname.getText().toString().trim();
             str_sphone = sphone.getText().toString().trim();
             str_scity = scity.getText().toString().trim();
@@ -627,205 +642,9 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private class ProductAsyncTask extends AsyncTask<Void, Void, String> {
-
-        @Override
-        protected String doInBackground(Void... params) {
-
-            InputStream inputStream = null;
-            String result = "", result1 = "";
-            try {
-                HttpClient httpclient = new DefaultHttpClient();
-
-                HttpPost httpPost = new HttpPost(Util.PRODUCT);
-                String json = "";
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.accumulate("product_type_id", selected_product_type_id + "");
-
-                json = jsonObject.toString();
-
-                StringEntity se = new StringEntity(json);
-
-                // 6. set httpPost Entity
-                httpPost.setEntity(se);
-
-                // 7. Set some headers to inform server about the type of the content
-                httpPost.setHeader("Accept", "application/json");
-                httpPost.setHeader("Content-type", "application/json");
-                httpPost.addHeader("Cookie", "utoken=" + pref.getString(Util.utoken, ""));
-                // 8. Execute POST request to the given URL
-                HttpResponse httpResponse = httpclient.execute(httpPost);
-
-                // 9. receive response as inputStream
-                inputStream = httpResponse.getEntity().getContent();
-
-                // 10. convert inputstream to string
-                if (inputStream != null) {
-                    result = Util.convertInputStreamToString(inputStream);
-                } else
-                    result = "Did not work!";
 
 
-            } catch (Exception e) {
-                Log.d("InputStream", e.getLocalizedMessage());
-            }
-            return result;
-        }
 
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            String status, msg, utoken;
-            try {
-                JSONObject output1 = new JSONObject(result);
-                if (output1.opt("status_code") != null && output1.opt("msg") != null) {
-                    status = output1.getString("status_code");
-                    msg = output1.getString("msg");
-
-                    if (status.equals("2000") && msg.equals("Success")) {
-                        JSONArray jsonArray = new JSONArray(output1.getString("body"));
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jObj = jsonArray.getJSONObject(i);
-                            controller.insertProductByProductType(jObj.getString("id"), jObj.getString("name"), selected_product_type_id + "");
-                        }
-
-                        array_product = controller.getProductByProductType(selected_product_type_id + "");
-                    }
-                }
-            } catch (JSONException e) {
-
-            }
-        }
-    }
-
-    private void checkForNote() {
-        if (txt_refer_notes.getText().toString().trim().isEmpty()) {
-            str_notes = "";
-        } else {
-            str_notes = txt_refer_notes.getText().toString().trim();
-        }
-        if (chb_self_referral.isChecked()) {
-            chb_val = 1;
-        } else {
-            chb_val = 0;
-        }
-        new HttpAsyncTask().execute();
-    }
-
-    private class HttpAsyncTask extends AsyncTask<Void, Void, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            waiting_layout.setVisibility(View.VISIBLE);
-            animation.start();
-        }
-
-        @Override
-        protected String doInBackground(Void... params) {
-
-            InputStream inputStream = null;
-            String result = "", result1 = "";
-            try {
-                HttpClient httpclient = new DefaultHttpClient();
-
-                HttpPost httpPost = new HttpPost(Util.REFER_A_LEAD);
-
-                String json = "";
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.accumulate("salutation", str_salutation);
-                jsonObject.accumulate("name", str_name);
-                jsonObject.accumulate("email", str_email);
-                jsonObject.accumulate("phone", str_phone);
-                jsonObject.accumulate("city", str_city);
-                jsonObject.accumulate("amount", str_amount);
-                jsonObject.accumulate("product_type_sought", selected_loan_code);
-                jsonObject.accumulate("product_id", selected_product_id);
-                jsonObject.accumulate("submitter_email", str_submitter_email);
-                jsonObject.accumulate("self_refferal", chb_val);
-                jsonObject.accumulate("note", str_notes);
-
-                json = new String(jsonObject.toString().getBytes("ISO-8859-1"), "UTF-8");
-
-                StringEntity se = new StringEntity(json);
-
-                // 6. set httpPost Entity
-                httpPost.setEntity(se);
-
-                // 7. Set some headers to inform server about the type of the content
-                httpPost.setHeader("Accept", "application/json");
-                httpPost.setHeader("Content-type", "application/json");
-
-                httpPost.addHeader("Cookie", "utoken=" + pref.getString(Util.utoken, ""));
-
-                // 8. Execute POST request to the given URL
-                HttpResponse httpResponse = httpclient.execute(httpPost);
-
-                // 9. receive response as inputStream
-                inputStream = httpResponse.getEntity().getContent();
-
-                // 10. convert inputstream to string
-                if (inputStream != null) {
-                    result = Util.convertInputStreamToString(inputStream);
-                } else
-                    result = "Did not work!";
-
-                System.out.println("!!!!!!!!!!!!!!!!Disha result= " + result);
-
-            } catch (Exception e) {
-                Log.d("InputStream", e.getLocalizedMessage());
-            }
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            waiting_layout.setVisibility(View.GONE);
-            animation.stop();
-
-            String status, msg, utoken;
-            try {
-                JSONObject output1 = new JSONObject(result);
-                if (output1.opt("status_code") != null && output1.opt("msg") != null) {
-                    status = output1.getString("status_code");
-                    msg = output1.getString("msg");
-                    if (msg.equalsIgnoreCase("Success")) {
-//                        AlertDialog.Builder builder = new AlertDialog.Builder(ReferralActivity.this);
-//                        builder.setTitle("Message");
-//                        builder.setCancelable(false);
-//                        builder.setMessage("Lead successfully submitted.");//output1.getString("body"));
-//                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                finish();
-//                            }
-//                        });
-//                        builder.show();
-
-                        startActivity(new Intent(ReferralActivity.this, CongratulationScreen.class));
-                        finish();
-                    } else {
-                        if (msg.equals("Failed")) {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(ReferralActivity.this);
-                            builder.setTitle("Message");
-                            builder.setCancelable(false);
-                            builder.setMessage(output1.getString("body"));
-                            builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                }
-                            });
-                            builder.show();
-                        }
-                    }
-                }
-            } catch (JSONException e) {
-
-                System.out.println("JSONException " + e);
-            }
-
-        }
-    }
 
 
 
@@ -868,7 +687,7 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onResponse(String response) {
                 cityList = new ArrayList<>();
-
+                cityList.add("Select City");
                 try {
                     JSONObject res = new JSONObject(response);
                     JSONArray data = res.getJSONObject("body").getJSONArray("data");

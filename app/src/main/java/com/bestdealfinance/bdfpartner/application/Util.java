@@ -159,6 +159,7 @@ public class Util {
     public static final String  FETCH_ALL_CITY = ROOT_URL_V2 + "Profile/city";
     public static final String  FETCH_APP_CITY = ROOT_URL_V2 + "Profile/applicationcity";
     public static final String FETCH_OCCUPATION = ROOT_URL_V2 + "Profile/occupation";
+    public static final String TNC_URL = ROOT_URL_V2 + "ba_tc.html";
     public static String o_id = "";
     public static String mobile = "";
     public static String ltoken = "";

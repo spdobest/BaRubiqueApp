@@ -1,5 +1,6 @@
 package com.bestdealfinance.bdfpartner.activity;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -15,6 +16,7 @@ import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -484,6 +486,21 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_tnc);
+        final WebView webView = (WebView) dialog.findViewById(R.id.tncWebview);
+
+
+        findViewById(R.id.tncLink).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webView.loadUrl(Util.TNC_URL);
+                dialog.show();
+            }
+        });
+
 
 
         Tracker mTracker = Helper.getDefaultTracker(this);
