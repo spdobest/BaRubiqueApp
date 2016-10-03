@@ -57,16 +57,16 @@ public class Util {
     //TODO Production URLS
 
 
-    //public static final String ROOT_URL_FI = "https://prod-fiapi.rubique.com/";
-    //public static final String S3_URL = "https://staticcontent.rubique.com/json/";
-    //public static final String ROOT_URL_V2 = "https://api.rubique.com/";
+    public static final String ROOT_URL_FI = "https://prod-fiapi.rubique.com/";
+    public static final String S3_URL = "https://staticcontent.rubique.com/json/";
+    public static final String ROOT_URL_V2 = "https://api.rubique.com/";
 
 
     //TODO Test URLS
 
-    public static final String ROOT_URL_V2 = "http://testapi-newarch.rubique.com/";
-    public static final String ROOT_URL_FI = "http://testfiapi.rubique.com/";
-    public static final String S3_URL = "https://staticcontent.rubique.com/json/";
+    //public static final String ROOT_URL_V2 = "http://testapi-newarch.rubique.com/";
+    //public static final String ROOT_URL_FI = "http://testfiapi.rubique.com/";
+    //public static final String S3_URL = "https://staticcontent.rubique.com/json/";
 
 
     public static final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
