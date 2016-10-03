@@ -194,8 +194,8 @@ public class Helper {
                 return new Intent(context, DashBoard.class).putExtra("val", context.getString(R.string.txt_dashboard));
             case R.id.nav_referral:
                 return new Intent(context, DashBoard.class).putExtra("val", context.getString(R.string.txt_referral));
-            case R.id.nav_payouts:
-                return new Intent(context, DashBoard.class).putExtra("val", context.getString(R.string.txt_payouts));
+           /* case R.id.nav_payouts:
+                return new Intent(context, DashBoard.class).putExtra("val", context.getString(R.string.txt_payouts));*/
             case R.id.nav_training:
                 return new Intent(context, TrainingActivity.class);
             case R.id.nav_products:

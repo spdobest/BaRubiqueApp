@@ -175,7 +175,11 @@
                         android:id="@+id/autocomplete_city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="City" />
+                        android:hint="City"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:inputType="text"
+                        />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
