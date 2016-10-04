@@ -333,7 +333,6 @@ public class RegisterActivity extends AppCompatActivity {
                         animation.start();
                         registerButton.setVisibility(View.GONE);
 
-                        Toast.makeText(RegisterActivity.this, "Registration Success, Trying to Login..", Toast.LENGTH_LONG).show();
                         JSONObject reqObject = new JSONObject();
                         reqObject.put("name", fullNameView.getText().toString().trim());
                         reqObject.put("email", emailView.getText().toString().trim());
@@ -445,26 +444,18 @@ public class RegisterActivity extends AppCompatActivity {
 
                                     final String msg = errorObject.getString("msg");
                                     final String body = errorObject.getString("body");
-                                    Helper.translate(msg, RegisterActivity.this, new Translator() {
-                                        @Override
-                                        public void onTranslate(final String value1) {
-                                            Helper.translate(body, RegisterActivity.this, new Translator() {
-                                                @Override
-                                                public void onTranslate(String value2) {
 
-                                                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                                    builder.setTitle(value1);
-                                                    builder.setMessage(value2);
-                                                    builder.setNeutralButton(R.string.txt_ok, new DialogInterface.OnClickListener() {
-                                                        public void onClick(DialogInterface dialog, int which) {
-                                                            dialog.dismiss();
-                                                        }
-                                                    });
-                                                    builder.show();
-                                                }
-                                            });
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                                    builder.setTitle(msg);
+                                    builder.setMessage(body);
+                                    builder.setNeutralButton(R.string.txt_ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
                                         }
                                     });
+                                    builder.show();
+
+
 
 
                                 } catch (JSONException e) {
