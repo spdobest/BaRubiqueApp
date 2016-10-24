@@ -75,7 +75,7 @@ public class CongratulationScreen extends AppCompatActivity implements View.OnCl
 
         setContentView(R.layout.activity_congratulation_screen);
         bundle = getIntent().getExtras();
-
+        Log.d("Bundle",""+bundle.getString("product_type"));
 
         bundle.putString("source", "BA_APP");
         queue = Volley.newRequestQueue(this);
@@ -90,6 +90,11 @@ public class CongratulationScreen extends AppCompatActivity implements View.OnCl
         }
         //pref = getSharedPreferences(Util.MY_PREFERENCES, Context.MODE_PRIVATE);
 
+        if(bundle.getString("type").equals("51")||bundle.getString("type").equals("52")||bundle.getString("type").equals("53"))
+        {
+            payout_layout.setVisibility(View.GONE);
+            congo_amount.setVisibility(View.GONE);
+        }
 
         if (bundle.getString("bank_logo") != null) {
             imgLoanType.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -118,6 +123,7 @@ public class CongratulationScreen extends AppCompatActivity implements View.OnCl
         congoPhone.setText(Html.fromHtml(getString(R.string.txt_phone_number) + " : <b>" + bundle.getString("phone") + "</b>"));
         if (bundle.getString("type").equals("11")) {
             congo_amount.setVisibility(View.GONE);
+
         } else {
             congo_amount.setText(Html.fromHtml(getString(R.string.txt_amount) + " : <b>" + Util.parseRs(bundle.getString("amount", "")) + "</b>"));
         }

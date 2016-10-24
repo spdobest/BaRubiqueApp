@@ -189,9 +189,6 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
     }
 
 
-
-
-
     private void initialize_products() {
 //        ArrayList<HashMap<String, String>> product_type_data=new ArrayList<>();
 //        HashMap<String,String> temp=new HashMap<>();
@@ -217,20 +214,55 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
 //        product_type_data.add(temp6);
 //
 //        initialize_viewpager(product_type_data);
-        if (Util.product_type_data == null) {
-            if (Util.isNetworkAvailable(getApplicationContext())) {
-                APIUtils.ProductTypeAsyncTask task1 = new APIUtils.ProductTypeAsyncTask(new APIUtils.OnTaskCompletedProducts() {
-                    @Override
-                    public void OnTaskCompletedProducts() {
-                        initialize_viewpager(Util.product_type_data);
-                    }
-                });
-                task1.executeOnExecutor(Util.threadPool);
-            }
-        } else {
-            Logs.LogD("Refer", "Products Found");
-            initialize_viewpager(Util.product_type_data);
-        }
+        Util.product_type_data = new ArrayList<>();
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("id","11");
+        map.put("name","Credit Card");
+        Util.product_type_data.add(0,map);
+        map = new HashMap<String, String>();
+        map.put("id","22");
+        map.put("name","Car Loan");
+        Util.product_type_data.add(1,map);
+        map = new HashMap<String, String>();
+        map.put("id","23");
+        map.put("name","Two Wheeler Loan");
+        Util.product_type_data.add(2,map);
+        map = new HashMap<String, String>();
+        map.put("id","25");
+        map.put("name","Personal Loan");
+        Util.product_type_data.add(3,map);
+        map = new HashMap<String, String>();
+        map.put("id","26");
+        map.put("name","Home Loan");
+        Util.product_type_data.add(4,map);
+        map = new HashMap<String, String>();
+        map.put("id","28");
+        map.put("name","Loan Against Property");
+        Util.product_type_data.add(5,map);
+        /*map = new HashMap<String, String>();
+        map.put("id","29");
+        map.put("name","Commercial Vehicle Finance");
+        Util.product_type_data.add(6,map);*/
+        map = new HashMap<String, String>();
+        map.put("id","39");
+        map.put("name","Business Loan");
+        Util.product_type_data.add(6,map);
+        map = new HashMap<String, String>();
+        map.put("id","51");
+        map.put("name","Life Insurance");
+        Util.product_type_data.add(7,map);
+        map = new HashMap<String, String>();
+        map.put("id","52");
+        map.put("name","General Insurance");
+        Util.product_type_data.add(8,map);
+        map = new HashMap<String, String>();
+        map.put("id","53");
+        map.put("name","Health Insurance");
+        Util.product_type_data.add(9,map);
+
+
+        initialize_viewpager(Util.product_type_data);
+
     }
 
     private void initialize_viewpager(final ArrayList<HashMap<String, String>> productList) {
@@ -262,7 +294,7 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
                 currItem = position;
                 selected_loan_code = productList.get(position).get("id");
                 selected_loan_name = productList.get(position).get("name");
-                if (selected_loan_code.equals("11")) {
+                if (selected_loan_code.equals("11") || selected_loan_code.equals("51") || selected_loan_code.equals("52") || selected_loan_code.equals("53")) {
                     txt_refer_amount.setVisibility(View.GONE);
                     txt_refer_amount.setText("");
                     str_amount = "";
@@ -371,6 +403,26 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
                     t_view.setText(mproductsList.get(position).get("name"));
                     container.addView(mPage);
                     break;
+
+                case "51":
+                    //Life Insurance
+                    Glide.with(getApplicationContext()).load(R.drawable.life_insurance).into(view);
+                    t_view.setText(mproductsList.get(position).get("name"));
+                    container.addView(mPage);
+                    break;
+                case "52":
+                    //General Insurance
+                    Glide.with(getApplicationContext()).load(R.drawable.general_insurance).into(view);
+                    t_view.setText(mproductsList.get(position).get("name"));
+                    container.addView(mPage);
+                    break;
+                case "53":
+                    //Health Insurance
+                    Glide.with(getApplicationContext()).load(R.drawable.health_insurance).into(view);
+                    t_view.setText(mproductsList.get(position).get("name"));
+                    container.addView(mPage);
+                    break;
+
                 default:
                     //ANY Other Loan
                     Glide.with(getApplicationContext()).load(R.drawable.bl).into(view);
@@ -488,6 +540,15 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
             case "39":
                 defaultItem = 6;
                 break;
+            case "51":
+                defaultItem = 7;
+                break;
+            case "52":
+                defaultItem = 8;
+                break;
+            case "53":
+                defaultItem = 9;
+                break;
         }
     }
 
@@ -502,38 +563,34 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
 
 
                     boolean flag = false;
-                    for(int i=0;i<cityList.size();i++)
-                    {
-                        if(scity.getText().toString().trim().toUpperCase().equals(cityList.get(i).toString().toUpperCase()))
-                        {
-                            flag=true;
+                    for (int i = 0; i < cityList.size(); i++) {
+                        if (scity.getText().toString().trim().toUpperCase().equals(cityList.get(i).toString().toUpperCase())) {
+                            flag = true;
                         }
                     }
 
-                    if(!flag && !isLogin)
-                    {
+                    if (!flag && !isLogin) {
                         Toast.makeText(ReferralActivity.this, "Please select city from suggestion only", Toast.LENGTH_LONG).show();
                         return;
                     }
 
-                    if(str_city.equals("Select City"))
-                    {
+                    if (str_city.equals("Select City")) {
                         Toast.makeText(ReferralActivity.this, "Please select city", Toast.LENGTH_LONG).show();
                         return;
                     }
-
 
 
                     Bundle bundle1 = new Bundle();
                     bundle1.putString("type", selected_loan_code);
                     if (selected_loan_code.equals(selectProductTypeBundle)) {
                         bundle1.putString("product_id", selectedProductCode);
-                        bundle1.putString("product_type", selected_loan_code);
                         bundle1.putString("product_name", bundle.getString("product_name", null));
                         bundle1.putString("bank_logo", bundle.getString("bank_logo", null));
                     } else {
                         bundle1.putString("product_id", "");
+
                     }
+                    bundle1.putString("product_type", selected_loan_code);
                     bundle1.putString("amount", str_amount.replaceAll(",", ""));
                     bundle1.putString("name", str_name);
                     bundle1.putString("email", str_email);
@@ -641,11 +698,6 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
             return false;
         }
     }
-
-
-
-
-
 
 
     private void setAllCityAdapter() {
