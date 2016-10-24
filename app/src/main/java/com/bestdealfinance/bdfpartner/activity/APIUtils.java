@@ -28,22 +28,24 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by vikas on 15/3/16.
  */
-public class APIUtils  {
+public class APIUtils {
 
     static DBHelper controller;
 
 
-
-    public interface OnTaskCompletedProducts{
+    public interface OnTaskCompletedProducts {
         void OnTaskCompletedProducts();
     }
-    public interface OnTaskCompletedCity{
+
+    public interface OnTaskCompletedCity {
         void OnTaskCompletedCity();
     }
+
     public static class GetCity extends AsyncTask<String, Void, String> {
         private OnTaskCompletedCity listnerc;
         private String payload;
@@ -51,8 +53,10 @@ public class APIUtils  {
         public GetCity(OnTaskCompletedCity listnerc) {
             this.listnerc = listnerc;
         }
+
         public GetCity() {
         }
+
         @Override
         protected String doInBackground(String... params) {
             String response = "";
@@ -67,9 +71,9 @@ public class APIUtils  {
                 conn.setConnectTimeout(50000);
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
-                JSONObject post=new JSONObject();
-                post.put("list_id","10063");
-                Logs.LogD("Request",post.toString());
+                JSONObject post = new JSONObject();
+                post.put("list_id", "10063");
+                Logs.LogD("Request", post.toString());
                 Logs.LogD("Refer", "Sent the Request");
                 OutputStream os = conn.getOutputStream();
                 BufferedWriter writer = new BufferedWriter(
@@ -118,7 +122,7 @@ public class APIUtils  {
                                 cities.add(temp.getString("item_value"));
                             }
                             Util.city_names = cities;
-                            if (listnerc!=null) {
+                            if (listnerc != null) {
                                 listnerc.OnTaskCompletedCity();
                             }
                         }
@@ -132,12 +136,14 @@ public class APIUtils  {
 
 
     }
+
     public static class ProductTypeAsyncTask extends AsyncTask<Void, Void, String> {
         private OnTaskCompletedProducts listnerp;
 
         public ProductTypeAsyncTask(OnTaskCompletedProducts listnerp) {
             this.listnerp = listnerp;
         }
+
         public ProductTypeAsyncTask() {
         }
 
@@ -184,12 +190,13 @@ public class APIUtils  {
                         JSONArray jsonArray = new JSONArray(output1.getString("body"));
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jObj = jsonArray.getJSONObject(i);
-                            controller.insertProductType(jObj.getString("id"), jObj.getString("name"));
+                            HashMap<String, String> map = new HashMap<String, String>();
+                            map.put("id", jObj.getString("id"));
+                            map.put("name", jObj.getString("name"));
+                            Util.product_type_data.add(i, map);
+
                         }
-
-
-                        Util.product_type_data = controller.getAllProductName();
-                        if (listnerp!=null){
+                        if (listnerp != null) {
                             listnerp.OnTaskCompletedProducts();
                         }
 
@@ -213,20 +220,18 @@ public class APIUtils  {
         private String mob1;
         private TextView textview;
         private String product1;
-        String be,af;
+        String be, af;
         String key1;
 
-        public SendSMS(String code, String id, String name ,Context context,String mobile, String product) {
-            this.mContext=context;
-            this.code1=code;
-            this.mob1=mobile;
-            this.name1=name;
-            this.id1=id;
-            this.product1=product;
-            this.key1=code;
+        public SendSMS(String code, String id, String name, Context context, String mobile, String product) {
+            this.mContext = context;
+            this.code1 = code;
+            this.mob1 = mobile;
+            this.name1 = name;
+            this.id1 = id;
+            this.product1 = product;
+            this.key1 = code;
         }
-
-
 
 
         @Override
@@ -236,34 +241,34 @@ public class APIUtils  {
             try {
                 HttpClient client = new DefaultHttpClient();
 //                HttpGet request = new HttpGet();
-                String url=Util.ROOT_URL_FI+"dpr-bank/sms/send/mobile/msg?";
-                url=url+"msgId="+code1;
-                url=url+"&mobileNo="+mob1;
-                url=url+"&variables=";
-                String url1="";
-                if (code1.equals("2")){
-                    Logs.LogD("Code","Code2");
-                    url1=url1+name1+";";
-                    url1=url1+product1+";";
-                    url1=url1+id1;
+                String url = Util.ROOT_URL_FI + "dpr-bank/sms/send/mobile/msg?";
+                url = url + "msgId=" + code1;
+                url = url + "&mobileNo=" + mob1;
+                url = url + "&variables=";
+                String url1 = "";
+                if (code1.equals("2")) {
+                    Logs.LogD("Code", "Code2");
+                    url1 = url1 + name1 + ";";
+                    url1 = url1 + product1 + ";";
+                    url1 = url1 + id1;
                 }
-                if (code1.equals("3")){
-                    Logs.LogD("Code","Code3");
-                    url1=url1+name1+";";
-                    url1=url1+product1+";";
-                    url1=url1+id1;
+                if (code1.equals("3")) {
+                    Logs.LogD("Code", "Code3");
+                    url1 = url1 + name1 + ";";
+                    url1 = url1 + product1 + ";";
+                    url1 = url1 + id1;
                 }
-                if (code1.equals("5")){
-                    Logs.LogD("Code","Code3");
-                    url1=url1+name1+";";
-                    url1=url1+product1+";";
-                    url1=url1+id1;
+                if (code1.equals("5")) {
+                    Logs.LogD("Code", "Code3");
+                    url1 = url1 + name1 + ";";
+                    url1 = url1 + product1 + ";";
+                    url1 = url1 + id1;
                 }
-                if (code1.equals("8")){
-                    url1=url1+name1;
+                if (code1.equals("8")) {
+                    url1 = url1 + name1;
                 }
-                url1=URLEncoder.encode(url1,"UTF-8");
-                url=url+url1;
+                url1 = URLEncoder.encode(url1, "UTF-8");
+                url = url + url1;
                 Logs.LogD("Request", url);
                 HttpGet request = new HttpGet(url);
 //                request.setURI(new URI(value));
@@ -275,7 +280,7 @@ public class APIUtils  {
                     response += s;
                 }
             } catch (Exception e) {
-            Logs.LogD("Exception",e.getLocalizedMessage());
+                Logs.LogD("Exception", e.getLocalizedMessage());
             }
             Logs.LogD("City", "Complete City Load");
             return response;

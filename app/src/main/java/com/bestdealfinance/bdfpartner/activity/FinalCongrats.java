@@ -49,6 +49,14 @@ public class FinalCongrats extends AppCompatActivity {
 
         id.setText(getString(R.string.txt_your_tracking_id)+": "+bundle.getString("id", ""));
 
+
+
+        if(bundle.getString("type").equals("51")||bundle.getString("type").equals("52")||bundle.getString("type").equals("53"))
+        {
+            findViewById(R.id.payout_layout).setVisibility(View.GONE);
+
+        }
+
         if (bundle.getString("product_name")!=null){
             loan_text.setText(bundle.getString("product_name"));
             if(bundle.getString("amount").equals(""))
