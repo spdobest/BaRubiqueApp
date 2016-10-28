@@ -94,6 +94,7 @@ public class CongratulationScreen extends AppCompatActivity implements View.OnCl
         {
             payout_layout.setVisibility(View.GONE);
             congo_amount.setVisibility(View.GONE);
+            msgForCongratulation.setVisibility(View.GONE);
         }
 
         if (bundle.getString("bank_logo") != null) {
