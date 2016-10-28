@@ -54,6 +54,7 @@ public class FinalCongrats extends AppCompatActivity {
         if(bundle.getString("type").equals("51")||bundle.getString("type").equals("52")||bundle.getString("type").equals("53"))
         {
             findViewById(R.id.payout_layout).setVisibility(View.GONE);
+            findViewById(R.id.msg_for_congratulation).setVisibility(View.GONE);
 
         }
 
