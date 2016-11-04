@@ -1,2 +1,2 @@
 # README #
-### BuddyBuild ### [BuddyBuild](bubbybuild.com)
+### BuddyBuild ### [BuddyBuild](www.bubbybuild.com)
