@@ -415,11 +415,19 @@ public class OnBoardingActivity extends AppCompatActivity implements View.OnClic
                     tuple.put("list_item_id","");
                     tupleList.put(tuple);
                 }
+
                 tuple=new JSONObject();
                 tuple.put("base_id","115");
                 tuple.put("field_value",loan_amount);
                 tuple.put("list_item_id","");
                 tupleList.put(tuple);
+
+                tuple=new JSONObject();
+                tuple.put("base_id","25");
+                tuple.put("field_value", bundle.getString("city",""));
+                tuple.put("list_item_id","");
+                tupleList.put(tuple);
+
                 tuple=new JSONObject();
                 tuple.put("base_id","40");
                 tuple.put("field_value",str_company);
