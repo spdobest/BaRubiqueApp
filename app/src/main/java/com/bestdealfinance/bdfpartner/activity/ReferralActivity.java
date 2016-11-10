@@ -178,6 +178,7 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
 
         if(btnReferLead!=null)
         btnReferLead.setOnClickListener(this);
+        if(backArrow!=null)
         backArrow.setOnClickListener(this);
 
         Tracker mTracker = Helper.getDefaultTracker(this);
