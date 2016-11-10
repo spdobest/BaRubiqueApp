@@ -51,7 +51,7 @@ import java.util.List;
  * Created by disha on 16/2/16.
  */
 public class ReferralFragment extends Fragment implements View.OnClickListener {
-//    String[] myDataset = {"CAR LOAN","HOME LOAN", "PERSONAL LOAN"};
+    //    String[] myDataset = {"CAR LOAN","HOME LOAN", "PERSONAL LOAN"};
 //    ArrayList<HashMap<String,String>> myDataset;
     private RecyclerView recyclerview_referral;
     private RecyclerView.Adapter mAdapter;
@@ -60,10 +60,10 @@ public class ReferralFragment extends Fragment implements View.OnClickListener {
     DateFormatSymbols dfs = new DateFormatSymbols();
     String[] months = dfs.getMonths();
     SimpleDateFormat sdf;
-    String val_start ="", val_end = "";
+    String val_start = "", val_end = "";
     ImageView line;
     private List<ReferralListModel> refferalList;
-    Button referral_login,referral_register, referral_resend_verification;
+    Button referral_login, referral_register, referral_resend_verification;
     LinearLayout referral_list_msg, email_verifications;
     public String[] lead_id, name, email, phone, lead_state, product_type, payout_influencer, loan_key, loan_value, loan_eligible, date_created;
     LinearLayout referral_data_not_found;
@@ -73,28 +73,28 @@ public class ReferralFragment extends Fragment implements View.OnClickListener {
     private AnimationDrawable animation;
     TextView no_data;
     SharedPreferences sharedpreferences;
-    String[] user_data_duration = {"This Week","This Month", "This Year", "All"};
+    String[] user_data_duration = {"This Week", "This Month", "This Year", "All"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_referral, null);
         sharedpreferences = getActivity().getSharedPreferences(Util.MY_PREFERENCES, Context.MODE_PRIVATE);
-        referral_list_msg = (LinearLayout)view.findViewById(R.id.referral_list_msg);
-        referral_data_not_found = (LinearLayout)view.findViewById(R.id.referral_data_not_found);
-        dashboard_data = (Spinner)view.findViewById(R.id.dashboard_data);
+        referral_list_msg = (LinearLayout) view.findViewById(R.id.referral_list_msg);
+        referral_data_not_found = (LinearLayout) view.findViewById(R.id.referral_data_not_found);
+        dashboard_data = (Spinner) view.findViewById(R.id.dashboard_data);
         referral_main = (LinearLayout) view.findViewById(R.id.referral_main);
         email_verifications = (LinearLayout) view.findViewById(R.id.email_verifications);
         recyclerview_referral = (RecyclerView) view.findViewById(R.id.recyclerview_referral);
         waiting_layout = (LinearLayout) view.findViewById(R.id.waiting_layout);
         progressBar = (ImageView) view.findViewById(R.id.waiting);
         progressBar.setBackgroundResource(R.drawable.waiting);
-        line= (ImageView) view.findViewById(R.id.line);
-        referral_login = (Button)view.findViewById(R.id.referral_login);
-        referral_register = (Button)view.findViewById(R.id.referral_register);
-        referral_resend_verification = (Button)view.findViewById(R.id.referral_resend_verification);
+        line = (ImageView) view.findViewById(R.id.line);
+        referral_login = (Button) view.findViewById(R.id.referral_login);
+        referral_register = (Button) view.findViewById(R.id.referral_register);
+        referral_resend_verification = (Button) view.findViewById(R.id.referral_resend_verification);
         animation = (AnimationDrawable) progressBar.getBackground();
-        no_data = (TextView)view.findViewById(R.id.no_data);
+        no_data = (TextView) view.findViewById(R.id.no_data);
         no_data.setText("Your account must be verified to access the referral.  \n\nWe can resend the verification email to " + Util.email);
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, Util.user_data_duration);
@@ -116,7 +116,7 @@ public class ReferralFragment extends Fragment implements View.OnClickListener {
         });
 
 
-        if(Util.isRegistered(getActivity()).equals("")){
+        if (Util.isRegistered(getActivity()).equals("")) {
             referral_main.setVisibility(View.GONE);
             line.setVisibility(View.GONE);
             referral_list_msg.setVisibility(View.VISIBLE);
@@ -139,7 +139,7 @@ public class ReferralFragment extends Fragment implements View.OnClickListener {
         }
 
         // specify an adapter (see also next example)
-        sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         referral_login.setOnClickListener(this);
         referral_register.setOnClickListener(this);
@@ -164,19 +164,19 @@ public class ReferralFragment extends Fragment implements View.OnClickListener {
 
     private void setUpReferralData(String selected_data_val) {
 
-        val_end = myCalendar.get(Calendar.YEAR)+"-"+(myCalendar.get(Calendar.MONTH)+1)+"-"+myCalendar.get(Calendar.DAY_OF_MONTH);
-        switch(selected_data_val){
+        val_end = myCalendar.get(Calendar.YEAR) + "-" + (myCalendar.get(Calendar.MONTH) + 1) + "-" + myCalendar.get(Calendar.DAY_OF_MONTH);
+        switch (selected_data_val) {
             case "This Week":
                 final int currentDayOfWeek = (myCalendar.get(Calendar.DAY_OF_WEEK) + 7 - myCalendar.getFirstDayOfWeek()) % 7;
                 Calendar c1 = Calendar.getInstance();
                 c1.add(Calendar.DAY_OF_YEAR, -currentDayOfWeek);
-                val_start = myCalendar.get(Calendar.YEAR)+"-"+(myCalendar.get(Calendar.MONTH)+1)+"-"+c1.get(Calendar.DAY_OF_MONTH);
+                val_start = myCalendar.get(Calendar.YEAR) + "-" + (myCalendar.get(Calendar.MONTH) + 1) + "-" + c1.get(Calendar.DAY_OF_MONTH);
                 break;
             case "This Month":
-                val_start = myCalendar.get(Calendar.YEAR)+"-"+(myCalendar.get(Calendar.MONTH)+1)+"-1";
+                val_start = myCalendar.get(Calendar.YEAR) + "-" + (myCalendar.get(Calendar.MONTH) + 1) + "-1";
                 break;
             case "This Year":
-                val_start = myCalendar.get(Calendar.YEAR)+"-1-1";
+                val_start = myCalendar.get(Calendar.YEAR) + "-1-1";
                 break;
             case "All":
                 val_start = "";
@@ -197,7 +197,7 @@ public class ReferralFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.referral_login:
                 Intent i = new Intent(getActivity(), LoginActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -271,7 +271,7 @@ public class ReferralFragment extends Fragment implements View.OnClickListener {
                         AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
                         alert.setTitle("Email verification");
                         alert.setCancelable(false);
-                        alert.setMessage(getActivity().getResources().getString(R.string.msg_email_verification) +" "+ Util.email);
+                        alert.setMessage(getActivity().getResources().getString(R.string.msg_email_verification) + " " + Util.email);
 
                         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
@@ -315,7 +315,7 @@ public class ReferralFragment extends Fragment implements View.OnClickListener {
 
                 json = jsonObject.toString();
 
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!Disha "+json);
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!Disha " + json);
                 StringEntity se = new StringEntity(json);
                 Logs.LogD("Request",json.toString());
                 // 6. set httpPost Entity
@@ -340,7 +340,7 @@ public class ReferralFragment extends Fragment implements View.OnClickListener {
                     result = "Did not work!";
 
             } catch (Exception e) {
-                Log.d("InputStream", e.getLocalizedMessage());
+                //Log.d("InputStream", e.getLocalizedMessage());
             }
             return result;
         }
@@ -350,7 +350,7 @@ public class ReferralFragment extends Fragment implements View.OnClickListener {
             super.onPostExecute(result);
             waiting_layout.setVisibility(View.GONE);
             animation.stop();
-            Logs.LogD("Referral Response",result);
+            Logs.LogD("Referral Response", result);
             System.out.println("!!!!!!!!!!!!!!!!!!!!!!Disha result " + result);
 
             String status, msg, utoken;
@@ -385,21 +385,20 @@ public class ReferralFragment extends Fragment implements View.OnClickListener {
                                 ReferralListModel temp = new ReferralListModel();
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                                 temp.setLead_id(jsonObject.optString("id"));
-                                String firstname=jsonObject.optString("first_name","");
+                                String firstname = jsonObject.optString("first_name", "");
 //                                String middle_name=jsonObject.optString("middle_name","");
-                                String last_name="";
+                                String last_name = "";
                                 if (!jsonObject.isNull("last_name")) {
                                     last_name = jsonObject.optString("last_name", "");
                                 }
 
-                                firstname=firstname+" "+ last_name;
+                                firstname = firstname + " " + last_name;
                                 temp.setName(firstname);
                                 temp.setEmail(jsonObject.optString("email"));
                                 temp.setPhone(jsonObject.optString("phone"));
-                                if (!jsonObject.optString("product_name","").equals("")){
+                                if (!jsonObject.optString("product_name", "").equals("")) {
                                     temp.setProduct_name(jsonObject.optString("product_name"));
-                                }
-                                else {
+                                } else {
                                     temp.setProduct_name(Util.getProductNameById(jsonObject.optString("product_type_id")));
                                 }
                                 temp.setLead_state(jsonObject.optString("lead_state"));
@@ -409,7 +408,7 @@ public class ReferralFragment extends Fragment implements View.OnClickListener {
                                 temp.setPayout(jsonObject.optString("projected_payout"));
                                 temp.setLoan_eligible(jsonObject.optString("loan_amount_needed"));
                                 temp.setRefID(jsonObject.optString("id"));
-                                if (!jsonObject.isNull("date_created")){
+                                if (!jsonObject.isNull("date_created")) {
                                     String date_c = timestamp_Date(jsonObject.optString("date_created"));
                                     temp.setDate_created(date_c);
                                 }
@@ -421,39 +420,39 @@ public class ReferralFragment extends Fragment implements View.OnClickListener {
                             recyclerview_referral.setAdapter(mAdapter);
                         } else {
                             if (msg.equals("Failed")) {
-    //                            if(output1.getString("body").equals("You have not made any referrals yet. Once you start making referrals you will be able to view them here.")){
+                                //                            if(output1.getString("body").equals("You have not made any referrals yet. Once you start making referrals you will be able to view them here.")){
                                 referral_data_not_found.setVisibility(View.VISIBLE);
                                 line.setVisibility(View.GONE);
 //                                referral_data_not_found.setText(output1.getString("body"));
                                 recyclerview_referral.setVisibility(View.GONE);
-    //                            } else {
-    //                                referral_data_not_found.setVisibility(View.GONE);
-    //                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-    //                                builder.setTitle("Message");
-    //                                builder.setCancelable(false);
-    //                                builder.setMessage(output1.getString("body"));
-    //                                builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-    //                                    public void onClick(DialogInterface dialog, int which) {
-    //
-    //                                    }
-    //                                });
-    //                                builder.show();
-    //                            }
+                                //                            } else {
+                                //                                referral_data_not_found.setVisibility(View.GONE);
+                                //                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                //                                builder.setTitle("Message");
+                                //                                builder.setCancelable(false);
+                                //                                builder.setMessage(output1.getString("body"));
+                                //                                builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                //                                    public void onClick(DialogInterface dialog, int which) {
+                                //
+                                //                                    }
+                                //                                });
+                                //                                builder.show();
+                                //                            }
                             }
                         }
                     }
                 }
             } catch (JSONException e) {
 
-                Logs.LogD("Exception",e.getLocalizedMessage());
+                Logs.LogD("Exception", e.getLocalizedMessage());
             }
 
         }
     }
 
-    private String timestamp_Date(String timestamp){
+    private String timestamp_Date(String timestamp) {
 
-        Logs.LogD("Date",timestamp);
+        Logs.LogD("Date", timestamp);
         String dates[] = timestamp.split(" ");
         String[] subdate = dates[0].split("-");
         String day;
@@ -512,7 +511,7 @@ public class ReferralFragment extends Fragment implements View.OnClickListener {
         int date_day = Integer.parseInt(day);
         //     Log.d("day",""+date_day);
         day = String.valueOf(date_day);
-        String final_date =  day + " " + temp;
+        String final_date = day + " " + temp;
         //String final_date = "Date Referred: " + day + "-" + temp;
         return final_date;
     }

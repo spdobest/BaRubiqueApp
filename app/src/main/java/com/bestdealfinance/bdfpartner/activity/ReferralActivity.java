@@ -173,6 +173,10 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
 //            txt_refer_product.setText(b.getString("product_name"));
 //            selected_product_id = Integer.parseInt(b.getString("product_id"));
 //        }
+
+
+
+        if(btnReferLead!=null)
         btnReferLead.setOnClickListener(this);
         backArrow.setOnClickListener(this);
 
@@ -672,7 +676,7 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
             }
 
         }
-        Logs.LogD("Referral", "Validation Passed");
+        //Logs.LogD("Referral", "Validation Passed");
         return true;
     }
 

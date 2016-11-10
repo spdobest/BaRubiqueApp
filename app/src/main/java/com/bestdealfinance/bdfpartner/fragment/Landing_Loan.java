@@ -183,10 +183,10 @@ public class Landing_Loan extends Fragment {
 
     private void doCalculations() throws JSONException {
         //TODO Features
-        JSONObject product_info = finalJson.optJSONObject("product_info");
-        JSONObject features = product_info.optJSONObject("f");
+        JSONObject product_info = finalJson.getJSONObject("product_info");
+        JSONObject features = product_info.getJSONObject("f");
         if (features != null) {
-            JSONArray info = features.optJSONArray("info_text");
+            JSONArray info = features.getJSONArray("info_text");
             for (int i = 0; i < info.length(); i++) {
                 LandingModel temp = new LandingModel();
                 String temp2 = info.getString(i);
@@ -243,32 +243,34 @@ public class Landing_Loan extends Fragment {
         eligiblityView.setAdapter(eligiblityAdapter);
         chargesView.setAdapter(chargesAdapter);
 
-        String image_url = finalJson.optString("finbank_logo");
+        String image_url = finalJson.optString("finbank_logo","");
+
         Glide.with(getActivity()).load(image_url).into(headImage);
+
         product_url = image_url;
-        loan_type.setText(finalJson.optString("product_name"));
-        product_name = finalJson.optString("product_name");
-        JSONObject ptime = product_info.optJSONObject("processing_time");
+        loan_type.setText(finalJson.optString("product_name",""));
+        product_name = finalJson.optString("product_name","");
+        JSONObject ptime = product_info.getJSONObject("processing_time");
         if (ptime != null) {
-            JSONArray p_time = ptime.optJSONArray("info_text");
+            JSONArray p_time = ptime.getJSONArray("info_text");
             time.setText(p_time.getString(0));
             Logs.LogD("Time", p_time.getString(0));
         }
-        JSONObject interested = product_info.optJSONObject("interest_rate");
+        JSONObject interested = product_info.getJSONObject("interest_rate");
         if (interested != null) {
-            JSONArray interest_rate = interested.optJSONArray("info_text");
+            JSONArray interest_rate = interested.getJSONArray("info_text");
             interest.setText(interest_rate.getString(0));
             Logs.LogD("Time", interest_rate.getString(0));
         }
-        JSONObject pifees = product_info.optJSONObject("processing_fees");
+        JSONObject pifees = product_info.getJSONObject("processing_fees");
         if (pifees != null) {
-            JSONArray P_fees = pifees.optJSONArray("info_text");
+            JSONArray P_fees = pifees.getJSONArray("info_text");
             pfees.setText(P_fees.getString(0));
             Logs.LogD("Time", P_fees.getString(0));
         }
-        JSONObject tenuree = product_info.optJSONObject("tenure");
+        JSONObject tenuree = product_info.getJSONObject("tenure");
         if (tenuree != null) {
-            JSONArray tee_nure = tenuree.optJSONArray("info_text");
+            JSONArray tee_nure = tenuree.getJSONArray("info_text");
             tenure.setText(tee_nure.getString(0));
         }
 
