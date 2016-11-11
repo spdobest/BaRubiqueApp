@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -66,30 +65,6 @@ public class SplashActivity extends AppCompatActivity {
 
         Glide.with(SplashActivity.this).load(R.drawable.splash_bg).into(img_splash_bg);
         Glide.with(SplashActivity.this).load(R.drawable.splash_logo).into(rubique_logo);
-
-        controller = new DBHelper(this);
-        if (Util.isNetworkAvailable(getApplicationContext())) {
-            //Toast.makeText(SplashActivity.this,"Network available",Toast.LENGTH_SHORT).show();
-
-//            ProductTypeAsyncTask task=new ProductTypeAsyncTask();
-//            task.executeOnExecutor(Util.threadPool);
-            controller.deleteTables();
-            controller.insertProductType("11", Util.card[0]);
-            controller.insertProductType("22", Util.product[1]);
-            controller.insertProductType("23", Util.product[2]);
-            controller.insertProductType("25", Util.product[3]);
-            controller.insertProductType("26", Util.product[4]);
-            controller.insertProductType("28", Util.product[5]);
-            controller.insertProductType("39", Util.product[6]);
-
-            Util.product_type_data = controller.getAllProductName();
-//            APIUtils.GetCity getCity=new APIUtils.GetCity();
-//            getCity.executeOnExecutor(Util.threadPool);
-        } else {
-            Snackbar.make(img_splash_bg, R.string.no_connection, Snackbar.LENGTH_LONG).show();
-            // TODO set RETRY action
-        }
-        Util.product_type_data = controller.getAllProductName();
 
         str_username = Helper.getStringSharedPreference(Constant.USERNAME, SplashActivity.this);
         str_utoken = Helper.getStringSharedPreference(Constant.UTOKEN, SplashActivity.this);
@@ -162,7 +137,7 @@ public class SplashActivity extends AppCompatActivity {
                         alertDialog.setCancelable(false);
                         alertDialog.show();
                     } else {
-                       // Toast.makeText(SplashActivity.this,"in else",Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(SplashActivity.this,"in else",Toast.LENGTH_SHORT).show();
 
                         checkLogin();
                     }
@@ -258,8 +233,6 @@ public class SplashActivity extends AppCompatActivity {
 
     public void checkLogin() {
 
-       // Toast.makeText(this,"Inside checklogin",Toast.LENGTH_SHORT).show();
-
         if (str_utoken.equals("")) {
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
 
@@ -272,21 +245,21 @@ public class SplashActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-               // Toast.makeText(this,"Network available",Toast.LENGTH_SHORT).show();
+                // Toast.makeText(this,"Network available",Toast.LENGTH_SHORT).show();
                 JsonObjectRequest checkLoginRequest = new JsonObjectRequest(Request.Method.POST, Util.GET_LOGIN, request, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                          //  Toast.makeText(SplashActivity.this,"Response"+response.toString(),Toast.LENGTH_LONG).show();
+                            //  Toast.makeText(SplashActivity.this,"Response"+response.toString(),Toast.LENGTH_LONG).show();
 
                             if (response.opt("status_code") != null && response.opt("msg") != null) {
                                 String status = null;
-                              //  Toast.makeText(SplashActivity.this,"Response",Toast.LENGTH_SHORT).show();
+                                //  Toast.makeText(SplashActivity.this,"Response",Toast.LENGTH_SHORT).show();
                                 status = response.getString("status_code");
 
                                 String msg = response.getString("msg");
                                 if (status.equals("2000") && msg.equals("Success")) {
-                                  //  Toast.makeText(SplashActivity.this,"Response success",Toast.LENGTH_SHORT).show();
+                                    //  Toast.makeText(SplashActivity.this,"Response success",Toast.LENGTH_SHORT).show();
 
                                     JSONObject data = response.getJSONObject("body");
 
@@ -298,24 +271,23 @@ public class SplashActivity extends AppCompatActivity {
 
                                     Util.nav_status = Constant.SPLASH;
 
-                                    Helper.setStringSharedPreference(Constant.USER_CLASS,data.optString("ba_class","5"),SplashActivity.this);
-
+                                    Helper.setStringSharedPreference(Constant.USER_CLASS, data.optString("ba_class", "5"), SplashActivity.this);
 
                                     startActivity(new Intent(SplashActivity.this, HomeActivity.class));
                                     finish();
                                 } else {
 
+                                    Toast.makeText(SplashActivity.this, "Your login has expired, please login again", Toast.LENGTH_SHORT).show();
 
-                                    Snackbar.make(img_splash_bg, R.string.login_expired, Snackbar.LENGTH_LONG).show();
+                                    //Snackbar.make(img_splash_bg, R.string.login_expired, Snackbar.LENGTH_LONG).show();
                                     Helper.setStringSharedPreference(Constant.UTOKEN, "", SplashActivity.this);
                                     startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                                     finish();
                                 }
-                            }
-                            else {
-                                //Toast.makeText(SplashActivity.this,"Response null",Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(SplashActivity.this, "Your login has expired, please login again", Toast.LENGTH_SHORT).show();
 
-                                Snackbar.make(img_splash_bg, R.string.login_expired, Snackbar.LENGTH_LONG).show();
+                                //Snackbar.make(img_splash_bg, R.string.login_expired, Snackbar.LENGTH_LONG).show();
                                 Helper.setStringSharedPreference(Constant.UTOKEN, "", SplashActivity.this);
                                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                                 finish();
@@ -329,9 +301,9 @@ public class SplashActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                       // Toast.makeText(SplashActivity.this,"Response error",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SplashActivity.this, "Your login has expired, please login again", Toast.LENGTH_SHORT).show();
 
-                        Snackbar.make(img_splash_bg, R.string.login_expired, Snackbar.LENGTH_LONG).show();
+                        //Snackbar.make(img_splash_bg, R.string.login_expired, Snackbar.LENGTH_LONG).show();
                         Helper.setStringSharedPreference(Constant.UTOKEN, "", SplashActivity.this);
                         startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                         finish();
@@ -373,8 +345,6 @@ public class SplashActivity extends AppCompatActivity {
             }
         }
     }
-
-
 
 
 }

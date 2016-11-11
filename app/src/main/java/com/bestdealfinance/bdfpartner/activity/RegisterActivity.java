@@ -65,6 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
     private AppCompatSpinner spinnerProfession;
     private AutoCompleteTextView cityView;
     private List<String> cityList;
+    private Button registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,9 +105,6 @@ public class RegisterActivity extends AppCompatActivity {
         passwordView.setTypeface(Typeface.DEFAULT);
         passwordView.setTransformationMethod(new PasswordTransformationMethod());
 
-        final TextInputLayout cityLayout = (TextInputLayout) findViewById(R.id.txt_city_name_layout);
-        cityView = (AutoCompleteTextView) findViewById(R.id.txt_city_name);
-        setCityAdapter();
 
 
         /*final String[] COUNTRIES = new String[] {
@@ -126,9 +124,15 @@ public class RegisterActivity extends AppCompatActivity {
         Button loginButton = (Button) findViewById(R.id.txt_regi_login);
 
         final Button applyPopButton = (Button) findViewById(R.id.apply_btn_popup);
-        final Button registerButton = (Button) findViewById(R.id.btn_regi_submit);
+        registerButton = (Button) findViewById(R.id.btn_regi_submit);
 
         //Util.intializeCity(this, cityView);
+
+
+        final TextInputLayout cityLayout = (TextInputLayout) findViewById(R.id.txt_city_name_layout);
+        cityView = (AutoCompleteTextView) findViewById(R.id.txt_city_name);
+        setCityAdapter();
+
 
         spinnerProfession = (AppCompatSpinner) findViewById(R.id.spinner_profession);
         setProfessionAdapter();
@@ -507,6 +511,9 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void setCityAdapter() {
+
+        registerButton.setEnabled(false);
+
         StringRequest request = new StringRequest(Util.FETCH_ALL_CITY, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -523,7 +530,7 @@ public class RegisterActivity extends AppCompatActivity {
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(RegisterActivity.this,android.R.layout.simple_dropdown_item_1line,cityList);
                     cityView.setAdapter(adapter);
 
-
+                    registerButton.setEnabled(true);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

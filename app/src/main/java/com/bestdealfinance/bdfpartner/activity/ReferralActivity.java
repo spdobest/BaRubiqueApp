@@ -173,7 +173,12 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
 //            txt_refer_product.setText(b.getString("product_name"));
 //            selected_product_id = Integer.parseInt(b.getString("product_id"));
 //        }
+
+
+
+        if(btnReferLead!=null)
         btnReferLead.setOnClickListener(this);
+        if(backArrow!=null)
         backArrow.setOnClickListener(this);
 
         Tracker mTracker = Helper.getDefaultTracker(this);
@@ -334,7 +339,6 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
             TextView t_view = (TextView) mPage.findViewById(R.id.p_name);
             ImageView cover = (ImageView) mPage.findViewById(R.id.covering);
             cover.bringToFront();
-
 
             switch (mproductsList.get(position).get("id")) {
                 case "11":
@@ -672,7 +676,7 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
             }
 
         }
-        Logs.LogD("Referral", "Validation Passed");
+        //Logs.LogD("Referral", "Validation Passed");
         return true;
     }
 
