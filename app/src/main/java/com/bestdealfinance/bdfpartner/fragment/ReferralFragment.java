@@ -340,7 +340,7 @@ public class ReferralFragment extends Fragment implements View.OnClickListener {
                     result = "Did not work!";
 
             } catch (Exception e) {
-                //Log.d("InputStream", e.getLocalizedMessage());
+
             }
             return result;
         }

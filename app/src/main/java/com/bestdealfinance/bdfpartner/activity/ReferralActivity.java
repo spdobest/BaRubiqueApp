@@ -340,7 +340,6 @@ public class ReferralActivity extends AppCompatActivity implements View.OnClickL
             ImageView cover = (ImageView) mPage.findViewById(R.id.covering);
             cover.bringToFront();
 
-
             switch (mproductsList.get(position).get("id")) {
                 case "11":
                     //Credit Card
