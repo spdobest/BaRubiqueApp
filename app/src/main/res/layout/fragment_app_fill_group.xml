@@ -1,0 +1,174 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bestdealfinance.bdfpartner.FragmentNew.AppFillGroupFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_new" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_border_grey"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_stage_bubble_new" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/group_indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/indicator1"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_indicator_light" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/indicator2"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_indicator_light" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/indicator3"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_indicator_light" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/indicator4"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_indicator_light" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/indicator5"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_indicator_light" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/indicator6"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_indicator_light" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/indicator7"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_indicator_light" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/indicator8"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_indicator_light" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/indicator9"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_indicator_light" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/indicator10"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_indicator_light" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/speech_to_text"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:tint="@color/white"
+                    android:background="@drawable/custom_corner_40_no_border_blue_filled"
+                    android:src="@drawable/ic_microphone" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/group_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/employment_details"
+                android:textColor="@color/Grey800" />
+
+
+            <LinearLayout
+                android:id="@+id/layout_cover"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/custom_border_grey"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/continue_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/custom_button_filled_blue"
+                android:text="@string/txt_continue"
+                android:textColor="@color/white" />
+         </LinearLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

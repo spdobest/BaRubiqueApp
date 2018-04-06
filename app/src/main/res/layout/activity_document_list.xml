@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_document_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.bestdealfinance.bdfpartner.ActivityNew.DocumentListActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/buttonFinishDocList"
+        >
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_new" />
+
+        <include
+            android:id="@+id/bubble_layout"
+            layout="@layout/layout_stage_bubble_new" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:background="@color/Grey300"
+            />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp"
+                >
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:text="@string/customer_details"
+                    style="@style/leftAlignText"
+                    android:layout_toLeftOf="@+id/textViewProductTypePreview"
+                    android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    app:textAllCaps="true"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    >
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:text="@string/product_applied"
+                        style="@style/leftAlignText"
+                        android:layout_toLeftOf="@+id/textViewProductTypePreview"
+                        />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/textViewProductTypePreview"
+                        style="@style/rightAlignText"
+                        tools:text="HDFC credit card"
+                        android:gravity="right"
+                        android:visibility="visible"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    tools:visibility="visible"
+                    >
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:text="@string/name"
+                        style="@style/leftAlignText"
+                        android:layout_toLeftOf="@+id/textViewProductTypePreview"
+                        />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/textViewNameProductList"
+                        style="@style/rightAlignText"
+                        tools:text="HDFC credit card"
+                        android:gravity="right"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    tools:visibility="visible"
+                    >
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:text="@string/address"
+                        style="@style/leftAlignText"
+                        android:layout_toLeftOf="@+id/textViewProductTypePreview"
+                        />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/textViewAddressProductList"
+                        style="@style/rightAlignText"
+                        tools:text="Street name asdkjaskd akjsdhkas djkas"
+                        android:gravity="right"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    tools:visibility="visible"
+                    >
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:text="@string/phone_no"
+                        style="@style/leftAlignText"
+                        android:layout_toLeftOf="@+id/textViewProductTypePreview"
+                        />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/textViewPhoneProductList"
+                        style="@style/rightAlignText"
+                        tools:text="2312312312"
+                        android:gravity="right"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    tools:visibility="visible"
+                    >
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:text="@string/tracking_id"
+                        style="@style/leftAlignText"
+                        android:layout_toLeftOf="@+id/textViewProductTypePreview"
+                        />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/textViewTrackIdProductList"
+                        style="@style/rightAlignText"
+                        tools:text="Street name asdkjaskd akjsdhkas djkas"
+                        android:gravity="right"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    >
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/textViewSelectDate"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="Select Date and Time"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="@dimen/dimen_20dp"
+                        android:layout_marginEnd="@dimen/dimen_20dp"
+                        android:background="@drawable/custom_border_grey"
+                        android:padding="@dimen/dimen_8dp"
+                        />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/textViewScheduleMeetingDocList"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="Schedule Meeting"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="@dimen/dimen_20dp"
+                        android:layout_marginEnd="@dimen/dimen_20dp"
+                        android:padding="@dimen/dimen_5dp"
+                        android:textColor="@color/Blue400"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    android:background="@color/Grey300"
+                    />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/textViewDocCheckList"
+                    android:text="@string/document_checklist"
+                    style="@style/leftAlignText"
+                    android:layout_toLeftOf="@+id/textViewProductTypePreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    app:textAllCaps="true"
+                    />
+                <LinearLayout
+                    android:id="@+id/cover_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                </LinearLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerViewDocList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    />
+
+                <View
+                    android:id="@+id/viewDocumentsListLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/Grey300"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:text="@string/rfc_address"
+                    style="@style/leftAlignText"
+                    android:layout_toLeftOf="@+id/textViewProductTypePreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    app:textAllCaps="true"
+                    />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:text="@string/collect_above_doc_and_submit"
+                    style="@style/leftAlignText"
+                    android:layout_toLeftOf="@+id/textViewProductTypePreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/textViewRubiqueAddress"
+                    style="@style/rightAlignText"
+                    tools:text="Street name asdkjaskd akjsdhkas djkas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/textViewGetDirection"
+                    style="@style/rightAlignText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get Direction"
+                    android:padding="@dimen/dimen_10dp"
+                    android:textColor="@color/Blue500"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    />
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_product_business_loan"
+            android:id="@+id/product_icon"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Business Loan"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textColor="@color/Grey700"
+            android:visibility="gone"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Applicant Details :"
+                android:textSize="14sp"
+                android:textColor="@color/Grey500"
+                android:layout_alignParentLeft="true"
+                />
+            <TextView
+                android:id="@+id/applicant_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harshit Gupta"
+                android:textSize="14sp"
+                android:textColor="@color/Grey900"
+                android:layout_alignParentRight="true"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/loan_amount_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:visibility="gone"
+            >
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loan Amount :"
+                android:textSize="14sp"
+                android:textColor="@color/Grey500"
+                android:layout_alignParentLeft="true"
+                />
+            <TextView
+                android:id="@+id/loan_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rs 10,00,000"
+                android:textSize="14sp"
+                android:textColor="@color/Grey900"
+                android:layout_alignParentRight="true"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tracking Id :"
+                android:textSize="14sp"
+                android:textColor="@color/Grey500"
+                android:layout_alignParentLeft="true"
+                />
+            <TextView
+                android:id="@+id/lead_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2345"
+                android:textSize="14sp"
+                android:textColor="@color/Grey900"
+                android:layout_alignParentRight="true"
+                />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:background="@color/Grey300"
+            android:visibility="gone"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:visibility="gone"
+            >
+
+            <EditText
+                android:id="@+id/meeting_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Select date and time"
+                android:background="@drawable/custom_border_grey"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:focusable="false"
+                android:clickable="true"
+                android:textSize="14sp"
+                />
+
+            <Button
+                android:id="@+id/btn_meeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:text="SCHEDULE MEETING"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/Blue500"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonFinishDocList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FINISH"
+        android:textColor="@color/white"
+        android:layout_margin="@dimen/dimen_10dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/custom_button_filled_blue"
+        />
+
+</RelativeLayout>

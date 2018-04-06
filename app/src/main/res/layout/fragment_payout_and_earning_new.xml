@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_all_leads_new"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bestdealfinance.bdfpartner.ActivityNew.AllLeadsActivityNew">
+
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/payout_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Grey800"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="@color/Grey500">
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/payout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payout" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/earning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Earning" />
+
+
+    </android.support.design.widget.TabLayout>
+
+    <LinearLayout
+        android:id="@+id/main_layout_payout_and_earning"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"></LinearLayout>
+
+</LinearLayout>

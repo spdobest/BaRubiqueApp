@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/new_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    app:popupTheme="@style/AppThemeNew.PopupOverlay"
+    android:background="@color/Grey800">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/toolbar_account_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/toolbar_user_image"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/ic_user_dummy_image" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutProfileHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/toolbar_user_image"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/toolbar_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/toolbar_user_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/toolbar_activity_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageButton
+                android:id="@+id/toolbar_back_button"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/ic_arrow_left"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/toolbar_activity_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:text="Dashboard"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/textViewDiscardToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Red500"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_marginEnd="@dimen/dimen_10dp"
+            android:padding="@dimen/dimen_5dp"
+            android:text="Discard"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:textAllCaps="true"
+            />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imageViewDownloadPdf"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_download"
+            android:padding="@dimen/dimen_10dp"
+            android:visibility="gone"
+            />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/textViewIncludeTaskToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_marginEnd="@dimen/dimen_10dp"
+            android:padding="@dimen/dimen_5dp"
+            android:text="*  Incl. all Taxes "
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:textSize="@dimen/dimen_10sp"
+            />
+
+    </RelativeLayout>
+</android.support.v7.widget.Toolbar>

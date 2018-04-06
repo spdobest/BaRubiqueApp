@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    >
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.bestdealfinance.bdfpartner.ActivityNew.ScrollingActivity">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:fitsSystemWindows="true"
+            android:theme="@style/AppThemeNew.AppBarOverlay">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/toolbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                app:contentScrim="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/viewpagerWelcomeHomeBanner"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:id="@+id/viewpager_indicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/start_earning"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/dimen_20dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/imageViewIndicatorSliding1"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/ic_indicator_dark" />
+
+                        <ImageView
+                            android:id="@+id/imageViewIndicatorSliding2"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:background="@drawable/ic_indicator_light" />
+
+                        <ImageView
+                            android:id="@+id/imageViewIndicatorSliding3"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_indicator_light" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nested_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context="com.bestdealfinance.bdfpartner.ActivityNew.ScrollingActivity"
+            tools:showIn="@layout/activity_scrolling">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/notification_card"
+                    layout="@layout/layout_dashboard_notification_card" />
+
+                <include
+                    android:id="@+id/welcome_card"
+                    layout="@layout/layout_dashboard_welcome_card" />
+
+                <include
+                    android:id="@+id/lead_count_card"
+                    layout="@layout/layout_dashboard_lead_status_card" />
+
+                <include
+                    android:id="@+id/payout_card"
+                    layout="@layout/layout_dashboard_payout_card" />
+
+
+                <include
+                    android:id="@+id/payout_calulator_card"
+                    layout="@layout/layout_dashboard_calculate_earnings_card" />
+
+                <include
+                    android:id="@+id/leaderboard_card"
+                    layout="@layout/layout_dashboard_leaderboard_card" />
+
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/ic_newlead_icon"
+            android:tint="@color/White"
+            app:fabSize="normal"
+            app:layout_anchor="@id/app_bar"
+            app:layout_anchorGravity="bottom|end" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</RelativeLayout>

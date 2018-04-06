@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayoutPayoutCalculatorRootLoginUser"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimen_10dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/dimen_10dp"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PAYOUT CALCULATOR"
+            android:textAllCaps="true"
+            android:textColor="@color/Grey900"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/txt_see_details_of_payout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="-7dp"
+            android:drawableRight="@drawable/ic_chevron_right"
+            android:gravity="end|center_vertical"
+            android:text="See Details"
+            android:textColor="@color/Grey600"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayoutPayoutCalculator"
+        style="@style/MyCustomTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabGravity="fill"
+        app:tabMaxWidth="0dp"
+        app:tabMinWidth="50dp"
+        app:tabMode="scrollable"
+        android:layout_marginLeft="@dimen/dimen_10dp"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_10dp"
+        >
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabCC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_circle"
+            android:text="CC" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabPL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PL" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabHL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HL" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabLAP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LAP" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabBL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BL" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabCL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CL" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabTWL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TWL" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabCVL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CVL" />
+    </android.support.design.widget.TabLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_marginLeft="@dimen/dimen_10dp"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_10dp"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/dimen_10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            >
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/textViewbankname1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|left|start"
+                android:text="HDFC"
+                android:textColor="@color/Grey700"
+                android:textStyle="bold"
+                tools:text="HDFC" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/textViewbankProduct1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|left|start"
+                android:text="HDFC"
+                android:textColor="@color/Grey700"
+                android:textSize="@dimen/dimen_10sp"
+                android:visibility="gone"
+                tools:text="HDFC"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/textViewbankPrice1"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_weight="2"
+            android:gravity="center|right|end"
+            android:text="HDFC"
+            android:textColor="@color/Grey700"
+            tools:text="HDFC" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/Grey100"
+        android:layout_marginLeft="@dimen/dimen_10dp"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginBottom="@dimen/dimen_10dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_marginLeft="@dimen/dimen_10dp"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_10dp"
+        android:gravity="center_vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            >
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/textViewbankname2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|start|left"
+                android:text="HDFC"
+                android:textColor="@color/Grey700"
+                android:textStyle="bold"
+                tools:text="HDFC" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/textViewbankProduct2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|left|start"
+                android:text="HDFC"
+                android:textColor="@color/Grey700"
+                android:textSize="@dimen/dimen_10sp"
+                android:visibility="gone"
+                tools:text="HDFC"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/textViewbankPrice2"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_weight="2"
+            android:gravity="center|right|end"
+            android:text="HDFC"
+            android:textColor="@color/Grey700"
+            tools:text="HDFC" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/Grey100"
+        android:layout_marginLeft="@dimen/dimen_10dp"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_marginLeft="@dimen/dimen_10dp"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_10dp"
+        android:layout_marginBottom="@dimen/dimen_10dp"
+        android:gravity="center_vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            >
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/textViewbankname3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|start|left"
+                android:text="HDFC"
+                android:textColor="@color/Grey700"
+                android:textStyle="bold"
+                tools:text="HDFC" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/textViewbankProduct3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|left|start"
+                android:text="HDFC"
+                android:textColor="@color/Grey700"
+                android:textSize="@dimen/dimen_10sp"
+                android:visibility="gone"
+                tools:text="HDFC"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/textViewbankPrice3"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_weight="2"
+            android:gravity="center|right|end"
+            android:text="HDFC"
+            android:textColor="@color/Grey700"
+            tools:text="HDFC" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/Grey100"
+        android:layout_marginLeft="@dimen/dimen_10dp"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_10dp"
+        />
+
+    <RelativeLayout
+        android:id="@+id/relativelayoutSeekbarRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/popup_view1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_below="@+id/text1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="-8dp"
+                android:text="▼"
+                android:textColor="@color/Grey500"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/custom_button_grey_border"
+                android:ellipsize="end"
+                android:padding="5dp"
+                android:text="50,00,000"
+                android:textColor="@color/Grey700"
+                android:textSize="10sp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/seek_bar_layout1"
+            android:layout_marginLeft="20dp"
+            android:text="Select Loan Range"
+            android:textSize="10sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/seek_bar_layout1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="1 Cr."
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/seek_bar_layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/popup_view1"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/loan_seek_bar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:focusable="false"
+                android:progress="50"
+                android:progressDrawable="@drawable/dashboard_bar_style"
+                android:thumb="@drawable/dashboard_bar_thumb" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

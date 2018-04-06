@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.bestdealfinance.bdfpartner.ActivityNew.WelcomeActivityNew">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/welcome_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/viewpager_indicator">
+
+    </android.support.v4.view.ViewPager>
+
+    <LinearLayout
+        android:id="@+id/viewpager_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/start_earning"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imageViewWelcomeIndicatorSliding1"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_indicator_dark" />
+
+        <ImageView
+            android:id="@+id/imageViewWelcomeIndicatorSliding2"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:background="@drawable/ic_indicator_light" />
+
+        <ImageView
+            android:id="@+id/imageViewWelcomeIndicatorSliding3"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_indicator_light" />
+
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginBottom="@dimen/dimen_10dp"
+        android:gravity="center_vertical|left|start"
+        android:padding="10dp"
+        android:background="?attr/selectableItemBackground"
+        style="?attr/borderlessButtonStyle"
+        android:text="SKIP"
+        android:textColor="@color/Red500"
+        android:textSize="12sp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginStart="@dimen/dimen_15dp"
+        />
+
+    <Button
+        android:id="@+id/start_earning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginBottom="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:layout_marginEnd="@dimen/dimen_15dp"
+        android:gravity="center_vertical|right"
+        android:padding="10dp"
+        android:background="?attr/selectableItemBackground"
+        style="?attr/borderlessButtonStyle"
+        android:text="Next"
+        android:textColor="@color/Blue500"
+        android:textSize="12sp" />
+
+
+</RelativeLayout>
+
+
+

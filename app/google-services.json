@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "253805530650",
+    "firebase_url": "https://meta-wording-94705.firebaseio.com",
+    "project_id": "meta-wording-94705",
+    "storage_bucket": "meta-wording-94705.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253805530650:android:0bd5315c5929a43a",
+        "android_client_info": {
+          "package_name": "com.bestdealfinance.bdfpartner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253805530650-bl92028281vc2npek82oeeame5mk56fj.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "253805530650-qibd0hrs7bhspd44qb6j9vpcq8oeqqsi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ5i-v-48HqVKEyFA34G7hsoBlwGglGxg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

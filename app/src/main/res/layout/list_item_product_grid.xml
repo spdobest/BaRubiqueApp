@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="1dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:id="@+id/relativeLayoutRootProductItem"
+    >
+
+    <LinearLayout
+        android:id="@+id/grid_layout"
+        android:clickable="true"
+        android:background="?attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp"
+        >
+
+        <ImageView
+            android:id="@+id/product_icon"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_product_credit_card"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Credit Card"
+            android:textColor="@color/Grey800"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/product_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="15 Products"
+            android:textColor="@color/Orange500"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/product_payout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/grid_layout"
+            android:text="*upto Rs.700"
+            android:textColor="@color/Green500"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="bottom"
+            android:textSize="8sp" />
+
+    </LinearLayout>
+
+
+    <!--product_payout-->
+
+</RelativeLayout>

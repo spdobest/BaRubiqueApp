@@ -1,0 +1,167 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/layout_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/employment_details"
+        android:textColor="@color/Grey800" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/custom_border_grey"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+
+            <TextView
+                android:id="@+id/tenure_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 years"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/Grey800" />
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/tenure_year_minus"
+                style="?attr/selectableItemBackground"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@id/tenure_year"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_circle"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_minus"
+                android:tint="@color/Red500"
+                app:backgroundTint="@color/Red100" />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/tenure_year_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tenure_year"
+                android:layout_marginTop="8dp"
+                android:layout_toLeftOf="@+id/tenure_year_plus"
+                android:layout_toRightOf="@+id/tenure_year_minus" />
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/tenure_year_plus"
+                style="?attr/selectableItemBackground"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tenure_year"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_circle"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_plus"
+                android:tint="@color/Green500"
+                app:backgroundTint="@color/Green100" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+
+
+            <TextView
+                android:id="@+id/tenure_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="0 months"
+                android:textSize="16sp"
+                android:textColor="@color/Grey800" />
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/tenure_month_minus"
+                style="?attr/selectableItemBackground"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@id/tenure_month"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_circle"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_minus"
+                android:tint="@color/Red500"
+                app:backgroundTint="@color/Red100" />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/tenure_month_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tenure_month"
+                android:layout_marginTop="8dp"
+                android:layout_toLeftOf="@+id/tenure_month_plus"
+                android:layout_toRightOf="@+id/tenure_month_minus" />
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/tenure_month_plus"
+                style="?attr/selectableItemBackground"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tenure_month"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_circle"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_plus"
+                android:tint="@color/Green500"
+                app:backgroundTint="@color/Green100" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_save"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:text="SAVE"
+            android:textColor="@color/Green500" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:text="CANCEL"
+            android:textColor="@color/Red500" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+
+

@@ -1,0 +1,556 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dimen_10dp"
+        android:paddingStart="@dimen/dimen_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PAYOUT CALCULATOR"
+            android:textAllCaps="true"
+            android:textColor="@color/Grey900"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/txt_see_details_of_payout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_chevron_right"
+            android:gravity="end|center"
+            android:text="See Details"
+            android:textColor="@color/Grey600"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/loan_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_10dp"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_marginStart="@dimen/dimen_10dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/bar_heading_bl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Business Loan"
+                android:textColor="@color/Grey800"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/bar_business_app_fill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="Rs 50000"
+                android:textSize="14sp" />
+
+            <ProgressBar
+                android:id="@+id/progressBarBusinessLoan"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_5dp"
+                android:layout_below="@+id/bar_heading_bl"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:maxHeight="@dimen/dimen_5dp"
+                android:minHeight="@dimen/dimen_5dp"
+                android:progressDrawable="@drawable/progressbar_progress" />
+
+            <LinearLayout
+                android:id="@+id/bar_business_loan_upper_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bar_heading_bl"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:id="@+id/bar_business_loan"
+                    android:layout_width="0dp"
+                    android:layout_height="5dp"
+                    android:layout_weight="100"
+                    android:background="@drawable/custom_button_filled_blue"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:id="@+id/bar_business_refer"
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="33"
+                        android:gravity="center"
+                        android:textSize="@dimen/dashboard_bar_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="33"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dashboard_bar_text_size" />
+
+                    <TextView
+                        android:id="@+id/bar_business_doc_pick"
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="33"
+                        android:gravity="center"
+                        android:textSize="@dimen/dashboard_bar_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_10dp"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_marginStart="@dimen/dimen_10dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/bar_heading_hl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home Loan"
+                android:textColor="@color/Grey800"
+                android:textSize="16sp" />
+
+            <ProgressBar
+                android:id="@+id/progressBarHomeLoan"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_5dp"
+                android:layout_below="@+id/bar_heading_hl"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:maxHeight="@dimen/dimen_5dp"
+                android:minHeight="@dimen/dimen_5dp"
+                android:progressDrawable="@drawable/progressbar_progress" />
+
+            <LinearLayout
+                android:id="@+id/bar_home_loan_upper_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bar_heading_hl"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:id="@+id/bar_home_loan"
+                    android:layout_width="0dp"
+                    android:layout_height="5dp"
+                    android:layout_weight="100"
+                    android:background="@drawable/custom_button_filled_blue"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:id="@+id/bar_home_refer"
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="33"
+                        android:gravity="center"
+                        android:textSize="@dimen/dashboard_bar_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="33"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dashboard_bar_text_size" />
+
+                    <TextView
+                        android:id="@+id/bar_home_doc_pick"
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="33"
+                        android:gravity="center"
+                        android:textSize="@dimen/dashboard_bar_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/bar_home_app_fill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="Rs 50000"
+                android:textSize="14sp" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_10dp"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_marginStart="@dimen/dimen_10dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/bar_heading_cl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Car Loan"
+                android:textColor="@color/Grey800"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/bar_car_app_fill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="Rs 50000"
+                android:textSize="14sp" />
+
+            <ProgressBar
+                android:id="@+id/progressBarCarLoan"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_5dp"
+                android:layout_below="@+id/bar_heading_cl"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:maxHeight="@dimen/dimen_5dp"
+                android:minHeight="@dimen/dimen_5dp"
+                android:progressDrawable="@drawable/progressbar_progress" />
+
+            <LinearLayout
+                android:id="@+id/bar_car_loan_upper_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bar_heading_cl"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:id="@+id/bar_car_loan"
+                    android:layout_width="0dp"
+                    android:layout_height="5dp"
+                    android:layout_weight="100"
+                    android:background="@drawable/custom_button_filled_blue"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:id="@+id/bar_car_refer"
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="33"
+                        android:gravity="center"
+                        android:textSize="@dimen/dashboard_bar_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="33"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dashboard_bar_text_size" />
+
+                    <TextView
+                        android:id="@+id/bar_car_doc_pick"
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="33"
+                        android:gravity="center"
+                        android:textSize="@dimen/dashboard_bar_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_10dp"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_marginStart="@dimen/dimen_10dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/bar_heading_pl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Personal Loan"
+                android:textColor="@color/Grey800"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/bar_personal_app_fill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="Rs 50000"
+                android:textSize="14sp" />
+
+            <ProgressBar
+                android:id="@+id/progressBarPersonalLoan"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_5dp"
+                android:layout_below="@+id/bar_heading_pl"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:maxHeight="@dimen/dimen_5dp"
+                android:minHeight="@dimen/dimen_5dp"
+                android:progressDrawable="@drawable/progressbar_progress" />
+
+            <LinearLayout
+                android:id="@+id/bar_personal_loan_upper_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bar_heading_pl"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:id="@+id/bar_personal_loan"
+                    android:layout_width="0dp"
+                    android:layout_height="5dp"
+                    android:layout_weight="100"
+                    android:background="@drawable/custom_button_filled_blue"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:id="@+id/bar_personal_refer"
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="33"
+                        android:gravity="center"
+                        android:textSize="@dimen/dashboard_bar_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="33"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dashboard_bar_text_size" />
+
+                    <TextView
+                        android:id="@+id/bar_personal_doc_pick"
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="33"
+                        android:gravity="center"
+                        android:textSize="@dimen/dashboard_bar_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/popup_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="10dp">
+
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/custom_button_grey_border"
+                    android:ellipsize="end"
+                    android:padding="5dp"
+                    android:text="50,00,000"
+                    android:textColor="@color/Grey700"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_below="@+id/text"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="-7dp"
+                    android:text="▼"
+                    android:textColor="@color/Grey500"
+                    android:textSize="15dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/seek_bar_layout"
+                android:layout_marginLeft="20dp"
+                android:text="Select Loan Range"
+                android:textSize="10sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/seek_bar_layout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="1 Cr."
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/seek_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/popup_view"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/loan_seek_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:focusable="false"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/dashboard_bar_style"
+                    android:thumb="@drawable/dashboard_bar_thumb" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/credit_card_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/credit_card_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="5"
+                android:background="@drawable/custom_border_blue_light_blue_filled"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/credit_card_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:background="@drawable/custom_border_blue_light_blue_filled"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/credit_card_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="5"
+                android:background="@drawable/custom_border_blue_light_blue_filled"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/credit_card_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:background="@drawable/custom_border_blue_light_blue_filled"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

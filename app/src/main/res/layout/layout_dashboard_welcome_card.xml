@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:background="@color/White"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hi,"
+        android:textSize="30sp"
+        android:focusable="true"
+        android:textColor="@color/Grey800"
+        />
+    <EditText
+        android:id="@+id/abc"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:focusable="true"
+        android:visibility="invisible"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Rubique"
+        android:textSize="20sp"
+        android:textColor="@color/Grey600"
+        />
+
+</LinearLayout>

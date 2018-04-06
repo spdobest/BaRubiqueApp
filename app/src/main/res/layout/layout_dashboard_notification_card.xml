@@ -1,0 +1,37 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/Red50"
+    android:padding="20dp"
+    android:visibility="gone"
+    tools:visibility="visible"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayoutNotificationNotification"
+    >
+
+    <TextView
+        android:id="@+id/notification_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/notification_check_button"
+        android:text="Complete your Leads before it expires !"
+        android:textColor="@color/Red500"
+        android:textSize="14sp"
+        />
+
+    <Button
+        android:id="@+id/notification_check_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        style="?attr/borderlessButtonStyle"
+        android:text="CHECK NOW"
+        android:textStyle="bold"
+        android:textColor="@color/Red500"
+        android:textSize="14sp" />
+
+
+</RelativeLayout>

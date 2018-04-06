@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_margin="10dp"
+    >
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/chemist_select_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+         >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/rfc_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RFC Name"
+                android:textStyle="bold"
+                android:layout_alignParentLeft="true"
+                />
+            <TextView
+                android:id="@+id/rfc_distance"
+                android:layout_width="wrap_content"
+                android:textColor="@color/Pink500"
+                android:layout_height="wrap_content"
+                android:text="Distance : 0 kms"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/rfc_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address" />
+
+        <TextView
+            android:id="@+id/rfc_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="City"
+            />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/Grey200"
+            android:layout_marginTop="10dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <Button
+                android:id="@+id/btn_select"
+                android:layout_width="wrap_content"
+               android:layout_alignParentLeft="true"
+                
+                android:layout_height="35sp"
+                android:text="@string/select_this_rfc"
+                android:textSize="12sp"
+                style="?attr/borderlessButtonStyle"
+                android:textColor="@color/Green500"
+                />
+            <Button
+                android:id="@+id/btn_directions"
+                android:layout_width="wrap_content"
+                android:layout_height="35sp"
+                android:layout_alignParentRight="true"
+                android:text="@string/get_directions"
+                android:textSize="12sp"
+                style="?attr/borderlessButtonStyle"
+                android:textColor="@color/Blue500"
+                />
+
+
+        </RelativeLayout>
+
+
+
+
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
+

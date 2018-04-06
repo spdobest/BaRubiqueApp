@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/linearLayoutDashboardLoggedUser"
+    android:fitsSystemWindows="false"
+    >
+
+    <include layout="@layout/toolbar_new" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nestedScrollviewDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <include android:id="@+id/notification_card"
+                layout="@layout/layout_dashboard_notification_card"
+                />
+            <include
+                android:id="@+id/lead_count_card"
+                layout="@layout/layout_dashboard_lead_status_card" />
+            <include
+                android:id="@+id/payout_card"
+                layout="@layout/layout_dashboard_payout_card" />
+
+            <include
+                layout="@layout/include_payoutcalculator_loginuser"/>
+
+            <include
+                android:id="@+id/leaderboard_card"
+                layout="@layout/layout_dashboard_leaderboard_card" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

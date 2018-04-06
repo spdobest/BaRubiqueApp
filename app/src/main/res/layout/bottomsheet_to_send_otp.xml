@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dimen_20dp"
+    android:background="@color/Grey800">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textSize="@dimen/dimen_16sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:text="@string/send_otp_title_bottomsheet"
+        />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textSize="@dimen/dimen_14sp"
+        android:textColor="@color/white"
+        android:text="@string/send_otp_message_bottomsheet"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/checkBoxConditionBottomsheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:text="I hereby, declare that I am aware of the purpose and provide my consent towards using my adhaar number for authentication from UIDAI"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:drawablePadding="@dimen/dimen_20dp"
+        android:textSize="@dimen/dimen_12sp"
+        android:gravity="center_vertical"
+        android:padding="@dimen/dimen_10dp"
+        app:buttonTint="@color/white"
+        />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/buttonSendOTPBottomSheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:background="@drawable/custom_button_filled_blue"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:text="Send OTP"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textSize="@dimen/dimen_12sp"
+
+        />
+
+</LinearLayout>

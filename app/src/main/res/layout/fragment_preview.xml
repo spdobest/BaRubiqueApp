@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativeLayoutRootPreview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+
+    <include
+        layout="@layout/toolbar_new" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/textViewEditPreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:padding="@dimen/dimen_5dp"
+        android:text="@string/edit"
+        android:textColor="@color/Blue500"
+        app:textAllCaps="true"
+        android:layout_marginRight="@dimen/dimen_10dp"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        android:layout_gravity="right"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewPreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/buttonContinuePreview"
+            android:paddingEnd="@dimen/dimen_10dp"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp"
+            android:paddingStart="@dimen/dimen_10dp" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/buttonContinuePreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/custom_button_filled_blue"
+            android:text="@string/txt_continue"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+</LinearLayout>

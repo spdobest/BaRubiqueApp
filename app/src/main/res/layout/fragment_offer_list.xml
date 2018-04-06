@@ -1,0 +1,158 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/offer_layout"
+    tools:context="com.bestdealfinance.bdfpartner.FragmentNew.OfferListFragment">
+
+    <include
+        android:id="@+id/bubble_layout"
+        layout="@layout/layout_stage_bubble_new" />
+
+    <TextView
+        android:id="@+id/group_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/list_of_qualified_offers"
+        android:textColor="@color/Grey800"
+        android:layout_below="@id/bubble_layout"
+        />
+
+    <RelativeLayout
+        android:id="@+id/alternate_offer"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Grey800"
+        android:padding="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/more_offers"
+            android:layout_toStartOf="@+id/more_offers"
+            >
+            <TextView
+                android:id="@+id/textViewOfferMessage1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Not happy with the above results ?"
+                android:textColor="@color/Grey50"
+                />
+            <TextView
+                android:id="@+id/textViewOfferMessage2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please select an offer of your choice."
+                android:textColor="@color/Grey300"
+                android:textSize="10sp"
+                android:layout_gravity="left|start"
+
+                />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/more_offers"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            style="?attr/borderlessButtonStyle"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_marginEnd="@dimen/dimen_10dp"
+            android:text="SEE OFFERS"
+            android:textColor="@color/Blue500"
+            android:background="?attr/selectableItemBackground"
+            />
+
+
+
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/offers_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/group_name"
+        android:layout_above="@id/alternate_offer">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+        android:id="@+id/noProductsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/group_name"
+        android:layout_above="@id/alternate_offer"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="Oops ! we did not find an offer as per your requirement."
+            android:textSize="14sp"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#AA212121"
+        android:id="@+id/forced_layout"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:padding="10dp"
+            android:background="@color/white"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select product"
+                android:textSize="16sp"
+                android:textColor="@color/Grey700"
+                />
+
+            <ImageButton
+                android:id="@+id/close_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close"
+                android:layout_alignParentRight="true"
+                android:tint="@color/Red500"
+                android:background="?attr/selectableItemBackground"
+                />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/non_offers_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

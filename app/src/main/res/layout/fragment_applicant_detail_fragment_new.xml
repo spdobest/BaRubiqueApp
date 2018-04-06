@@ -1,0 +1,523 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    tools:context="com.bestdealfinance.bdfpartner.FragmentNew.ApplicantDetailFragmentNew">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_new" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbarEeditProfile">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/custom_border_grey"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_product"
+                        android:tint="@color/Grey400" />
+
+                    <EditText
+                        android:id="@+id/product_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:hint="Name of Product"
+                        android:padding="15dp"
+                        android:textSize="14sp"
+                        android:maxLines="2"
+                        android:inputType="textMultiLine"
+                        android:scrollbars="vertical"
+                        />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/Grey100" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_user"
+
+                        />
+
+                    <EditText
+                        android:id="@+id/applicant_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:hint="Name of Applicant *"
+                        android:maxLength="32"
+                        android:inputType="text"
+                        android:padding="15dp"
+                        android:textSize="14sp"
+                        android:focusable="true"
+                        />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/Grey100" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_email"
+
+                        />
+
+                    <EditText
+                        android:id="@+id/applicant_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:hint="Email of Applicant *"
+                        android:imeOptions=""
+                        android:inputType="textEmailAddress"
+                        android:padding="15dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/Grey100" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_phone"
+
+                        />
+
+                    <EditText
+                        android:id="@+id/applicant_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:hint="Phone of Applicant *"
+                        android:inputType="phone"
+                        android:digits="12345678890"
+                        android:maxLength="10"
+                        android:padding="15dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/Grey100" />
+
+                <LinearLayout
+                    android:id="@+id/loan_amount_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_payouts_grey"
+
+                        />
+
+                    <EditText
+                        android:id="@+id/applicant_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:hint="Loan Amount Required *"
+                        android:inputType="number"
+                        android:maxLength="14"
+                        android:padding="15dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/Grey100" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_city"
+
+                        />
+
+                    <android.support.v7.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/applicant_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:hint="City of Applicant *"
+                        android:inputType="text"
+                        android:padding="15dp"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Select Stages"
+                android:textColor="@color/Grey800" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/refer_icon"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/shape_circle"
+                            app:backgroundTint="@color/Blue400" />
+
+                        <TextView
+                            android:id="@+id/refer_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/refer_icon"
+                            android:text="Refer Only"
+                            android:textColor="@color/Grey600" />
+
+                        <TextView
+                            android:id="@+id/refer_subtext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/refer_text"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/refer_icon"
+                            android:text="Refer Only"
+                            android:textColor="@color/Grey400"
+                            android:textSize="8sp" />
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/refer_checkbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/refer_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:text="Rs 1000"
+                            android:textColor="@color/Green600"
+                            android:textSize="18sp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/app_fill_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/app_fill_icon"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/shape_circle"
+                            app:backgroundTint="@color/Grey400" />
+
+                        <TextView
+                            android:id="@+id/app_fill_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/app_fill_icon"
+                            android:text="App Fill"
+                            android:textColor="@color/Grey600" />
+
+                        <TextView
+                            android:id="@+id/app_fill_subtext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/app_fill_text"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/app_fill_icon"
+                            android:text="Fill the application"
+                            android:textColor="@color/Grey400"
+                            android:textSize="8sp" />
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/app_fill_checkbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/app_fill_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:text="Rs 1000"
+                            android:textColor="@color/Grey300"
+                            android:textSize="18sp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/doc_pickup_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/doc_pickup_icon"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_alignParentLeft="true"
+
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/shape_circle"
+                            app:backgroundTint="@color/Grey400"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/doc_pickup_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/doc_pickup_icon"
+                            android:text="Doc Pickup"
+                            android:textColor="@color/Grey600" />
+
+                        <TextView
+                            android:id="@+id/doc_pickup_subtext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/doc_pickup_text"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/doc_pickup_icon"
+                            android:text="Collect the documents"
+                            android:textColor="@color/Grey400"
+                            android:textSize="8sp" />
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/doc_pickup_checkBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/doc_pickup_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:text="Rs 1000"
+                            android:textColor="@color/Grey300"
+                            android:textSize="18sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/disburse_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/disburse_icon"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/shape_circle"
+
+                            app:backgroundTint="@color/Grey400" />
+
+                        <TextView
+                            android:id="@+id/disburse_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@+id/disburse_subtext"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignStart="@+id/disburse_subtext"
+                            android:text="Disbursement"
+                            android:textColor="@color/Grey600" />
+
+                        <TextView
+                            android:id="@+id/disburse_subtext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/disburse_text"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/disburse_icon"
+                            android:text="Disbursement Document Support"
+                            android:textColor="@color/Grey400"
+                            android:textSize="8sp" />
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/disburse_checkBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/disburse_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:text="Rs 1000"
+                            android:textColor="@color/Grey300"
+                            android:textSize="18sp" />
+
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/submit_lead_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="10dp"
+                android:background="@drawable/custom_button_filled_blue"
+                android:text="@string/submit_lead"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

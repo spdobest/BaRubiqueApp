@@ -1,0 +1,255 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layout_width="match_parent">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context="com.bestdealfinance.bdfpartner.FragmentNew.CongratulationFragment">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/Blue50"
+
+                >
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_congratulations"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"
+                    android:textColor="@color/Blue700"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/msg_for_congratulation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="You have completed APP FILL stage"
+                    android:layout_below="@id/tv1"
+                    android:textSize="12sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/Blue400"
+                    />
+
+            </RelativeLayout>
+
+
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_congrats"
+                android:layout_marginTop="100dp"
+                android:layout_centerHorizontal="true"
+                />
+
+
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="10dp"
+            android:background="@color/Grey300"
+            />
+        <TextView
+            android:id="@+id/lead_earning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rs 500"
+            android:textColor="@color/Green500"
+            android:gravity="center"
+            android:textSize="40sp"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="* Estimated payout based on disbursement amount"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:textColor="@color/Grey500"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="10dp"
+            android:background="@color/Grey300"
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_product_business_loan"
+            android:id="@+id/product_icon" />
+
+        <TextView
+            android:id="@+id/product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Business Loan"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textColor="@color/Grey700"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:id="@+id/titleName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Applicant Details : "
+                android:textSize="14sp"
+                android:textColor="@color/Grey500"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:layout_marginEnd="@dimen/dimen_10dp"
+                />
+            <TextView
+                android:id="@+id/applicant_name"
+                android:layout_toEndOf="@+id/titleName"
+                android:layout_toRightOf="@+id/titleName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harshit Gupta"
+                android:textSize="14sp"
+                android:textColor="@color/Grey900"
+                android:layout_alignParentRight="true"
+                android:gravity="right"
+                android:ellipsize="end"
+                android:maxLines="1"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/loan_amount_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            >
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loan Amount :"
+                android:textSize="14sp"
+                android:textColor="@color/Grey500"
+                android:layout_alignParentLeft="true"
+                />
+            <TextView
+                android:id="@+id/loan_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rs 10,00,000"
+                android:textSize="14sp"
+                android:textColor="@color/Grey900"
+                android:layout_alignParentRight="true"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tracking Id :"
+                android:textSize="14sp"
+                android:textColor="@color/Grey500"
+                android:layout_alignParentLeft="true"
+                />
+            <TextView
+                android:id="@+id/lead_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2345"
+                android:textSize="14sp"
+                android:textColor="@color/Grey900"
+                android:layout_alignParentRight="true"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submission Date :"
+                android:textSize="14sp"
+                android:textColor="@color/Grey500"
+                android:layout_alignParentLeft="true"
+                />
+            <TextView
+                android:id="@+id/submission_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15/12/2016"
+                android:textSize="14sp"
+                android:textColor="@color/Grey900"
+                android:layout_alignParentRight="true"
+                />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="10dp"
+            android:background="@color/Grey300"
+            />
+        <Button
+            android:id="@+id/continue_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/continue_caps"
+            style="?attr/borderlessButtonStyle"
+            android:background="?attr/selectableItemBackground"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="right"
+            android:textColor="@color/Green500"
+            android:layout_marginBottom="10dp"
+            />
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>
+

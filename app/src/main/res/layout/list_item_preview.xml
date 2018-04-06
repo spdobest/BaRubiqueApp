@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/dimen_2dp"
+    android:id="@+id/linearLayoutItemPreviewRoot"
+    >
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/textViewItemPreviewFieldName"
+        android:text="@string/product_type"
+        style="@style/leftAlignText"
+        android:layout_toLeftOf="@+id/textViewProductTypePreview"
+        />
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/textViewItemPreviewFieldValue"
+        style="@style/rightAlignText"
+        tools:text="Credit card"
+        android:layout_gravity="right"
+        android:gravity="right|center_vertical"
+        />
+</LinearLayout>

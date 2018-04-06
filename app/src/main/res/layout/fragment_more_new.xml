@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar_new" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Options"
+                    android:textAllCaps="true"
+                    android:textColor="@color/Grey500"
+                    android:textSize="10sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/custom_border_grey"
+                    android:orientation="vertical"
+                    android:paddingTop="1dp"
+                    android:paddingBottom="1dp"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutProduct_More"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:background="?attr/selectableItemBackground"
+                        >
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_product"
+                            app:backgroundTint="@color/Red500" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/ic_chevron_right_blue"
+                            android:gravity="center_vertical"
+                            android:padding="8dp"
+                            android:text="Products"
+
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@color/Grey100" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutMeeting_More"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:background="?attr/selectableItemBackground"
+                        >
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_referral"
+                            app:backgroundTint="@color/Blue500" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/ic_chevron_right_blue"
+                            android:gravity="center_vertical"
+                            android:padding="8dp"
+                            android:text="Meetings" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@color/Grey100" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutMyProfile_More"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:background="?attr/selectableItemBackground"
+                        >
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_user"
+                            app:backgroundTint="@color/Orange500" />
+
+                        <TextView
+                            android:id="@+id/more_my_profile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/ic_chevron_right_blue"
+                            android:gravity="center_vertical"
+                            android:padding="8dp"
+                            android:text="My Profile"
+                            android:background="?attr/selectableItemBackground"
+                            />
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@color/Grey100" />
+
+                    <RelativeLayout
+                        android:id="@+id/relativeLayoutRewardPoint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:background="?attr/selectableItemBackground"
+                        >
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/imageViewReward"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_gift"
+                            app:backgroundTint="@color/Green500"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            />
+
+                        <TextView
+                            android:id="@+id/textViewRewardPoint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="Your Rewards"
+                            android:layout_toEndOf="@+id/imageViewReward"
+                            android:layout_toRightOf="@+id/imageViewReward"
+                            android:layout_centerVertical="true"
+                            android:padding="@dimen/dimen_8dp"
+                            />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/reward_points"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text=""
+                            android:textColor="@color/Green500"
+                            android:gravity="center_vertical"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:drawableRight="@drawable/ic_chevron_right_blue"
+                            />
+
+                        <ProgressBar
+                            android:id="@+id/progressBarGetRewards"
+                            android:layout_width="@dimen/dimen_20dp"
+                            android:layout_height="@dimen/dimen_20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:visibility="gone"
+                            />
+
+                    </RelativeLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@color/Grey100" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutTraining_More"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:background="?attr/selectableItemBackground"
+                        >
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/appCompatImageView"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_video"
+                            app:backgroundTint="@color/Pink500" />
+
+                        <TextView
+                            android:id="@+id/more_trainings"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/ic_chevron_right_blue"
+                            android:gravity="center_vertical"
+                            android:padding="8dp"
+                            android:text="Training"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@color/Grey100" />
+
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutShare_More"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:background="?attr/selectableItemBackground"
+                        >
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_share"
+                            app:backgroundTint="@color/Green500" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/ic_chevron_right_blue"
+                            android:gravity="center_vertical"
+                            android:padding="8dp"
+                            android:text="Share with Friends"/>
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_translate"
+                            app:backgroundTint="@color/Pink500" />
+
+                        <TextView
+                            android:id="@+id/more_choose_language"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/ic_chevron_right_blue"
+                            android:gravity="center_vertical"
+                            android:padding="8dp"
+                            android:text="Choose Language"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Info"
+                    android:textAllCaps="true"
+                    android:textColor="@color/Grey500"
+                    android:textSize="10sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/custom_border_grey"
+                    android:orientation="vertical"
+                    android:paddingBottom="1dp"
+                    >
+
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutAboutUs_More"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:background="?attr/selectableItemBackground"
+                        >
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_about"
+                            app:backgroundTint="@color/Blue500" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/ic_chevron_right_blue"
+                            android:gravity="center_vertical"
+                            android:padding="8dp"
+                            android:text="About Us"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@color/Grey100" />
+
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutContactus_More"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:background="?attr/selectableItemBackground"
+                        >
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_headset"
+                            app:backgroundTint="@color/Green500" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/ic_chevron_right_blue"
+                            android:gravity="center_vertical"
+                            android:padding="8dp"
+                            android:text="Contact Us"/>
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_clipboard_text"
+                            app:backgroundTint="@color/Orange500" />
+
+                        <TextView
+                            android:id="@+id/more_terms_of_service"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/ic_chevron_right_blue"
+                            android:gravity="center_vertical"
+                            android:padding="8dp"
+                            android:text="Terms of service"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

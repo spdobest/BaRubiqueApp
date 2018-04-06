@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:fitsSystemWindows="false"
+    >
+
+    <include layout="@layout/toolbar_new" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:gravity="center"
+            android:text="Select Stages "
+            android:textColor="@color/Grey800"
+            android:textSize="12sp" />
+
+        <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/payout_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:weightSum="4">
+
+            <TextView
+                android:id="@+id/refer_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/txt_referral"
+                android:textAllCaps="true"
+                android:textColor="@color/Blue500"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/app_fill_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/app_fill"
+                android:textAllCaps="true"
+                android:textColor="@color/Grey500"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/doc_pickup_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Doc Pickup"
+                android:textAllCaps="true"
+                android:textColor="@color/Grey500"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/disburse_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Disburse"
+                android:textAllCaps="true"
+                android:textColor="@color/Grey500"
+                android:textSize="10sp" />
+
+
+        </LinearLayout>
+
+
+        <!--<View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/Grey200" />
+    -->
+
+        <!--<View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/Grey200" />-->
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:tabGravity="fill"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/Blue500"
+            app:tabTextColor="@color/Grey600">
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tab_cc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Credit Card" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tab_bl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Business Loan" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tab_cl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Car Loan" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tab_hl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home Loan" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tab_lap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loan Against Property" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tab_pl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Personal Loan" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tab_twl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Two Wheeler Loan" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tab_cvf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Commercial Vehicle Finance" />
+
+
+        </android.support.design.widget.TabLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/payout_pl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@color/Green500"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:paddingTop="4dp"
+                android:text="Personal Loan"
+                android:textColor="@color/white"
+                android:textSize="11sp" />
+
+
+            <TextView
+                android:id="@+id/payout_bl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@color/Blue500"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:paddingTop="4dp"
+                android:text="Personal Loan"
+                android:textColor="@color/white"
+                android:textSize="11sp" />
+
+
+            <TextView
+                android:id="@+id/payout_cl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@color/Pink500"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:paddingTop="4dp"
+                android:text="Car Loan"
+                android:textColor="@color/white"
+                android:textSize="11sp" />
+
+
+            <TextView
+                android:id="@+id/payout_hl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/Amber500"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:paddingTop="4dp"
+                android:text="Home Loan"
+                android:textColor="@color/white"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_bank_and_payout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+</LinearLayout>

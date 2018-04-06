@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_reminder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bestdealfinance.bdfpartner.ActivityNew.ReminderActivity">
+
+    <include
+        layout="@layout/toolbar_new"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewReminder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:padding="@dimen/dimen_5dp"
+        />
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/textViewNoReminder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/dimen_22sp"
+        android:text="@string/no_reminder_yet"
+        android:textStyle="bold"
+        android:visibility="gone"
+        tools:visibility="visible"
+        />
+
+</RelativeLayout>
