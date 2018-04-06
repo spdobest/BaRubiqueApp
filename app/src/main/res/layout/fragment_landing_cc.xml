@@ -4,27 +4,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/toolbar"
-        android:layout_height="170dp"
-        android:elevation="5dp"
-        app:theme="@style/ToolbarColoredBackArrow"
         android:layout_width="match_parent"
-        android:contentInsetStart="0dp"
+        android:layout_height="170dp"
         android:contentInsetLeft="0dp"
+        android:contentInsetStart="0dp"
+        android:elevation="5dp"
+        android:minHeight="?android:attr/actionBarSize"
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp"
-        android:minHeight="?android:attr/actionBarSize"
+        app:theme="@style/ToolbarColoredBackArrow"
 
         >
         <FrameLayout
-            android:layout_width="match_parent"
             android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorPrimary"
             android:orientation="vertical">
@@ -34,42 +34,42 @@
                 android:src="@drawable/congrates"/>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
                 <ImageView
+                    android:id="@+id/back_arrow"
                     android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:id="@+id/back_arrow"
-                    android:layout_height="25dp"
                     android:src="@drawable/ic_arrow_left"/>
                 <ImageView
+                    android:id="@+id/head_image"
                     android:layout_width="120dp"
                     android:layout_height="50dp"
-                    android:id="@+id/head_image"
                     android:layout_gravity="center"
                     android:src="@drawable/rupee"/>
                 <TextView
+                    android:id="@+id/landing_loan_type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/landing_loan_type"
-                    android:typeface="sans"
                     android:layout_gravity="bottom"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:textSize="16sp"/>
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:typeface="sans" />
                 <Button
+                    android:id="@+id/refer_now"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:id="@+id/refer_now"
                     android:layout_gravity="center"
-                    android:visibility="gone"
+                    android:layout_margin="10dp"
                     android:background="@drawable/custom_button_white_filled_flat"
+                    android:text="REFER NOW"
                     android:textColor="@color/Black"
                     android:textSize="10sp"
-                    android:text="REFER NOW"/>
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -77,28 +77,28 @@
     </android.support.v7.widget.Toolbar>
 
     <ImageView
+        android:id="@+id/waiting"
         android:layout_width="@dimen/fifty"
         android:layout_height="@dimen/fifty"
-        android:layout_margin="50dp"
-        android:id="@+id/waiting"
-        android:visibility="gone"
         android:layout_gravity="center"
+        android:layout_margin="50dp"
+        android:visibility="gone"
         />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <LinearLayout
+            android:id="@+id/mainLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mainLayout"
-            android:orientation="vertical"
             android:background="@color/Grey200"
+            android:orientation="vertical"
             >
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -106,55 +106,55 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingTop="10dp"
-                        android:layout_marginRight="1dp"
                         android:layout_marginBottom="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
                         android:background="@color/White"
+                        android:orientation="vertical"
                         android:padding="10dp"
-                        android:orientation="vertical">
+                        android:paddingTop="10dp">
                         <TextView
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:text="Annual Fees"
-                            android:layout_gravity="center"
-                            android:textColor="@color/Grey500"
-                            android:layout_height="wrap_content" />
+                            android:textColor="@color/Grey500" />
                         <TextView
-                            android:layout_width="match_parent"
                             android:id="@+id/landing_fees"
-                            android:textColor="@color/Grey800"
-                            android:textSize="16sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
                             android:layout_gravity="center"
-                            android:lines="2"
                             android:gravity="center"
-                            android:layout_height="40dp" />
+                            android:lines="2"
+                            android:textColor="@color/Grey800"
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingTop="10dp"
                         android:layout_marginBottom="1dp"
                         android:layout_marginRight="1dp"
+                        android:layout_weight="1"
                         android:background="@color/White"
+                        android:orientation="vertical"
                         android:padding="10dp"
-                        android:orientation="vertical">
+                        android:paddingTop="10dp">
                         <TextView
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:text="Processing Time"
-                            android:layout_gravity="center"
-                            android:textColor="@color/Grey500"
-                            android:layout_height="wrap_content" />
+                            android:textColor="@color/Grey500" />
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:textSize="16sp"
                             android:id="@+id/landing_fees2"
-                            android:textColor="@color/Black"
-                            android:layout_gravity="center"
-                            android:lines="2"
-                            android:gravity="center"
+                            android:layout_width="wrap_content"
                             android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:textColor="@color/Black"
+                            android:textSize="16sp"
 
                             />
                     </LinearLayout>
@@ -167,26 +167,26 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
                         android:layout_marginBottom="1dp"
                         android:layout_marginRight="1dp"
                         android:background="@color/White"
+                        android:orientation="vertical"
                         android:paddingBottom="10dp"
-                        android:orientation="vertical">
+                        android:paddingTop="10dp">
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="Exclusive Offer"
-                            android:padding="5dp"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_height="wrap_content" />
+                            android:padding="5dp"
+                            android:text="Exclusive Offer" />
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:textColor="@color/Grey800"
-                            android:textSize="12sp"
                             android:id="@+id/landing_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:layout_height="wrap_content" />
+                            android:textColor="@color/Grey800"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
 
@@ -194,28 +194,28 @@
             </LinearLayout>
 
             <android.support.v7.widget.CardView
+                style="@style/CardView.Light"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                style="@style/CardView.Light"
-                android:layout_height="wrap_content">
+                android:layout_marginTop="10dp">
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="10dp"
-                    android:layout_height="wrap_content">
+                    android:padding="10dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/Grey900"
-                        android:text="What You&apos;ll Love"/>
+                        android:text="What You&apos;ll Love"
+                        android:textColor="@color/Grey900" />
 
                     <android.support.v7.widget.RecyclerView
+                        android:id="@+id/features_list"
                         android:layout_width="match_parent"
-                        android:padding="5dp"
                         android:layout_height="match_parent"
-                        android:id="@+id/features_list">
+                        android:padding="5dp">
 
                     </android.support.v7.widget.RecyclerView>
                     <!--<ImageView
@@ -229,27 +229,27 @@
                 </LinearLayout>
             </android.support.v7.widget.CardView>
             <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-
                 style="@style/CardView.Light"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp">
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="10dp"
-                    android:layout_height="wrap_content">
+                    android:padding="10dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/Grey900"
-                        android:text="Eligibility"/>
+                        android:text="Eligibility"
+                        android:textColor="@color/Grey900" />
                     <android.support.v7.widget.RecyclerView
+                        android:id="@+id/eligiblity_list"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/eligiblity_list">
+                        android:layout_height="match_parent">
 
                     </android.support.v7.widget.RecyclerView>
                     <!--<ImageView
@@ -262,27 +262,27 @@
                 </LinearLayout>
             </android.support.v7.widget.CardView>
             <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-
                 style="@style/CardView.Light"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp">
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="10dp"
-                    android:layout_height="wrap_content">
+                    android:padding="10dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/Grey900"
-                        android:text="Documents Required"/>
+                        android:text="Documents Required"
+                        android:textColor="@color/Grey900" />
                     <android.support.v7.widget.RecyclerView
+                        android:id="@+id/document_list"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/document_list">
+                        android:layout_height="match_parent">
 
                     </android.support.v7.widget.RecyclerView>
                     <!--<ImageView
@@ -295,63 +295,63 @@
                 </LinearLayout>
             </android.support.v7.widget.CardView>
             <android.support.v7.widget.CardView
+                style="@style/CardView.Light"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+
                 android:layout_marginRight="10dp"
 
-                style="@style/CardView.Light"
-
-                android:layout_height="wrap_content">
+                android:layout_marginTop="10dp">
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="10dp"
-                    android:layout_height="wrap_content">
+                    android:padding="10dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/Grey900"
+                        android:text="Fees and Charges"
 
-                        android:text="Fees and Charges"/>
+                        android:textColor="@color/Grey900" />
                     <android.support.v7.widget.RecyclerView
+                        android:id="@+id/charges_list"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/charges_list">
+                        android:layout_height="match_parent">
 
                     </android.support.v7.widget.RecyclerView>
-                   <!-- <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="3dp"
-                        android:scaleType="fitXY"
-                        android:layout_marginLeft="10dp"
-                        android:layout_gravity="bottom|left"
-                        android:src="@drawable/landing_line"/>-->
+                    <!-- <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="3dp"
+                         android:scaleType="fitXY"
+                         android:layout_marginLeft="10dp"
+                         android:layout_gravity="bottom|left"
+                         android:src="@drawable/landing_line"/>-->
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
+                style="@style/CardView.Light"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                style="@style/CardView.Light"
-                android:layout_height="wrap_content">
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp">
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="10dp"
-                    android:layout_height="wrap_content">
+                    android:padding="10dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/Grey900"
-                        android:text="Offers"/>
+                        android:text="Offers"
+                        android:textColor="@color/Grey900" />
                     <android.support.v7.widget.RecyclerView
+                        android:id="@+id/offers_list"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/offers_list">
+                        android:layout_height="match_parent">
 
                     </android.support.v7.widget.RecyclerView>
                     <!--<ImageView

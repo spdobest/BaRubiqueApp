@@ -1,56 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Grey50"
     android:orientation="vertical">
 
-    <LinearLayout
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:padding="6dp"
+        android:text="Top performers"
+        android:textAllCaps="true"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/leader_board_recycler_view_top_associates"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_margin="5dp"
+        android:background="@drawable/custom_recycler_view_grey_round_border"></android.support.v7.widget.RecyclerView>
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:padding="6dp"
-            android:text="Top performers"
-            android:textAllCaps="true"
-            android:textSize="12sp" />
-
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/leader_board_recycler_view_top_associates"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/custom_recycler_view_grey_round_border"></android.support.v7.widget.RecyclerView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:padding="6dp"
-            android:text="Top referrals"
-            android:textAllCaps="true"
-            android:textSize="12sp" />
-
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/leader_board_recycler_view_top_referrals"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/custom_recycler_view_grey_round_border"></android.support.v7.widget.RecyclerView>
-
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

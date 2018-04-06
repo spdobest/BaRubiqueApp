@@ -1,25 +1,20 @@
 package com.bestdealfinance.bdfpartner.fragment;
 
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bestdealfinance.bdfpartner.R;
 import com.bestdealfinance.bdfpartner.activity.PdfActivity;
-import com.bestdealfinance.bdfpartner.activity.YoutubeActivity;
 import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
@@ -31,7 +26,7 @@ import org.json.JSONException;
 public class TrainingDocumentFragment extends Fragment {
 
 
-    private ListView listView;
+    private RecyclerView recyclerView;
 
     public TrainingDocumentFragment() {
         // Required empty public constructor
@@ -53,29 +48,9 @@ public class TrainingDocumentFragment extends Fragment {
         Bundle bundle = getArguments();
         try {
             final JSONArray data = new JSONArray(bundle.getString("data"));
-            listView = (ListView) getActivity().findViewById(R.id.listview_training_doc);
-            listView.setAdapter(new ListViewAdapter(data));
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                    try {
-
-                        Intent intent = new Intent(getActivity(),PdfActivity.class);
-                        intent.putExtra("title",data.getJSONObject(i).getString("title"));
-                        intent.putExtra("link",data.getJSONObject(i).getString("source_url"));
-                        startActivity(intent);
-
-                        /*Intent inte = new Intent(Intent.ACTION_VIEW);
-                        inte.setDataAndType(Uri.parse("https://docs.google.com/gview?embedded=true&url="+data.getJSONObject(i).getString("source_url")),"text/html");
-                        Log.e("path",data.getJSONObject(i).getString("source_url"));
-                        startActivity(inte);*/
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            });
+            recyclerView = (RecyclerView) getActivity().findViewById(R.id.listview_training_doc);
+            recyclerView.setAdapter(new TrainingDocumentAdapter(data));
+            recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -84,58 +59,72 @@ public class TrainingDocumentFragment extends Fragment {
 
     }
 
-    class ListViewAdapter extends BaseAdapter {
+
+    public class TrainingDocumentAdapter extends RecyclerView.Adapter<TrainingDocumentAdapter.MyViewHolder> {
 
         private JSONArray data;
 
-        public ListViewAdapter(JSONArray data) {
+        private LayoutInflater inflater;
+
+        public TrainingDocumentAdapter(JSONArray data) {
+            inflater = LayoutInflater.from(getActivity());
             this.data = data;
         }
 
+
         @Override
-        public int getCount() {
-            return data.length();
+        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = inflater.inflate(R.layout.list_item_training_articles, parent, false);
+            MyViewHolder myViewHolder = new MyViewHolder(view);
+            return myViewHolder;
         }
 
         @Override
-        public Object getItem(int i) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            LayoutInflater inflater = (LayoutInflater) getActivity()
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View rowView;
-            if(view!=null)
-            {
-                rowView = view;
-            }
-            else
-            {
-                rowView = inflater.inflate(R.layout.list_item_training_video, viewGroup, false);
-            }
-
-            TextView title = (TextView) rowView.findViewById(R.id.list_title);
-            TextView description = (TextView) rowView.findViewById(R.id.list_description);
-            ImageView imageView = (ImageView) rowView.findViewById(R.id.list_thumbnail);
-
+        public void onBindViewHolder(MyViewHolder holder, int position) {
             try {
-                title.setText(""+(i+1)+". "+data.getJSONObject(i).getString("title"));
-                description.setText(data.getJSONObject(i).getString("description"));
-                Glide.with(getActivity()).load(data.getJSONObject(i).getString("image_url")).into(imageView);
+                holder.title.setText(data.getJSONObject(position).getString("title"));
+                holder.description.setText(data.getJSONObject(position).getString("description"));
+                Glide.with(getActivity()).load(data.getJSONObject(position).getString("image_url")).placeholder(R.drawable.app_icon).into(holder.imageView);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-
-            return rowView;
         }
+
+
+        @Override
+        public int getItemCount() {
+            return data.length();
+        }
+
+        class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+            TextView title, description;
+            ImageView imageView;
+
+            public MyViewHolder(View itemView) {
+                super(itemView);
+                title = itemView.findViewById(R.id.list_title);
+                description = itemView.findViewById(R.id.list_description);
+                imageView = itemView.findViewById(R.id.list_thumbnail);
+                imageView.setOnClickListener(this);
+            }
+
+            @Override
+            public void onClick(View view) {
+                int i = getAdapterPosition();
+
+                Intent intent = new Intent(getActivity(), PdfActivity.class);
+                try {
+                    intent.putExtra("title", data.getJSONObject(i).getString("title"));
+                    intent.putExtra("link", data.getJSONObject(i).getString("source_url"));
+                    startActivity(intent);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
     }
 
 }

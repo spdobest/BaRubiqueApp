@@ -17,7 +17,7 @@ public class Otp extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.otp);
-        OtpNumber= (EditText) findViewById(R.id.txtName);
+        OtpNumber = findViewById(R.id.txtName);
     }
     public void recivedSms(String message)
     {

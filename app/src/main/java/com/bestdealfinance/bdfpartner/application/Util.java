@@ -57,16 +57,16 @@ public class Util {
     //TODO Production URLS
 
 
-    public static final String ROOT_URL_FI = "https://prod-fiapi.rubique.com/";
-    public static final String S3_URL = "https://staticcontent.rubique.com/json/";
-    public static final String ROOT_URL_V2 = "https://api.rubique.com/";
+    //public static final String ROOT_URL_FI = "https://prod-fiapi.rubique.com/";
+    //public static final String S3_URL = "https://staticcontent.rubique.com/json/";
+    //public static final String ROOT_URL_V2 = "https://api.rubique.com/";
 
 
     //TODO Test URLS
 
-    //public static final String ROOT_URL_V2 = "http://testapi-newarch.rubique.com/";
-    //public static final String ROOT_URL_FI = "http://testfiapi.rubique.com/";
-    //public static final String S3_URL = "https://staticcontent.rubique.com/json/";
+    public static final String ROOT_URL_V2 = "http://testapi-newarch.rubique.com/";
+    public static final String ROOT_URL_FI = "http://testfiapi.rubique.com/";
+    public static final String S3_URL = "https://staticcontent.rubique.com/json/";
 
 
     public static final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -99,7 +99,7 @@ public class Util {
     public static final String DUPLICATE_LEAD = ROOT_URL_V2 + "leads/duplicateLeadForConsumerPortal";
     public static final String QUALIFY_PRODUCT = ROOT_URL_V2 + "leads/qualify";
     public static final String SUBMITAPPLICATIONBA = ROOT_URL_V2 + "leads/submitApplicationBa";
-    public static final String GET_DESCRIPTION = "http://test.rubique.com/assets/products-description.json";
+    public static final String GET_DESCRIPTION = "http://test.rubique.com/assets/list_item_products-description.json";
     public static final String ALL_PRODUCTS_BY_TYPE = ROOT_URL_V2 + "product/getProductByType";
     public static final String PRODUCT_INFO_BYID = ROOT_URL_V2 + "product/getProductInfoById";
     /*public static final String STEP_ONE_SEARCH = ROOT_URL_V1 + "/mobileverify/productsearch_stepone";
@@ -141,7 +141,7 @@ public class Util {
     public static final String APPLICATION_SUBMIT = ROOT_URL_V2 + "customer/submitCustomerAppWithFinbankDetails";
     public static final Executor threadPool = Executors.newFixedThreadPool(4);
     public static final String[] yes_no = {"Yes", "No"};
-    public static final String[] occupation = {"Housewife", "Retired", "Self Employed", "Self Employed Professional", "Self Employed Professional Doctor", "Student", "Others"};
+    public static final String[] occupation = {"Select Profession", "Housewife", "Retired", "Self Employed", "Self Employed Professional", "Self Employed Professional Doctor", "Student", "Others"};
     public static final String[] occupation_without_income = {"Housewife", "Retired", "Self Employed", "Self employed - No income proof", "Self Employed Professional", "Self Employed Professional Doctor", "Student"};
     public static final String PAYOUT_FOR_LOANS = ROOT_URL_V2 + "payout/getAllProductTypeCommissionInfo";
     public static final String PAYOUT_FOR_CC = ROOT_URL_V2 + "payout/getCCPayouts";
@@ -155,11 +155,6 @@ public class Util {
     public static final String SOME_ACTION = "com.bestdealfinance.partner.refresh";
     public static final String[] product = {"Credit Card", "Car Loan", "Two Wheeler Loan", "Personal Loan", "Home Loan", "Loan Against Property", "Business Loan"};
     public static final String[] card = {"Credit Card"};
-    public static final String FETCH_PROFESSION = ROOT_URL_V2 + "Profile/profession";
-    public static final String  FETCH_ALL_CITY = ROOT_URL_V2 + "Profile/city";
-    public static final String  FETCH_APP_CITY = ROOT_URL_V2 + "Profile/applicationcity";
-    public static final String FETCH_OCCUPATION = ROOT_URL_V2 + "Profile/occupation";
-    public static final String TNC_URL = ROOT_URL_V2 + "ba_tc.html";
     public static String o_id = "";
     public static String mobile = "";
     public static String ltoken = "";
@@ -207,19 +202,11 @@ public class Util {
     }
 
     public static boolean isCheckEmail(String email) {
-        if (email.matches(emailPattern) && email.length() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return email.matches(emailPattern) && email.length() > 0;
     }
 
     public static boolean isPANVALID(String email) {
-        if (email.matches(pan_pattern) && email.length() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return email.matches(pan_pattern) && email.length() > 0;
     }
 
     public static String convertInputStreamToString(InputStream inputStream) throws IOException {
@@ -300,61 +287,6 @@ public class Util {
         return result;
     }
 
-
-    public static int getImagebyLoanType(String loan_type) {
-        int result = R.drawable.rupee;
-        switch (loan_type) {
-            case "11":
-                //Credit Card
-                result = R.drawable.cc;
-                break;
-            case "22":
-                //CL
-                result = R.drawable.cl;
-                break;
-            case "23":
-                //TWL
-                result = R.drawable.twl;
-                break;
-            case "24":
-                //EL
-                result = R.drawable.bl;
-                break;
-            case "25":
-                //PL
-                result = R.drawable.pl;
-                break;
-            case "26":
-                //HL
-                result = R.drawable.hl;
-                break;
-            case "27":
-                //LAS
-                result = R.drawable.bl;
-                break;
-            case "28":
-                //LAP
-                result = R.drawable.bl;
-                break;
-            case "29":
-                //CV
-                result = R.drawable.cv;
-                break;
-            case "32":
-                //SME
-                result = R.drawable.sme;
-                break;
-            case "39":
-                //BL
-                result = R.drawable.bl;
-                break;
-            default:
-                //ANY Other Loan
-                result = R.drawable.bl;
-                break;
-        }
-        return result;
-    }
 
     public static int getBankColor(String bankID) {
         int color = Color.rgb(25, 104, 129);

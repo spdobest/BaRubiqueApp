@@ -4,8 +4,25 @@ package com.bestdealfinance.bdfpartner.model;
  * Created with Love by devesh on 19/10/15.
  */
 public class FeedItemCC {
+    private String title;
+    private String thumbnail;
+    private String category;
+    private String finbank;
+    private String finbank_type;
+    private String fees;
+    private String roi;
+    private String cc_id;
+    private String features;
+    private String product_id;
+    private String filledQual;
+    private String fullQual;
+
     public String getCc_id() {
         return cc_id;
+    }
+
+    public void setCc_id(String cc_id) {
+        this.cc_id = cc_id;
     }
 
     public String getFinbank() {
@@ -16,16 +33,6 @@ public class FeedItemCC {
         this.finbank = finbank;
     }
 
-    public void setCc_id(String cc_id) {
-        this.cc_id = cc_id;
-    }
-
-    private String title;
-    private String thumbnail;
-    private String category;
-    private String finbank;
-    private String finbank_type;
-
     public String getFinbank_type() {
         return finbank_type;
     }
@@ -34,13 +41,6 @@ public class FeedItemCC {
         this.finbank_type = finbank_type;
     }
 
-    private String fees;
-    private String roi;
-    private String cc_id;
-    private String features;
-    private String product_id;
-    private String filledQual;
-
     public String getFullQual() {
         return fullQual;
     }
@@ -48,8 +48,6 @@ public class FeedItemCC {
     public void setFullQual(String fullQual) {
         this.fullQual = fullQual;
     }
-
-    private String fullQual;
 
     public String getFilledQual() {
         return filledQual;

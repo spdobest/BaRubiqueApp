@@ -128,6 +128,7 @@
     <string name="state">State</string>
     <string name="city">City</string>
     <string name="pincode">Pin Code</string>
+    <string name="pincode_star">Pin Code *</string>
     <string name="company_name">Company Name</string>
     <string name="monthly_income">Monthly Income (Rs.)</string>
     <string name="pan_card">Pan Card</string>
@@ -154,8 +155,7 @@
     <string name="title_activity_referral_detail">ReferralDetailActivity</string>
     <string name="title_activity_demo">demo</string>
     <string name="quote_text">Please help us with a little more information to <b>process</b> a <b>faster approval</b></string>
-    <string name="app_ID">46b4e721-18bd-4fd6-8209-a805aea2da5b</string>
-    <string name="google_app_id">46b4e721-18bd-4fd6-8209-a805aea2da5b</string>
+
 
     <string name="title_activity_final_congrats">FinalCongrats</string>
     <string name="title_activity_congrats__app">Congrats_App</string>
@@ -178,6 +178,7 @@
     <string name="retry">RETRY</string>
     <string name="failed_to_retrieve">Failed to retrieve data</string>
     <string name="pan">PAN</string>
+    <string name="pan_star">PAN * </string>
     <string name="aadhar_number">Aadhar Number</string>
     <string name="passport_number">Passport Number</string>
 
@@ -190,8 +191,10 @@
     <string name="nav_drawer_products">Products</string>
     <string name="nav_drawer_contact_us">Contact Us</string>
     <string name="nav_drawer_share_with_friends">Share with Friends</string>
-    <string name="personal_information">Personal and Professional Information</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="personal_details">Personal Details</string>
     <string name="bank_information">Bank Information</string>
+    <string name="bank_details">Bank Details</string>
     <string name="save">Save</string>
     <string name="empty_error">Empty</string>
     <string name="account_number_not_matched">Account numbers not matched</string>
@@ -224,7 +227,7 @@
     <string name="txt_phone_number">Phone Number</string>
     <string name="txt_email_address">Email Address</string>
     <string name="txt_city_name">City Name</string>
-    <string name="promocode_helper_text">Do you have Promo Code ?</string>
+    <string name="promocode_helper_text">Do you have Registration Code ?</string>
     <string name="txt_apply_code">APPLY CODE</string>
     <string name="txt_remove">REMOVE</string>
     <string name="txt_ok">OK</string>
@@ -306,4 +309,93 @@
     <string name="select_bank">Select Bank</string>
     <string name="i_accept_terms_and_conditions">I accept terms and conditions.</string>
     <string name="click_to_see">Click to see</string>
+    <string name="start_earning_now">START EARNING NOW</string>
+    <string name="name_of_applicant">Name of applicant</string>
+    <string name="email_of_applicant">Email of applicant</string>
+    <string name="phone_of_applicant">Phone of applicant</string>
+    <string name="loan_amount_required">Loan Amount Required</string>
+    <string name="city_of_applicant">City of applicant</string>
+    <string name="applicant_details">Applicant Details</string>
+    <string name="continue_to_application_fill">CONTINUE TO APPLICATION FILL</string>
+    <string name="refer_only">REFER ONLY</string>
+    <string name="your_selection">Your selection</string>
+    <string name="employment_details">Employment Details</string>
+    <string name="register">REGISTER</string>
+    <string name="submit_lead">submit lead</string>
+    <string name="select_stages">Select Stages</string>
+    <string name="list_of_qualified_offers">List of Qualified Offers</string>
+    <string name="select_this_rfc">SELECT THIS RFC</string>
+    <string name="get_directions">GET DIRECTIONS</string>
+    <string name="want_to_see_list_of_rfc">Want to see list of RFC ?</string>
+
+
+    <string name="speech_prompt">Say something&#8230;</string>
+    <string name="speech_not_supported">Sorry! Your device doesn\'t support speech input</string>
+
+
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
+    <string name="low_storage_error">Ocr dependencies cannot be downloaded due to low device storage</string>
+    <string name="title_activity_main">Ocr Google Vision Api</string>
+    <string name="ocr_header">Click &quot;Detect Text&quot; to detect text</string>
+    <string name="read_text">Detect Text</string>
+    <string name="auto_focus">Auto Focus</string>
+    <string name="use_flash">Use Flash</string>
+    <string name="ocr_success">Text read successfully</string>
+    <string name="ocr_failure">No text captured</string>
+    <string name="ocr_error">"Error reading text: %1$s"</string>
+    <string name="user_not_logged_in">User not logged in</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+
+    <string name="do_youwant_to_exit">Do you want to exit ?</string>
+    <string name="cancel_in_caps">CANCEL</string>
+    <string name="exit">EXIT</string>
+
+    <string name="please_selectProfession">Please select Profession</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="enter_valid_pincode">Enter Valid Pincode</string>
+    <string name="please_selectCity">Please Select City</string>
+    <string name="invalid_adhar">Invalid Adhar Number</string>
+    <string name="continue_caps">CONTINUE</string>
+    <string name="application_form">Application Form</string>
+    <string name="application_details">Application Details</string>
+    <string name="edit">Edit</string>
+    <string name="phone_no">Phone No.</string>
+    <string name="dob">Dob</string>
+    <string name="salarieOrSelf">Salaried/Self Eployed</string>
+    <string name="yearsAtCurrentRecydency">Years At Current Recydency</string>
+    <string name="modeOfSalary">Mode Of Salary</string>
+    <string name="product_applied">Product Applied</string>
+    <string name="address">Address</string>
+    <string name="tracking_id">Tracking Id</string>
+    <string name="customer_details">Customer Details</string>
+    <string name="document_checklist">Document Checklist</string>
+    <string name="rfc_address">Rfc Address</string>
+    <string name="collect_above_doc_and_submit">Collect above documents and submit at RFC Center</string>
+    <string name="schedule_meeting">Schedule Meeting</string>
+    <string name="edit_bank">Edit Bank Details</string>
+    <string name="oops">Oops !</string>
+    <string name="no_offer_message">we did not find an offer as per your requirement.</string>
+    <string name="enter_otp_or_verify_message">Enter the OTP below once you receve on your registered mobile number</string>
+    <string name="send_otp_title_bottomsheet"> Quick procesing with <b> Adhaar E-KYC!  </b></string>
+    <string name="send_otp_message_bottomsheet">The OTP will be sent to your Adhaar-linked mobile number</string>
+    <string name="send_otp_checkboxmessage_bottomsheet">  I hereby, declare that I amaware of the purpose and provide my consent towards using my adhaar number for authentication from UIDAI</string>
+    <string name="reward">Reward</string>
+    <string name="no_reminder_yet">No Reminder Yet</string>
+    <string name="do_you_have_registration_code">Do You Have Registration Code ?</string>
+
+
+    <array name="array_welcome_title">
+        <item>Welcome</item>
+        <item>Refer</item>
+        <item>Earn</item>
+    </array>
+
+    <array name="array_welcome_message">
+        <item>Here is a chance to double your earnings with Rubique</item>
+        <item>Refer from a variety of financial products to your friends and family.</item>
+        <item>More you refer , more you will earn</item>
+    </array>
+    <string name="app_ID">1</string>
+
 </resources>

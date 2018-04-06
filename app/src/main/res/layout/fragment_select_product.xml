@@ -2,98 +2,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Grey200"
-    tools:context="com.bestdealfinance.bdfpartner.fragment.Select_product">
+    android:orientation="vertical"
+    tools:context="com.bestdealfinance.bdfpartner.fragment.SelectedProductFragment">
 
-    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <include
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="145dp"
-        android:contentInsetLeft="0dp"
-        android:contentInsetStart="0dp"
-        android:elevation="5dp"
-        android:minHeight="?android:attr/actionBarSize"
-        app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp"
-        app:theme="@style/ToolbarColoredBackArrow"
-
-        >
-
-        <FrameLayout
-            android:id="@+id/toolbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitEnd"
-                android:src="@drawable/congrates" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/back_arrow"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_arrow_left" />
-
-                <ImageView
-                    android:id="@+id/head_image"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_product_white" />
-
-                <TextView
-                    android:id="@+id/landing_loan_type"
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-
-                    android:text="Loan"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-        </FrameLayout>
-    </android.support.v7.widget.Toolbar>
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/refer_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:text="@string/txt_select_a_product_to_view_details"
-        android:textSize="18sp" />
-
-    <ImageView
-        android:id="@+id/waiting"
-        android:layout_width="@dimen/fifty"
-        android:layout_height="@dimen/fifty"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center" />
-
+        layout="@layout/toolbar_new" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/refer_header"
-        android:elevation="5dp"
+        android:layout_below="@+id/toolbar"
         android:scrollbars="vertical" />
+
+    <ImageView
+        android:id="@+id/waiting"
+        android:layout_width="@dimen/fifty"
+        android:layout_height="@dimen/fifty"
+        android:layout_centerInParent="true" />
+
 
 </RelativeLayout>

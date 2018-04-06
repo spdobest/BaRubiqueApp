@@ -3,8 +3,6 @@ package com.bestdealfinance.bdfpartner;
 import android.util.Log;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 /**
  // Version 20: Added the Introduction Screen and Auto Login Feature.
  // Version 21: Removed the Wrong Link in the Know More Page.

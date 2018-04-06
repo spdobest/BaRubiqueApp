@@ -8,94 +8,94 @@
 
 
     <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Please Verify your Phone Number"
-        android:id="@+id/textView"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/Black"
          />
 
     <LinearLayout
+        android:id="@+id/phone_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone"
         android:layout_margin="10dp"
-        android:id="@+id/phone_layout">
+        android:orientation="vertical"
+        android:visibility="gone">
         <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
             android:layout_marginTop="10dp"
-            android:textColor="@color/Black"
-            android:text="Please Enter your phone number, we will send a OTP to verify your Number. Make sure you have the phone nearby with you."/>
+            android:gravity="center"
+            android:text="Please Enter your phone number, we will send a OTP to verify your Number. Make sure you have the phone nearby with you."
+            android:textColor="@color/Black" />
 
         <EditText
+            android:id="@+id/otp_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="10"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:id="@+id/otp_phone"
-            android:inputType="number"/>
+            android:layout_marginTop="10dp"
+            android:inputType="number"
+            android:maxLength="10" />
 
         <Button
+            android:id="@+id/get_otp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/White"
-            android:paddingLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/get_otp"
-            android:paddingRight="20dp"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:background="@drawable/green_button"
-            android:text="Get OTP"/>
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Get OTP"
+            android:textColor="@color/White" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/put_otp_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:id="@+id/put_otp_layout"
         android:orientation="vertical">
 
 
         <LinearLayout
+            android:id="@+id/progress_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp"
-            android:id="@+id/progress_layout">
+            android:padding="5dp">
 
             <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/Black"
-                android:text="We have sent the OTP on your mobile Number"/>
+                android:gravity="center"
+                android:text="We have sent the OTP on your mobile Number"
+                android:textColor="@color/Black" />
             <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
+                android:id="@+id/otp_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:id="@+id/otp_text"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/Black"
-                android:text="Waiting For the OTP"/>
+                android:gravity="center"
+                android:text="Waiting For the OTP"
+                android:textColor="@color/Black" />
             <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
                 android:id="@+id/textView_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="0:00"
                 android:layout_margin="10dp"
+                android:text="0:00"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/Black" />
 
@@ -105,73 +105,73 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginBottom="10dp"
                 android:progressDrawable="@drawable/progressbar" />
 
             <EditText
+                android:id="@+id/otp_put"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:maxLength="10"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:id="@+id/otp_put"
-                android:inputType="number"/>
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="10" />
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_margin="5dp"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:orientation="vertical">
             <com.bestdealfinance.bdfpartner.UI.CustomTextViewProxima
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sending OTP to your number"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:gravity="center"
-                android:textSize="16sp"
+                android:text="Sending OTP to your number"
                 android:textColor="@color/Black"
+                android:textSize="16sp"
                 />
             <ProgressBar
+                android:id="@+id/otp_sent_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:id="@+id/otp_sent_bar"
                 />
         </LinearLayout>
 
 
         <Button
+            android:id="@+id/check_otp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/White"
-            android:paddingLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/check_otp"
-            android:paddingRight="20dp"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:background="@drawable/green_button"
-            android:text="Verify OTP"/>
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Verify OTP"
+            android:textColor="@color/White" />
 
         <Button
+            android:id="@+id/resend_otp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/White"
-            android:paddingLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/resend_otp"
-            android:paddingRight="20dp"
             android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:background="@drawable/green_button"
-            android:text="Resend OTP"/>
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Resend OTP"
+            android:textColor="@color/White" />
 
 
     </LinearLayout>

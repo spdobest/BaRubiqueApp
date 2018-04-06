@@ -21,14 +21,13 @@ public class ProductLandingAdapter extends RecyclerView.Adapter<ProductLandingAd
 
     private List<LandingModel> items;
     private Context mcontext;
+    private int itemLayout;
 
     public ProductLandingAdapter(Context context) {
         this.mcontext=context;
         items=new ArrayList<>();
 
     }
-
-    private int itemLayout;
 
     public ProductLandingAdapter(Context context, List<LandingModel> items, int itemLayout) {
         this.items = items;
@@ -57,8 +56,8 @@ public class ProductLandingAdapter extends RecyclerView.Adapter<ProductLandingAd
 
         public ViewHolder(View itemView) {
             super(itemView);
-            image = (ImageView) itemView.findViewById(R.id.rowIcon);
-            text = (TextView) itemView.findViewById(R.id.rowText);
+            image = itemView.findViewById(R.id.rowIcon);
+            text = itemView.findViewById(R.id.rowText);
         }
     }
 }

@@ -10,7 +10,6 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.bestdealfinance.bdfpartner.Logs;
-import com.bestdealfinance.bdfpartner.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,28 +23,28 @@ public class PercentView extends View {
     Paint paint_outer;
 //    Paint text;
     float percentage = 90;
+    ArrayList<Integer> count = new ArrayList<>();
+    ArrayList<String> colors = new ArrayList<>();
     private Bundle bundle;
     private RectF rect;
     private float[] percent;
     private RectF rect_out;
     private List<Paint> paintList;
-    ArrayList<Integer> count=new ArrayList<>();
-    ArrayList<String> colors=new ArrayList<>();
 //    private List<Paint> paintList_inner;
 
     public PercentView(Context context) {
         super(context);
-        //init();
+        //initViews();
     }
 
     public PercentView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        //init();
+        //initViews();
     }
 
     public PercentView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        //init();
+        //initViews();
     }
 
     public void setData(ArrayList<Integer> mcount, ArrayList <String>mcolors, int total) {

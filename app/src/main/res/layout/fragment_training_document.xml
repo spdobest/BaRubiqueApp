@@ -4,17 +4,9 @@
     android:layout_height="match_parent"
     tools:context="com.bestdealfinance.bdfpartner.fragment.TrainingVideoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/listview_training_doc"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:footerDividersEnabled="false"
-        android:dividerHeight="0dp"
-        android:divider="@color/white"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        >
-    </ListView>
+        android:layout_height="wrap_content" />
 
 </FrameLayout>

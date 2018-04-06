@@ -28,7 +28,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by vikas on 15/3/16.
@@ -45,7 +44,6 @@ public class APIUtils {
     public interface OnTaskCompletedCity {
         void OnTaskCompletedCity();
     }
-
     public static class GetCity extends AsyncTask<String, Void, String> {
         private OnTaskCompletedCity listnerc;
         private String payload;
@@ -53,10 +51,8 @@ public class APIUtils {
         public GetCity(OnTaskCompletedCity listnerc) {
             this.listnerc = listnerc;
         }
-
         public GetCity() {
         }
-
         @Override
         protected String doInBackground(String... params) {
             String response = "";
@@ -136,14 +132,12 @@ public class APIUtils {
 
 
     }
-
     public static class ProductTypeAsyncTask extends AsyncTask<Void, Void, String> {
         private OnTaskCompletedProducts listnerp;
 
         public ProductTypeAsyncTask(OnTaskCompletedProducts listnerp) {
             this.listnerp = listnerp;
         }
-
         public ProductTypeAsyncTask() {
         }
 
@@ -190,12 +184,11 @@ public class APIUtils {
                         JSONArray jsonArray = new JSONArray(output1.getString("body"));
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jObj = jsonArray.getJSONObject(i);
-                            HashMap<String, String> map = new HashMap<String, String>();
-                            map.put("id", jObj.getString("id"));
-                            map.put("name", jObj.getString("name"));
-                            Util.product_type_data.add(i, map);
-
+                            controller.insertProductType(jObj.getString("id"), jObj.getString("name"));
                         }
+
+
+                        Util.product_type_data = controller.getAllProductName();
                         if (listnerp != null) {
                             listnerp.OnTaskCompletedProducts();
                         }
@@ -213,6 +206,8 @@ public class APIUtils {
     }
 
     public static class SendSMS extends AsyncTask<String, Void, String> {
+        String be, af;
+        String key1;
         private String code1;
         private Context mContext;
         private String name1;
@@ -220,8 +215,6 @@ public class APIUtils {
         private String mob1;
         private TextView textview;
         private String product1;
-        String be, af;
-        String key1;
 
         public SendSMS(String code, String id, String name, Context context, String mobile, String product) {
             this.mContext = context;

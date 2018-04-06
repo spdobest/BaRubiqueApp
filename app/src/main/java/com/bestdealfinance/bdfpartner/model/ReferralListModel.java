@@ -17,6 +17,7 @@ public class ReferralListModel {
     private String date_created;
     private String refID;
     private String product_name;
+    private String payout;
 
     public String getRefID() {
         return refID;
@@ -31,6 +32,10 @@ public class ReferralListModel {
 
     }
 
+    public void setPayout(String payout) {
+        this.payout = payout;
+    }
+
     public String getProduct_name() {
         return product_name;
     }
@@ -38,14 +43,6 @@ public class ReferralListModel {
     public void setProduct_name(String product_name) {
         this.product_name = product_name;
     }
-
-    public void setPayout(String payout) {
-        this.payout = payout;
-    }
-
-    private String payout;
-
-
 
     public String getLead_id() {
         return lead_id;

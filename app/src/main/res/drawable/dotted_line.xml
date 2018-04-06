@@ -2,8 +2,8 @@
     android:shape="line">
 
     <stroke
+        android:width="0.5dp"
         android:color="@color/Gray"
-        android:dashWidth="2dp"
         android:dashGap="5dp"
-        android:width="0.5dp"/>
+        android:dashWidth="2dp" />
 </shape>

@@ -51,8 +51,8 @@ public class InnerDurationFragment extends DialogFragment {
         View rootView = inflater.inflate(R.layout.duration_fragment, container, false);
         getDialog().setCanceledOnTouchOutside(false);
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        month= (Spinner) rootView.findViewById(R.id.spinner_month);
-        year= (Spinner) rootView.findViewById(R.id.spinner_year);
+        month = rootView.findViewById(R.id.spinner_month);
+        year = rootView.findViewById(R.id.spinner_year);
         for (int i=0;i<12;i++){
             categories_month.add(String.valueOf(i));
         }
@@ -91,7 +91,7 @@ public class InnerDurationFragment extends DialogFragment {
             }
         });
 
-        Button button = (Button) rootView.findViewById(R.id.button7);
+        Button button = rootView.findViewById(R.id.button7);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

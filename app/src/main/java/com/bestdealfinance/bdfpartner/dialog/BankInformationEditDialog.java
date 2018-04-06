@@ -1,16 +1,22 @@
 package com.bestdealfinance.bdfpartner.dialog;
 
 import android.app.Dialog;
-import android.content.res.Configuration;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +35,7 @@ import com.bestdealfinance.bdfpartner.activity.ProfileActivity;
 import com.bestdealfinance.bdfpartner.application.Constant;
 import com.bestdealfinance.bdfpartner.application.Helper;
 import com.bestdealfinance.bdfpartner.application.ProfileHelper;
+import com.bestdealfinance.bdfpartner.application.URL;
 import com.bestdealfinance.bdfpartner.application.Util;
 
 import org.json.JSONException;
@@ -38,16 +45,34 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BankInformationEditDialog extends DialogFragment implements View.OnClickListener {
-    private EditText etAccountHolderName, etAccountNumber, etReenterAccountNumber, etIFSC, etBankName, etBranchName, etPAN;
+
+    public static final String TAG = "BankInformationEditDial";
+    private EditText etAccountHolderName, etAccountNumber, etReenterAccountNumber, etIFSC, etBankName, etBranchName;
     private Button btnSave, btnCancel;
     private ProfileHelper profileHelper;
     private RequestQueue queue;
 
+    //widgets
+    private Toolbar toolbarEeditBankDetails;
+
+    public static BankInformationEditDialog newInstance(Context mcontext, ProfileHelper profileHelper) {
+        BankInformationEditDialog bankInformationEditDialog = new BankInformationEditDialog();
+
+        try {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("ProfileHelper", profileHelper);
+            bankInformationEditDialog.setArguments(bundle);
+            bankInformationEditDialog.setArguments(bundle);
+        } catch (Exception e) {
+            Log.i(TAG, "newInstance:Error" + "\n" + e.getMessage());
+        }
+
+        return bankInformationEditDialog;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setStyle(DialogFragment.STYLE_NO_TITLE, android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
-
     }
 
     @Override
@@ -56,6 +81,25 @@ public class BankInformationEditDialog extends DialogFragment implements View.On
         super.onViewCreated(view, savedInstanceState);
     }
 
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
+        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        return dialog;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Dialog dialog = getDialog();
+        if (dialog != null) {
+            dialog.getWindow().setWindowAnimations(
+                    R.style.styleDialogFragment);
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        }
+    }
 
     @Nullable
     @Override
@@ -69,6 +113,9 @@ public class BankInformationEditDialog extends DialogFragment implements View.On
         profileHelper = (ProfileHelper) getArguments().getSerializable("ProfileHelper");
 
         setValuesForUI(profileHelper);
+
+        toolbarEeditBankDetails = inflaterView.findViewById(R.id.toolbarEeditBankDetails);
+        toolbarEeditBankDetails.setTitle(getResources().getString(R.string.edit_bank));
 
         return inflaterView;
     }
@@ -87,21 +134,19 @@ public class BankInformationEditDialog extends DialogFragment implements View.On
         etAccountNumber.setText(profileHelper.getAccount_number());
         etIFSC.setText(profileHelper.getIfsc());
         etBranchName.setText(profileHelper.getBranch_name());
-        etPAN.setText(profileHelper.getBank_pan());
 
     }
 
     private void setUpUiComponents(View inflaterView) {
-        etAccountHolderName = (EditText) inflaterView.findViewById(R.id.et_holder_name);
-        etAccountNumber = (EditText) inflaterView.findViewById(R.id.et_bank_account);
-        etReenterAccountNumber = (EditText) inflaterView.findViewById(R.id.et_bank_re_account);
-        etIFSC = (EditText) inflaterView.findViewById(R.id.et_ifsc);
-        etBankName = (EditText) inflaterView.findViewById(R.id.et_bank_name);
-        etBranchName = (EditText) inflaterView.findViewById(R.id.et_branch_name);
-        etPAN = (EditText) inflaterView.findViewById(R.id.et_pancard);
+        etAccountHolderName = inflaterView.findViewById(R.id.et_holder_name);
+        etAccountNumber = inflaterView.findViewById(R.id.et_bank_account);
+        etReenterAccountNumber = inflaterView.findViewById(R.id.et_bank_re_account);
+        etIFSC = inflaterView.findViewById(R.id.et_ifsc);
+        etBankName = inflaterView.findViewById(R.id.et_bank_name);
+        etBranchName = inflaterView.findViewById(R.id.et_branch_name);
 
-        btnCancel = (Button) inflaterView.findViewById(R.id.btn_cancel);
-        btnSave = (Button) inflaterView.findViewById(R.id.btn_save);
+        btnCancel = inflaterView.findViewById(R.id.btn_cancel);
+        btnSave = inflaterView.findViewById(R.id.btn_save);
         btnCancel.setOnClickListener(this);
         btnSave.setOnClickListener(this);
 
@@ -138,14 +183,12 @@ public class BankInformationEditDialog extends DialogFragment implements View.On
                 profileHelper.setIfsc(etIFSC.getText().toString());
                 profileHelper.setBank_name(etBankName.getText().toString());
                 profileHelper.setBranch_name(etBranchName.getText().toString());
-                profileHelper.setBank_pan(etPAN.getText().toString());
 
                 setValuesToJson();
 
                 sendDataToServer();
 
-                ((ProfileActivity) getActivity()).onResume();
-                dismiss();
+
             }
         } else if (view.getId() == R.id.btn_cancel) {
             dismiss();
@@ -163,11 +206,12 @@ public class BankInformationEditDialog extends DialogFragment implements View.On
             e.printStackTrace();
         }
 
-        JsonObjectRequest serverValues = new JsonObjectRequest(Request.Method.POST, Util.UPDATE_CUSTOMER_PROFILE, response,
+        JsonObjectRequest serverValues = new JsonObjectRequest(Request.Method.POST, URL.UPDATE_CUSTOMER_PROFILE, response,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-
+                        ((ProfileActivity) getActivity()).getValuesFromServer();
+                        dismiss();
                     }
                 },
                 new Response.ErrorListener() {
@@ -247,27 +291,12 @@ public class BankInformationEditDialog extends DialogFragment implements View.On
             if (focusView == null) {
                 focusView = etReenterAccountNumber;
             }
-        } else if (etPAN.getText().toString().isEmpty()) {
-            etPAN.setError(getString(R.string.empty_error));
-            if (focusView == null) {
-                focusView = etPAN;
-            }
         }
 
         if (focusView == null && !etReenterAccountNumber.getText().toString().equals(etAccountNumber.getText().toString())) {
             etReenterAccountNumber.setError(getString(R.string.account_number_not_matched));
             focusView = etReenterAccountNumber;
         }
-
-
-        if (focusView == null) {
-            String panError = Helper.isPANValid(etPAN.getText().toString());
-            if (panError != null) {
-                etPAN.setError(panError);
-                focusView = etPAN;
-            }
-        }
-
         return focusView;
     }
 

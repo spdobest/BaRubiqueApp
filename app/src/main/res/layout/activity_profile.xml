@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profile_main_layout"
     android:layout_width="match_parent"
@@ -9,12 +8,7 @@
     android:orientation="vertical"
     tools:context="com.bestdealfinance.bdfpartner.activity.ProfileActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <include layout="@layout/toolbar_new" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -29,7 +23,46 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/personal_information"
+                android:text="Login Details"
+                android:textAllCaps="true"
+                android:textSize="10sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_button_grey_border"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/profile_mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="Mobile : "
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/profile_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Email : "
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/personal_details"
                 android:textAllCaps="true"
                 android:textSize="10sp" />
 
@@ -55,35 +88,30 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/profile_profession"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/profile_name"
+                        android:text="Profession"
+                        android:textSize="12sp" />
+
+                    <TextView
                         android:id="@+id/profile_edit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:background="@drawable/custom_button_border_green"
+                        android:layout_alignParentTop="true"
                         android:paddingBottom="5dp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:paddingTop="5dp"
                         android:text="Edit"
                         android:textAllCaps="true"
-                        android:textColor="@color/Green600" />
+                        android:textColor="@color/Green600"
+                        android:textSize="12dp" />
 
                 </RelativeLayout>
-
-                <TextView
-                    android:id="@+id/profile_mobile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="Mobile : "
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/profile_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Email : "
-                    android:textSize="12sp" />
 
 
                 <TextView
@@ -92,7 +120,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:text="PAN : -------"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:visibility="gone" />
 
 
                 <TextView
@@ -110,19 +139,19 @@
                     android:text="Passport : -------"
                     android:textSize="12sp" />
 
-
                 <TextView
+                    android:id="@+id/bank_PAN"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="Address"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:text="PAN : -------"
+                    android:textSize="12sp" />
+
 
                 <TextView
                     android:id="@+id/profile_address1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:text="-------"
                     android:textSize="12sp" />
 
@@ -149,60 +178,13 @@
                     android:text="-------"
                     android:textSize="12sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="Professional Details"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/profile_profession"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Profession"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/profile_occupation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Occupation"
-                    android:textSize="12sp" />
-
-
-                <TextView
-                    android:id="@+id/professional_company"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textSize="12sp"
-                    android:text="Company Name - Rubique"/>
-
-
-                <TextView
-                    android:id="@+id/professional_annual_income"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="Annual Income - 10Lac"/>
-
-
-                <TextView
-                    android:id="@+id/professional_total_experience"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="Total Experience - 5 years"/>
-
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/bank_information"
+                android:text="@string/bank_details"
                 android:textAllCaps="true"
                 android:textSize="10sp" />
 
@@ -251,14 +233,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:background="@drawable/custom_button_border_green"
                         android:paddingBottom="5dp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:paddingTop="5dp"
                         android:text="Edit"
                         android:textAllCaps="true"
-                        android:textColor="@color/Green600" />
+                        android:textColor="@color/Green600"
+                        android:textSize="12dp" />
                 </RelativeLayout>
 
 
@@ -270,45 +252,24 @@
                     android:text="Account Number : -------"
                     android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/bank_PAN"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="PAN : -------"
-                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
+                android:gravity="end"
                 android:orientation="horizontal">
-
-
-                <Button
-                    android:id="@+id/profile_change_password"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/custom_button_border_green"
-                    android:gravity="center"
-                    android:text="Change Password"
-                    android:textAllCaps="true"
-                    android:textColor="@color/Green500"
-                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/profile_logout"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/custom_button_border_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@color/Red600"
                     android:gravity="center"
                     android:text="Logout"
                     android:textAllCaps="true"
-                    android:textColor="@color/Red400"
+                    android:textColor="@color/white"
                     android:textSize="12sp" />
 
             </LinearLayout>

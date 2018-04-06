@@ -5,6 +5,21 @@ package com.bestdealfinance.bdfpartner.model;
  */
 public class FeedItemLoan {
     private String title_bank;
+    private String bank_logo;
+    private String interest_rate;
+    private String pf;
+    private String details;
+    private String ltv;
+    private String roi;
+    private String fullQual;
+    private String finbank;
+    private String finbank_type;
+    private String filledQual;
+    private String product_id;
+    private String bank_id;
+    private String tenure;
+    private String eligible_amount;
+    private String emi;
 
     public String getFullQual() {
         return fullQual;
@@ -22,13 +37,6 @@ public class FeedItemLoan {
         this.filledQual = filledQual;
     }
 
-    private String bank_logo;
-    private String interest_rate;
-    private String pf;
-    private String details;
-    private String ltv;
-    private String roi;
-
     public String getFinbank() {
         return finbank;
     }
@@ -45,11 +53,6 @@ public class FeedItemLoan {
         this.finbank_type = finbank_type;
     }
 
-    private String fullQual;
-    private String finbank;
-    private String finbank_type;
-    private String filledQual;
-
     public String getProduct_id() {
         return product_id;
     }
@@ -58,10 +61,6 @@ public class FeedItemLoan {
         this.product_id = product_id;
     }
 
-    private String product_id;
-
-    private String bank_id;
-
     public String getBank_id() {
         return bank_id;
     }
@@ -69,7 +68,6 @@ public class FeedItemLoan {
     public void setBank_id(String bank_id) {
         this.bank_id = bank_id;
     }
-
 
     public String getLtv() {
         return ltv;
@@ -86,10 +84,6 @@ public class FeedItemLoan {
     public void setTenure(String tenure) {
         this.tenure = tenure;
     }
-
-    private String tenure;
-
-
 
     public String getDetails() {
         return details;
@@ -127,16 +121,16 @@ public class FeedItemLoan {
         return pf;
     }
 
+    public void setPf(String pf) {
+        this.pf = pf;
+    }
+
     public String getRoi() {
         return roi;
     }
 
     public void setRoi(String roi) {
         this.roi = roi;
-    }
-
-    public void setPf(String pf) {
-        this.pf = pf;
     }
 
     public String getEligible_amount() {
@@ -154,7 +148,4 @@ public class FeedItemLoan {
     public void setEmi(String emi) {
         this.emi = emi;
     }
-
-    private String eligible_amount;
-    private String emi;
 }

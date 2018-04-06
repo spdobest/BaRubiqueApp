@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
-    >
+    android:orientation="vertical"
+    android:padding="10dp">
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txt_promocode_layout"
-        >
 
-        <EditText
+    <EditText
             android:id="@+id/txt_promocode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Promo Code"
+        android:background="@drawable/custom_border_grey"
+        android:hint="Registration Code"
+        android:inputType="textCapCharacters"
             android:maxLines="1"
-            android:singleLine="true"
+        android:padding="10dp"
             android:textAllCaps="true"
-            android:inputType="textCapCharacters"
             />
-
-    </android.support.design.widget.TextInputLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,24 +24,24 @@
         >
         <Button
             android:id="@+id/apply_btn"
+            style="?attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:text="APPLY CODE"
             android:textColor="@color/Green500"
-            style="?attr/borderlessButtonStyle"
             />
 
         <Button
             android:id="@+id/cancel_popup"
+            style="?attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:text="CANCEL"
             android:textColor="@color/Red500"
-            style="?attr/borderlessButtonStyle"
             />
 
     </RelativeLayout>

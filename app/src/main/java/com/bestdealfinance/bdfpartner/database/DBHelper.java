@@ -14,19 +14,16 @@ import java.util.HashMap;
  */
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "rubique.db";
-    private static final int DATABASE_VERSION = 1;
-
     public static final String TABLE_PRODUCT_TYPE = "product_type";
     public static final String PT_ID = "pt_id";
     public static final String PRODUCT_TYPE_ID = "product_type_id";
     public static final String PRODUCT_TYPE_NAME = "product_type_name";
-
     public static final String TABLE_PRODUCT = "product";
     public static final String P_ID = "p_id";
     public static final String PRODUCT_ID = "product_id";
     public static final String PRODUCT_NAME = "product_name";
-
+    private static final String DATABASE_NAME = "rubique.db";
+    private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_PRODUCT_TYPE = "create table "
             + TABLE_PRODUCT_TYPE + "(" + PT_ID
             + " integer primary key autoincrement, " + PRODUCT_TYPE_ID

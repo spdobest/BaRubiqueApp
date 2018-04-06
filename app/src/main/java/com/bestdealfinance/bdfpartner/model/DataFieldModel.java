@@ -5,33 +5,35 @@ package com.bestdealfinance.bdfpartner.model;
  */
 public interface DataFieldModel {
 
-    public String getdata();
-
-    public String getDisplayData();
-
-
-    public String getID();
-
-    public void onClickEvent();
-
-    public void addToView();
-
-    public void setError();
-    public void setData(String data);
-
-    public void clearError();
-
-    public void hideFromView();
-
-    public String fieldType();
-
-    public void showinView();
-
-    public boolean validate();
     String ab="wew";
 
-    public void setTitle();
-    public void setHint();
+    String getdata();
+
+    String getDisplayData();
+
+    String getID();
+
+    void onClickEvent();
+
+    void addToView();
+
+    void setError();
+
+    void setData(String data);
+
+    void clearError();
+
+    void hideFromView();
+
+    String fieldType();
+
+    void showinView();
+
+    boolean validate();
+
+    void setTitle();
+
+    void setHint();
 
 
 }

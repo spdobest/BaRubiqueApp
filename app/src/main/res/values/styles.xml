@@ -10,6 +10,16 @@
         <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
 
+    <style name="AppThemeNew" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/Grey800</item>
+        <item name="colorPrimaryDark">@color/Grey900</item>
+        <item name="colorAccent">@color/Blue500</item>
+        <item name="android:windowBackground">@color/Grey100</item>
+        <item name="android:screenOrientation">portrait</item>
+
+    </style>
+
 
     <style name="AppTheme_orange" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -37,7 +47,83 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="AppThemeNew.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppThemeNew.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <!--<style name="Theme.MyFancyTheme" parent="android:Theme.Holo">-->
     <!--<item name="android:homeAsUpIndicator">@drawable/success</item>-->
     <!--</style>-->
+    <style name="styleDialogFragment">
+        <item name="android:windowEnterAnimation">@anim/pop_up</item>
+        <item name="android:windowExitAnimation">@anim/pop_down</item>
+    </style>
+
+    <!--STYLE FOR TOOLBAR-->
+    <style name="toolbarStyle" parent="Base.Theme.AppCompat.Light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:background">@drawable/toolbar_bg_prelolipop</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:layout_gravity">top</item>
+    </style>
+
+    <style name="edittextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawableLeft">@dimen/dimen_10dp</item>
+        <item name="android:drawablePadding">@dimen/dimen_10dp</item>
+        <item name="android:paddingEnd">@dimen/dimen_3dp</item>
+        <item name="android:paddingRight">@dimen/dimen_3dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <!--<item name="colorControlHighlight">@android:color/darker_gray</item>-->
+    </style>
+
+    <!--EDITTEXT GROUP STYLE-->
+    <style name="Widget.Group" parent="@android:style/Widget">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@drawable/edittext_bg_middle</item>
+    </style>
+
+    <style name="Widget.Group.Top">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@drawable/edittext_bg_top</item>
+    </style>
+
+    <style name="Widget.Group.Bottom">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@drawable/edittext_bg_bottom</item>
+    </style>
+
+    <style name="leftAlignText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="rightAlignText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+
+        <item name="android:layout_weight">2</item>
+    </style>
+
+
 </resources>

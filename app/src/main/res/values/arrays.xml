@@ -7,4 +7,17 @@
         <item>@color/Disbursed</item>
         <item>@color/Failed</item>
     </array>
+
+    <integer-array name="array_welcome_images">
+        <item>@drawable/welcome_1</item>
+        <item>@drawable/welcome_2</item>
+        <item>@drawable/welcome_3</item>
+    </integer-array>
+
+    <integer-array name="array_landing_images">
+        <item>@drawable/landing_banner1</item>
+        <item>@drawable/landing_banner2</item>
+        <item>@drawable/landing_banner3</item>
+    </integer-array>
+
 </resources>

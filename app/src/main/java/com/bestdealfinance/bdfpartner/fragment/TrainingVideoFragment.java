@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bestdealfinance.bdfpartner.R;
-import com.bestdealfinance.bdfpartner.activity.TrainingActivity;
 import com.bestdealfinance.bdfpartner.activity.YoutubeActivity;
 import com.bumptech.glide.Glide;
 
@@ -117,12 +115,12 @@ public class TrainingVideoFragment extends Fragment {
                 rowView = inflater.inflate(R.layout.list_item_training_video, viewGroup, false);
             }
 
-            TextView title = (TextView) rowView.findViewById(R.id.list_title);
-            TextView description = (TextView) rowView.findViewById(R.id.list_description);
-            ImageView imageView = (ImageView) rowView.findViewById(R.id.list_thumbnail);
+            TextView title = rowView.findViewById(R.id.list_title);
+            TextView description = rowView.findViewById(R.id.list_description);
+            ImageView imageView = rowView.findViewById(R.id.list_thumbnail);
 
             try {
-                title.setText(""+(i+1)+". "+data.getJSONObject(i).getString("title"));
+                title.setText(data.getJSONObject(i).getString("title"));
                 description.setText(data.getJSONObject(i).getString("description"));
                 Glide.with(getActivity()).load(data.getJSONObject(i).getString("image_url")).into(imageView);
             } catch (JSONException e) {

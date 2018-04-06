@@ -8,9 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bestdealfinance.bdfpartner.Logs;
 import com.bestdealfinance.bdfpartner.R;
-import com.bestdealfinance.bdfpartner.fragment.Select_product;
+import com.bestdealfinance.bdfpartner.fragment.SelectedProductFragment;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -18,28 +17,48 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ProductsIDAdapter extends RecyclerView.Adapter<ProductsIDAdapter.ViewHolder> {
+    private static SelectedProductFragment.OnRecycleClickListener listener;
     ArrayList<HashMap<String, String>> tlist;
-    private static Select_product.OnRecycleClickListener listener;
-    List<String>imglist;
+    List<String> imglist;
     Context context;
     String product_type_id;
-    public ProductsIDAdapter(Context con,ArrayList<HashMap<String, String>> list,List<String>imglist, String type,Select_product.OnRecycleClickListener itemListener) {
+
+    public ProductsIDAdapter(Context con, ArrayList<HashMap<String, String>> list, List<String> imglist, String type, SelectedProductFragment.OnRecycleClickListener itemListener) {
         this.tlist = list;
-        this.context=con;
-        this.product_type_id=type;
-        this.imglist=imglist;
-        this.listener=itemListener;
+        this.context = con;
+        this.product_type_id = type;
+        this.imglist = imglist;
+        listener = itemListener;
     }
 
+    @Override
+    public ProductsIDAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.list_item_products, parent, false);
+        ViewHolder vh = new ViewHolder(v);
+        return vh;
+    }
 
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
 
-    public static class ViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
+        holder.product_name.setText(tlist.get(position).get("name"));
+        Glide.with(context).load(imglist.get(position)).into(holder.image);
+    }
+
+    @Override
+    public int getItemCount() {
+        return tlist.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView product_name;
         public ImageView image;
+
         public ViewHolder(View v) {
             super(v);
-            product_name = (TextView)v.findViewById(R.id.product_name);
-            image= (ImageView) v.findViewById(R.id.bank_logo);
+            product_name = v.findViewById(R.id.product_name);
+            image = v.findViewById(R.id.bank_logo);
             product_name.setOnClickListener(this);
             image.setOnClickListener(this);
 
@@ -47,32 +66,8 @@ public class ProductsIDAdapter extends RecyclerView.Adapter<ProductsIDAdapter.Vi
 
         @Override
         public void onClick(View v) {
-            Logs.LogD("Clicked","Item Clicked");
-            int position  =   getAdapterPosition();
+            int position = getAdapterPosition();
             listener.onItemClick(position);
-
         }
-    }
-    @Override
-    public ProductsIDAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                      int viewType) {
-        // create a new view
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.products, parent, false);
-        ViewHolder vh = new ViewHolder(v);
-
-
-        return vh;
-    }
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-
-        holder.product_name.setText(tlist.get(position).get("name"));
-        Glide.with(context).load(imglist.get(position)).into(holder.image);
-
-    }
-    @Override
-    public int getItemCount() {
-        return tlist.size();
     }
 }

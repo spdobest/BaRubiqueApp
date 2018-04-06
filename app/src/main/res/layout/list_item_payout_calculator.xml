@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
-        android:text="Axis"
-        android:gravity="left"
         android:layout_toLeftOf="@+id/slab"
+        android:gravity="left"
+        android:text="Axis"
         />
 
     <TextView

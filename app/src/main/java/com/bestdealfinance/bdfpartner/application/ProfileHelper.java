@@ -7,16 +7,9 @@ import java.io.Serializable;
 public class ProfileHelper implements Serializable {
 
     private String name;
+    private String profession;
     private String email;
     private String mobile;
-
-
-    private String occupation;
-    private String profession;
-    private String annualIncome;
-    private String totalExperience;
-    private String companyName;
-
 
     private String pan;
     private String aadhar_number;
@@ -40,7 +33,6 @@ public class ProfileHelper implements Serializable {
     public ProfileHelper() {
         name = null;
         profession = null;
-        occupation = null;
         email = null;
         mobile = null;
 
@@ -221,37 +213,5 @@ public class ProfileHelper implements Serializable {
 
     public void setResponse(JSONObject response) {
         this.response = response;
-    }
-
-    public String getOccupation() {
-        return occupation;
-    }
-
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
-    }
-
-    public String getAnnualIncome() {
-        return annualIncome;
-    }
-
-    public void setAnnualIncome(String annualIncome) {
-        this.annualIncome = annualIncome;
-    }
-
-    public String getTotalExperience() {
-        return totalExperience;
-    }
-
-    public void setTotalExperience(String totalExperience) {
-        this.totalExperience = totalExperience;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
     }
 }

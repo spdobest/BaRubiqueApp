@@ -9,12 +9,7 @@
         android:id="@+id/listview_training_video"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:footerDividersEnabled="false"
-        android:dividerHeight="0dp"
         android:divider="@color/white"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        >
-    </ListView>
+        android:footerDividersEnabled="false"></ListView>
 
 </FrameLayout>

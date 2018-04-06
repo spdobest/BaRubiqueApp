@@ -14,8 +14,10 @@ import android.widget.FrameLayout;
  */
 public class PagerContainer extends FrameLayout implements ViewPager.OnPageChangeListener {
 
-    private ViewPager mPager;
     boolean mNeedsRedraw = false;
+    private ViewPager mPager;
+    private Point mCenter = new Point();
+    private Point mInitialTouch = new Point();
 
     public PagerContainer(Context context) {
         super(context);
@@ -55,9 +57,6 @@ public class PagerContainer extends FrameLayout implements ViewPager.OnPageChang
     public ViewPager getViewPager() {
         return mPager;
     }
-
-    private Point mCenter = new Point();
-    private Point mInitialTouch = new Point();
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {

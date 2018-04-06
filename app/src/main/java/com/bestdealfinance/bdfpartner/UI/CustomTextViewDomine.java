@@ -1,7 +1,6 @@
 package com.bestdealfinance.bdfpartner.UI;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.SparseArray;
@@ -34,10 +33,7 @@ public class CustomTextViewDomine extends TextView {
     }
 
     private void parseAttributes(Context context, AttributeSet attrs) {
-        TypedArray values = context.obtainStyledAttributes(attrs, R.styleable.CustomTextViewDomine);
 
-        int typefaceValue = values.getInt(R.styleable.CustomTextViewDomine_typeface, 0);
-        values.recycle();
 
         setTypeface(Typeface.createFromAsset(context.getAssets(),  getResources().getString(R.string.domine)));
     }

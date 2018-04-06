@@ -222,4 +222,10 @@
     <color name="Disbursed">#6bc049</color>
     <color name="Failed">#ff0000</color>
     <color name="theme_color">#663F99</color>
+
+
+    <color name="progress_gray">#D8D8D8</color>
+    <color name="progress_gray_dark">#383838</color>
+    <color name="default_blue_light">#33b5e5</color>
+    <color name="dark_blue">#175676</color>
 </resources>

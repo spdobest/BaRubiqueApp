@@ -15,10 +15,10 @@
         android:id="@+id/nav_referral"
         android:icon="@drawable/ic_referral"
         android:title="@string/nav_drawer_referrals" />
-    <!--<item
+    <item
         android:id="@+id/nav_payouts"
         android:icon="@drawable/ic_payouts"
-        android:title="@string/nav_drawer_payouts" />-->
+        android:title="@string/nav_drawer_payouts" />
 
     <!--<item
         android:id="@+id/nav_leader_board"

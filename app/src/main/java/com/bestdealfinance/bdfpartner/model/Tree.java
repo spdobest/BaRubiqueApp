@@ -1,7 +1,6 @@
 package com.bestdealfinance.bdfpartner.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by vikas on 25/3/16.

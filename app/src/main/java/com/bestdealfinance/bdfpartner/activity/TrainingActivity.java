@@ -18,21 +18,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bestdealfinance.bdfpartner.R;
-import com.bestdealfinance.bdfpartner.application.Constant;
 import com.bestdealfinance.bdfpartner.application.Helper;
+import com.bestdealfinance.bdfpartner.application.ToolbarHelper;
 import com.bestdealfinance.bdfpartner.application.Util;
 import com.bestdealfinance.bdfpartner.fragment.TrainingDocumentFragment;
 import com.bestdealfinance.bdfpartner.fragment.TrainingVideoFragment;
-import com.crashlytics.android.Crashlytics;
-import com.flurry.android.FlurryAgent;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import io.fabric.sdk.android.Fabric;
 
 public class TrainingActivity extends AppCompatActivity {
 
@@ -47,17 +43,8 @@ public class TrainingActivity extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_left);
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.new_toolbar);
+        ToolbarHelper.initializeToolbar(this, toolbar, getResources().getString(R.string.training), false, true, true);
 
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.training_tablayout);
         final ViewPager viewPager = (ViewPager) findViewById(R.id.training_viewpager);
@@ -68,6 +55,7 @@ public class TrainingActivity extends AppCompatActivity {
             snackbar.show();
             JSONObject reqObject = new JSONObject();
             reqObject.put("key", "tra!33$");
+            Helper.showLog(Util.TRAINING_FETCH, reqObject.toString());
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Util.TRAINING_FETCH, reqObject, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
@@ -90,7 +78,7 @@ public class TrainingActivity extends AppCompatActivity {
 
                         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
                         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-                        tabLayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
+                        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -117,12 +105,6 @@ public class TrainingActivity extends AppCompatActivity {
         Tracker mTracker = Helper.getDefaultTracker(this);
         mTracker.setScreenName("Training Activity");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
-
-        new FlurryAgent.Builder()
-                .withLogEnabled(false)
-                .build(this, Constant.FLURRY_API_KEY);
-
-        Fabric.with(this, new Crashlytics());
 
     }
 
